@@ -7,10 +7,16 @@
 get_fst(file)
 }
 \description{
-\code{get_fst} inports Fst data, adds the genomic position and the run.
+\code{get_fst} imports Fst data, adds the genomic position and the run.
 }
 \details{
 The run name (the pair wise species comparison) is extracted from the file name,
 the data is imported, column names are standardized and genomic position and
 run name are added.
 }
+\seealso{
+Other General functions: \code{\link{get_dxy}},
+  \code{\link{get_gxp}}, \code{\link{join_list}},
+  \code{\link{process_input}}
+}
+\concept{General functions}

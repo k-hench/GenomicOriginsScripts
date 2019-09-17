@@ -5,6 +5,8 @@
 #' Fst data is imported, filtered for non-overlapping windows
 #' and boxplot statistics are created.
 #'
+#' @family Figure 1
+#'
 #' @export
 summarize_fst <- function(file){
   get_fst(file) %>%
@@ -27,6 +29,8 @@ summarize_fst <- function(file){
 #' dxy data is imported, filtered for non-overlapping windows
 #' and boxplot statistics are created.
 #'
+#' @family Figure 1
+#'
 #' @export
 summarize_dxy <- function(file){
   get_dxy(file) %>%
@@ -46,6 +50,8 @@ summarize_dxy <- function(file){
 #' \code{whisker_points} calculates the extent of boxplot whiskers.
 #'
 #' This is used to plot boxplots without outliers.
+#'
+#' @family Figure 1
 #'
 #' @export
 whisker_points <- function(x){
@@ -80,6 +86,8 @@ whisker_points <- function(x){
 #'
 #' This is used to annotate plots.
 #'
+#' @family Figure 1
+#'
 #' @export
 plot_fish <- function(short, x = 0, y = 0, height = .75, width = .75){
 
@@ -92,6 +100,8 @@ plot_fish <- function(short, x = 0, y = 0, height = .75, width = .75){
 #'
 #' \code{make_faint_clr} creates a faint version of a given color.
 #'
+#' @family Figure 1
+#'
 #' @export
 make_faint_clr <- function(loc){
   colorRampPalette(scales::colour_ramp(c('white',clr_loc[loc]))(c(.5,1)))(2)
@@ -101,6 +111,8 @@ make_faint_clr <- function(loc){
 #' crate a network layout for pairwise species comparisons
 #'
 #' \code{network_layout} creates a network layout for pairwise species comparisons.
+#'
+#' @family Figure 1
 #'
 #' @export
 network_layout <- function(n, rotate = 0, label = NULL, weight = 2, loc = NA){
@@ -127,8 +139,8 @@ network_layout <- function(n, rotate = 0, label = NULL, weight = 2, loc = NA){
 
     edges <- edges %>% mutate(lab1 = label[pop1],
                               lab2 = label[pop2],
-                              run = str_c(lab1,'-',lab2)) #%>%
-#      left_join(.,globals)
+                              run = str_c(lab1,'-',lab2)) %>%
+      left_join(.,run_ord)
   }
 
   tibble(loc = loc, nodes = list(nodes), edges = list(edges))
@@ -140,6 +152,8 @@ network_layout <- function(n, rotate = 0, label = NULL, weight = 2, loc = NA){
 #' \code{plot_network} creates a ggplot with a network of species comparisons.
 #'
 #' This creates a network for all pairwise species comparisons within a location.
+#'
+#' @family Figure 1
 #'
 #' @export
 plot_network <- function(loc, nodes, edges,asp = .8, sep = 0, node_lab_shift = 0){

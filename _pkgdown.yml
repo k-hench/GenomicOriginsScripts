@@ -1,0 +1,38 @@
+destination: docs
+url: https://k-hench.github.io/GenomicOriginsScripts/
+
+authors:
+  Kosmas Hench:
+    href: https://k-hench.github.io/kh/
+
+template:
+  params:
+    bootswatch: yeti
+
+reference:
+  - title: "General functions"
+    desc: >
+      Functions that are used at differnet places.
+    contents:
+      - add_gpos
+      - get_dxy
+      - get_gxp
+      - get_fst
+      - join_list
+      - process_input
+  - title: "Figure 1"
+    desc: >
+      Functions specific to Figure 1.
+    contents:
+      - summarize_dxy
+      - summarize_fst
+      - make_faint_clr
+      - plot_fish
+      - plot_network
+      - whisker_points
+  - title: "Figure 2"
+    desc: >
+      Functions specific to Figure 2.
+    contents:
+      - get_twisst_data
+      - match_twisst_files

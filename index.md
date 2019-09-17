@@ -7,6 +7,7 @@ the figures and the supplementary figures of the paper
 ## Install
 
 To install **GenomicOriginsScripts** please run:
-  ```
+
+```r
 devtools::install_github("k-hench/GenomicOriginsScripts")
 ```

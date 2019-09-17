@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Import dxy data — get_dxy • GenomicOriginsScripts</title>
+<title>Import genotype x phenotype association — get_gxp • GenomicOriginsScripts</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Import dxy data — get_dxy" />
-<meta property="og:description" content="get_dxy imports dxy data, adds the genomic position and the run." />
+<meta property="og:title" content="Import genotype x phenotype association — get_gxp" />
+<meta property="og:description" content="get_gxp imports genotype x phenotype association data and adds the genomic position." />
 <meta property="og:image" content="https://k-hench.github.io/GenomicOriginsScripts/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -113,27 +113,29 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Import dxy data</h1>
+    <h1>Import genotype x phenotype association</h1>
     <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/functions_general.R'><code>R/functions_general.R</code></a></small>
-    <div class="hidden name"><code>get_dxy.Rd</code></div>
+    <div class="hidden name"><code>get_gxp.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>get_dxy</code> imports dxy data, adds the genomic position and the run.</p>
+    <p><code>get_gxp</code> imports genotype x phenotype association data and adds the genomic position.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_dxy</span>(<span class='no'>file</span>)</pre>
+    <pre class="usage"><span class='fu'>get_gxp</span>(<span class='no'>file</span>)</pre>
 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The run name (the pair wise species comparison) is extracted from the file name,
-the data is imported, column names are standardized and genomic position and
-run name are added.</p>
+    <p>The phenotype trait name is extracted from the file name and
+converted into a label for plotting.
+Then, the data is imported and reduced to the columns containg
+the genomic poistion and the p values of the wald test.
+The column containing the p values is renamed according to the trait.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other General functions: <code><a href='get_fst.html'>get_fst</a></code>,
-  <code><a href='get_gxp.html'>get_gxp</a></code>, <code><a href='join_list.html'>join_list</a></code>,
+    <div class='dont-index'><p>Other General functions: <code><a href='get_dxy.html'>get_dxy</a></code>,
+  <code><a href='get_fst.html'>get_fst</a></code>, <code><a href='join_list.html'>join_list</a></code>,
   <code><a href='process_input.html'>process_input</a></code></p></div>
 
   </div>

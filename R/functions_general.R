@@ -2,6 +2,8 @@
 #'
 #' \code{process_input} processes the script input and echos the received parameters.
 #'
+#' @family General functions
+#'
 #' @export
 process_input <- function(script_name, args){
   cat(str_c(cli::rule( left = str_c(crayon::bold('Script: '),crayon::red(script_name))),'\n'))
@@ -31,11 +33,13 @@ add_gpos <- function(tib, ...){
 
 #' Import Fst data
 #'
-#' \code{get_fst} inports Fst data, adds the genomic position and the run.
+#' \code{get_fst} imports Fst data, adds the genomic position and the run.
 #'
 #' The run name (the pair wise species comparison) is extracted from the file name,
 #' the data is imported, column names are standardized and genomic position and
 #' run name are added.
+#'
+#' @family General functions
 #'
 #' @export
 get_fst <- function(file){
@@ -51,11 +55,13 @@ get_fst <- function(file){
 
 #' Import dxy data
 #'
-#' \code{get_dxy} inports dxy data, adds the genomic position and the run.
+#' \code{get_dxy} imports dxy data, adds the genomic position and the run.
 #'
 #' The run name (the pair wise species comparison) is extracted from the file name,
 #' the data is imported, column names are standardized and genomic position and
 #' run name are added.
+#'
+#' @family General functions
 #'
 #' @export
 get_dxy <- function(file){
@@ -68,4 +74,43 @@ get_dxy <- function(file){
                        "PI_POP1", "PI_POP2", "dxy", "Fst") ) %>%
     add_gpos() %>%
     mutate(run = run)
+}
+
+#' Import genotype x phenotype association
+#'
+#' \code{get_gxp} imports genotype x phenotype association data and adds the genomic position.
+#'
+#' The phenotype trait name is extracted from the file name and
+#' converted into a label for plotting.
+#' Then, the data is imported and reduced to the columns containg
+#' the genomic poistion and the p values of the wald test.
+#' The column containing the p values is renamed according to the trait.
+#'
+#' @family General functions
+#'
+#' @export
+get_gxp <- function(file){
+
+  trait <- file %>%
+    str_remove('^.*/') %>%
+    str_remove('\\..*')
+
+  trait_label <- str_c(trait_panels[trait],':italic(p)~(GxP[',trait,'])')
+
+  file %>%
+    read_tsv() %>%
+    add_gpos() %>%
+    select(GPOS, AVG_p_wald) %>%
+    setNames(., nm = c('GPOS',trait_label))
+}
+
+#' Iterate left_join over list
+#'
+#' \code{join_list} binds a list of tables according to a common column.
+#'
+#' @family General functions
+#'
+#' @export
+join_list <- function(lst){
+  lst %>% purrr::reduce(left_join)
 }

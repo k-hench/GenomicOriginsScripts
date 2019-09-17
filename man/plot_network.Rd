@@ -13,3 +13,10 @@ plot_network(loc, nodes, edges, asp = 0.8, sep = 0,
 \details{
 This creates a network for all pairwise species comparisons within a location.
 }
+\seealso{
+Other Figure 1: \code{\link{make_faint_clr}},
+  \code{\link{network_layout}}, \code{\link{plot_fish}},
+  \code{\link{summarize_dxy}}, \code{\link{summarize_fst}},
+  \code{\link{whisker_points}}
+}
+\concept{Figure 1}

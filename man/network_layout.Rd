@@ -9,3 +9,10 @@ network_layout(n, rotate = 0, label = NULL, weight = 2, loc = NA)
 \description{
 \code{network_layout} creates a network layout for pairwise species comparisons.
 }
+\seealso{
+Other Figure 1: \code{\link{make_faint_clr}},
+  \code{\link{plot_fish}}, \code{\link{plot_network}},
+  \code{\link{summarize_dxy}}, \code{\link{summarize_fst}},
+  \code{\link{whisker_points}}
+}
+\concept{Figure 1}

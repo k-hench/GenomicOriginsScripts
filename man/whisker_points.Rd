@@ -12,3 +12,10 @@ whisker_points(x)
 \details{
 This is used to plot boxplots without outliers.
 }
+\seealso{
+Other Figure 1: \code{\link{make_faint_clr}},
+  \code{\link{network_layout}}, \code{\link{plot_fish}},
+  \code{\link{plot_network}}, \code{\link{summarize_dxy}},
+  \code{\link{summarize_fst}}
+}
+\concept{Figure 1}
