@@ -10,8 +10,9 @@ join_list(lst)
 \code{join_list} binds a list of tables according to a common column.
 }
 \seealso{
-Other General functions: \code{\link{get_dxy}},
-  \code{\link{get_fst}}, \code{\link{get_gxp}},
-  \code{\link{process_input}}
+Other General functions: \code{\link{darken}},
+  \code{\link{get_dxy}}, \code{\link{get_fst}},
+  \code{\link{get_gxp}}, \code{\link{lighten}},
+  \code{\link{process_input}}, \code{\link{refactor}}
 }
 \concept{General functions}

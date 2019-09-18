@@ -17,8 +17,9 @@ the genomic poistion and the p values of the wald test.
 The column containing the p values is renamed according to the trait.
 }
 \seealso{
-Other General functions: \code{\link{get_dxy}},
-  \code{\link{get_fst}}, \code{\link{join_list}},
-  \code{\link{process_input}}
+Other General functions: \code{\link{darken}},
+  \code{\link{get_dxy}}, \code{\link{get_fst}},
+  \code{\link{join_list}}, \code{\link{lighten}},
+  \code{\link{process_input}}, \code{\link{refactor}}
 }
 \concept{General functions}

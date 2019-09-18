@@ -15,8 +15,9 @@ the data is imported, column names are standardized and genomic position and
 run name are added.
 }
 \seealso{
-Other General functions: \code{\link{get_fst}},
-  \code{\link{get_gxp}}, \code{\link{join_list}},
-  \code{\link{process_input}}
+Other General functions: \code{\link{darken}},
+  \code{\link{get_fst}}, \code{\link{get_gxp}},
+  \code{\link{join_list}}, \code{\link{lighten}},
+  \code{\link{process_input}}, \code{\link{refactor}}
 }
 \concept{General functions}

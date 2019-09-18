@@ -92,11 +92,6 @@ match_twisst_files <- function(loc, window_size = 50,panel = 'a'){
     mutate(topo3 = str_pad(topo_nr, width = 3, pad = '0'),
            topo_rel = topo_nr/max(topo_nr))
 
-#  ntopo <- data$topo %>%
-#    as.factor %>%
-#    levels() %>%
-#    length()
-
   data <- data %>%
     mutate(window = str_c(project_case(panel),':~weighting[',loc,']'))
   return(data)

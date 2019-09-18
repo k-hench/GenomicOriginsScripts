@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Import Fst data — get_fst • GenomicOriginsScripts</title>
+<title>Reorder factor levels — refactor • GenomicOriginsScripts</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Import Fst data — get_fst" />
-<meta property="og:description" content="get_fst imports Fst data, adds the genomic position and the run." />
+<meta property="og:title" content="Reorder factor levels — refactor" />
+<meta property="og:description" content="refactor redorders levels of a factor levels based on an external table." />
 <meta property="og:image" content="https://k-hench.github.io/GenomicOriginsScripts/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -113,35 +113,29 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Import Fst data</h1>
+    <h1>Reorder factor levels</h1>
     <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/functions_general.R'><code>R/functions_general.R</code></a></small>
-    <div class="hidden name"><code>get_fst.Rd</code></div>
+    <div class="hidden name"><code>refactor.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>get_fst</code> imports Fst data, adds the genomic position and the run.</p>
+    <p><code>refactor</code> redorders levels of a factor levels based on an external table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_fst</span>(<span class='no'>file</span>)</pre>
+    <pre class="usage"><span class='fu'>refactor</span>(<span class='no'>self</span>, <span class='no'>globals</span>)</pre>
 
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The run name (the pair wise species comparison) is extracted from the file name,
-the data is imported, column names are standardized and genomic position and
-run name are added.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other General functions: <code><a href='darken.html'>darken</a></code>,
-  <code><a href='get_dxy.html'>get_dxy</a></code>, <code><a href='get_gxp.html'>get_gxp</a></code>,
-  <code><a href='join_list.html'>join_list</a></code>, <code><a href='lighten.html'>lighten</a></code>,
-  <code><a href='process_input.html'>process_input</a></code>, <code><a href='refactor.html'>refactor</a></code></p></div>
+  <code><a href='get_dxy.html'>get_dxy</a></code>, <code><a href='get_fst.html'>get_fst</a></code>,
+  <code><a href='get_gxp.html'>get_gxp</a></code>, <code><a href='join_list.html'>join_list</a></code>,
+  <code><a href='lighten.html'>lighten</a></code>, <code><a href='process_input.html'>process_input</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#details">Details</a></li>
       <li><a href="#see-also">See also</a></li>
     </ul>
 

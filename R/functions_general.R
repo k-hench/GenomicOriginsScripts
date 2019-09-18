@@ -114,3 +114,43 @@ get_gxp <- function(file){
 join_list <- function(lst){
   lst %>% purrr::reduce(left_join)
 }
+
+#' Darken a given color
+#'
+#' \code{darken} makes a darker version of a given color.
+#'
+#' @family General functions
+#'
+#' @export
+darken <- function(color, factor=.4){
+  col <- col2rgb(color)
+  col <- col*factor
+  col <- rgb(t(col), maxColorValue=255)
+  col
+}
+
+#' Lighten a given color
+#'
+#' \code{lighten} makes a lighter version of a given color.
+#'
+#' @family General functions
+#'
+#' @export
+lighten <- function(color, factor=.4){
+  col <- col2rgb(color)
+  col <- col + (255-col)*factor
+  col <- rgb(t(col), maxColorValue=255)
+  col
+}
+
+#' Reorder factor levels
+#'
+#' \code{refactor} redorders levels of a factor levels based on an external table.
+#'
+#' @family General functions
+#'
+#' @export
+refactor <- function(self,globals){
+  factor(as.character(self$run),
+         levels = c(levels(globals$run)))
+}

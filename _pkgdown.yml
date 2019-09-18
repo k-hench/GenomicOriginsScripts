@@ -15,11 +15,14 @@ reference:
       Functions that are used at differnet places.
     contents:
       - add_gpos
+      - darken
       - get_dxy
       - get_gxp
       - get_fst
       - join_list
+      - lighten
       - process_input
+      - refactor
   - title: "Figure 1"
     desc: >
       Functions specific to Figure 1.
@@ -36,3 +39,31 @@ reference:
     contents:
       - get_twisst_data
       - match_twisst_files
+  - title: "Figure 3"
+    desc: >
+      Functions specific to Figure 3.
+    contents:
+      - ax_scl
+      - custom_annoplot
+      - cross_spec
+      - distances_tree
+      - dist_tibble
+      - get_clr
+      - get_dist
+      - get_gxp_long
+      - get_isolated_topos
+      - get_neighbour_topos
+      - is_isolated
+      - min_dist
+      - no_title
+      - plot_fish_zoom
+      - plot_curtain
+      - plot_leg
+      - plot_panel_anno
+      - plot_panel_delta_dxy
+      - plot_panel_dxy
+      - plot_panel_fst
+      - plot_panel_gxp
+      - plot_panel_twisst
+      - prep_data
+      - theme_panels
