@@ -16,8 +16,9 @@
 #'
 #' @export
 get_twisst_data <- function(loc,w_in,d_in,smooth = FALSE, span = 0.01){
+  skipt_topo <- c(bel = 15, hon = 105)
   ########## read data ##################
-  weights <- read.table(str_c(w_path, w_in), header = T)
+  weights <- vroom::vroom(str_c(w_path, w_in), delim = "\t",skip = skipt_topo[loc])#read.table(str_c(w_path, w_in), header = T)
   #normalise rows so weights sum to 1
   weights <- weights / apply(weights, 1, sum)
   #exclude any rows where data is missing
@@ -25,7 +26,7 @@ get_twisst_data <- function(loc,w_in,d_in,smooth = FALSE, span = 0.01){
   weights <- weights[good_rows,]
 
   #retrieve the names of the topologies
-  window_data <- read.table(str_c(d_path, loc, '/', d_in), header = T)
+  window_data <- vroom::vroom(str_c(d_path, loc, '/', d_in), delim = "\t")#read.table(str_c(d_path, loc, '/', d_in), header = T)
 
   window_data <- window_data[good_rows,] %>%
     set_names(., nm = c('CHROM','BIN_START','BIN_END','BIN_MID','N_SITES','lnL'))

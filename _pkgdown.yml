@@ -67,3 +67,15 @@ reference:
       - plot_panel_twisst
       - prep_data
       - theme_panels
+  - title: "Suppl. Figure X1"
+    desc: >
+      Functions specific to Suppl. Figure X1.
+    contents:
+    - geom_hypo_grob2
+    - plot_fishes_location
+    - summarise_model
+  - title: "Suppl. Figure X2"
+    desc: >
+      Functions specific to Suppl. Figure X2.
+    contents:
+    - read_sc

@@ -17,7 +17,8 @@ Encoding: UTF-8
 LazyData: true
 Depends: tidyverse,
          hypogen,
-         cowplot
+         cowplot,
+         vroom
 Imports: ggforce,
          hypoimg
 VignetteBuilder: knitr

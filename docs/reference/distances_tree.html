@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create annotation panel — plot_panel_anno • GenomicOriginsScripts</title>
+<title>Get distance matrix of a topology — distances_tree • GenomicOriginsScripts</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Create annotation panel — plot_panel_anno" />
-<meta property="og:description" content="plot_panel_anno plots the gene models of a selected outlier window" />
+<meta property="og:title" content="Get distance matrix of a topology — distances_tree" />
+<meta property="og:description" content="distances_tree unroots a topology and creates a distance matrix from it" />
 <meta property="og:image" content="https://k-hench.github.io/GenomicOriginsScripts/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -113,33 +113,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create annotation panel</h1>
-    <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/functions_plotting_f3.R'><code>R/functions_plotting_f3.R</code></a></small>
-    <div class="hidden name"><code>plot_panel_anno.Rd</code></div>
+    <h1>Get distance matrix of a topology</h1>
+    <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/functions_cross_topo_f3.R'><code>R/functions_cross_topo_f3.R</code></a></small>
+    <div class="hidden name"><code>distances_tree.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>plot_panel_anno</code> plots the gene models of a selected outlier window</p>
+    <p><code>distances_tree</code> unroots a topology and creates a distance matrix from it</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_panel_anno</span>(<span class='no'>outlier_id</span>, <span class='no'>label</span>, <span class='no'>lg</span>, <span class='no'>start</span>, <span class='no'>end</span>, <span class='kw'>genes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>distances_tree</span>(<span class='no'>tree</span>)</pre>
 
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The overal column title is created and the annotation data is plotted.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Figure 3: <code><a href='ax_scl.html'>ax_scl</a></code>,
   <code><a href='cross_spec.html'>cross_spec</a></code>, <code><a href='custom_annoplot.html'>custom_annoplot</a></code>,
-  <code><a href='dist_tibble.html'>dist_tibble</a></code>, <code><a href='distances_tree.html'>distances_tree</a></code>,
-  <code><a href='get_clr.html'>get_clr</a></code>, <code><a href='get_dist.html'>get_dist</a></code>,
-  <code><a href='get_gxp_long.html'>get_gxp_long</a></code>,
+  <code><a href='dist_tibble.html'>dist_tibble</a></code>, <code><a href='get_clr.html'>get_clr</a></code>,
+  <code><a href='get_dist.html'>get_dist</a></code>, <code><a href='get_gxp_long.html'>get_gxp_long</a></code>,
   <code><a href='get_isolated_topos.html'>get_isolated_topos</a></code>,
   <code><a href='get_neighbour_topos.html'>get_neighbour_topos</a></code>,
   <code><a href='is_isolated.html'>is_isolated</a></code>, <code><a href='min_dist.html'>min_dist</a></code>,
   <code><a href='no_title.html'>no_title</a></code>, <code><a href='plot_curtain.html'>plot_curtain</a></code>,
   <code><a href='plot_fish_zoom.html'>plot_fish_zoom</a></code>, <code><a href='plot_leg.html'>plot_leg</a></code>,
+  <code><a href='plot_panel_anno.html'>plot_panel_anno</a></code>,
   <code><a href='plot_panel_delta_dxy.html'>plot_panel_delta_dxy</a></code>,
   <code><a href='plot_panel_dxy.html'>plot_panel_dxy</a></code>,
   <code><a href='plot_panel_fst.html'>plot_panel_fst</a></code>,
@@ -151,7 +148,6 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#details">Details</a></li>
       <li><a href="#see-also">See also</a></li>
     </ul>
 

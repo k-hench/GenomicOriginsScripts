@@ -19,10 +19,19 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/clr_loc.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/cross_spec.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/custom_annoplot.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/darken.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/dist_tibble.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/distances_tree.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/fll_fun.html</loc>
@@ -31,7 +40,13 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/fll_n.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/geom_hypo_grob2.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_clr.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_dist.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_dxy.html</loc>
@@ -46,7 +61,16 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_gxp_long.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_isolated_topos.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_neighbour_topos.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_twisst_data.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/is_isolated.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/join_list.html</loc>
@@ -62,6 +86,9 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/match_twisst_files.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/min_dist.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/network_layout.html</loc>
@@ -83,6 +110,9 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_fish_zoom.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_fishes_location.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_leg.html</loc>
@@ -124,6 +154,9 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/project_inv_case.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/read_sc.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/refactor.html</loc>
   </url>
   <url>
@@ -134,6 +167,9 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/sp_names.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/summarise_model.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/summarize_dxy.html</loc>

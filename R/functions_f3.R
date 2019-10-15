@@ -105,7 +105,7 @@ get_gxp_long <- function(file){
     str_remove('.lm.50k.5k.txt.gz')
 
   data <- file %>%
-    read_tsv() %>%
+    vroom::vroom(delim = "\t") %>%
     left_join(.,hypogen::hypo_chrom_start) %>%
     add_gpos()%>%
     mutate(trt = trt)

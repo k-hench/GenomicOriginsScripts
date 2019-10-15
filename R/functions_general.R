@@ -42,13 +42,14 @@ add_gpos <- function(tib, ...){
 #' @family General functions
 #'
 #' @export
-get_fst <- function(file){
+get_fst <- function(file, kb = "50k"){
   run <- file %>%
-    str_extract(.,'[a-z]{3}-[a-z]{3}-[a-z]{3}.50k') %>%
-    str_remove(.,'.50k') %>%
+    str_extract(., str_c('[a-z]{3}-[a-z]{3}-[a-z]{3}.',kb)) %>%
+    str_remove(., kb) %>%
     str_replace(.,'([a-z]{3})-([a-z]{3})-([a-z]{3})','\\2\\1-\\3\\1')
 
-  read_tsv(file) %>%
+  #read_tsv(file) %>%
+  vroom::vroom(file, delim = "\t") %>%
     add_gpos() %>%
     mutate(run = run)
 }
@@ -64,12 +65,13 @@ get_fst <- function(file){
 #' @family General functions
 #'
 #' @export
-get_dxy <- function(file){
+get_dxy <- function(file, kb = "50k"){
   run <- file %>%
-    str_extract(.,'[a-z]{6}-[a-z]{6}.50kb') %>%
-    str_remove(.,'.50kb')
+    str_extract(., str_c('[a-z]{6}-[a-z]{6}.',kb)) %>%
+    str_remove(., kb)
 
-  read_csv(file) %>%
+  #read_csv(file) %>%
+  vroom::vroom(file, delim = ",") %>%
     setNames(., nm = c("CHROM","BIN_START","BIN_END", "BIN_MID", "N_SITES",
                        "PI_POP1", "PI_POP2", "dxy", "Fst") ) %>%
     add_gpos() %>%
@@ -97,8 +99,9 @@ get_gxp <- function(file){
 
   trait_label <- str_c(trait_panels[trait],':italic(p)~(GxP[',trait,'])')
 
-  file %>%
-    read_tsv() %>%
+  #file %>%
+  #  read_tsv() %>%
+  vroom::vroom(file, delim = "\t") %>%
     add_gpos() %>%
     select(GPOS, AVG_p_wald) %>%
     setNames(., nm = c('GPOS',trait_label))
