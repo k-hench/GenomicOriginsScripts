@@ -4,7 +4,7 @@
 \alias{get_gxp_long}
 \title{Import genotype x phenotype association in long format}
 \usage{
-get_gxp_long(file)
+get_gxp_long(file, kb = 10)
 }
 \description{
 \code{get_gxp_long} imports genotype x phenotype association data in long format.

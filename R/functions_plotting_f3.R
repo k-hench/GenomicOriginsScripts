@@ -82,7 +82,7 @@ plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size ,ne
   ntopo <- data$topo %>% unique() %>% length()
 
   # import topologies
-  topo_plots <- read_lines(file = str_c('figures/data/twisst_weights/',loc,'.LG01.w200.phyml_bionj.weights.tsv.gz'),n_max = ntopo) %>%
+  topo_plots <- read_lines(file = str_c(w_path,loc,'.LG01.w', twisst_size, '.phyml_bionj.weights.tsv.gz'),n_max = ntopo) %>%
     str_remove_all('#') %>%
     tibble(pre=.) %>%
     separate(pre,
@@ -176,7 +176,7 @@ plot_panel_fst <- function(lg, start, end, ...){
     # add outlier area
     geom_rect(inherit.aes = FALSE, data = tibble(start = start, end=end),
               aes(xmin = start, xmax = end),ymin = -Inf, ymax = Inf,
-              fill=rgb(.9,.9,.9,.3),color = rgb(.9,.9,.9,.9)) +
+              fill=rgb(.9,.9,.9,.3), color = rgb(.9,.9,.9,.9)) +
     # add subsetted fst data
     geom_line(data = fst_data %>%
                 filter(CHROM == lg, BIN_MID>start-window_buffer*1.25,BIN_MID<end+window_buffer*1.25) ,

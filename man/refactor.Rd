@@ -12,7 +12,8 @@ refactor(self, globals)
 \seealso{
 Other General functions: \code{\link{darken}},
   \code{\link{get_dxy}}, \code{\link{get_fst}},
-  \code{\link{get_gxp}}, \code{\link{join_list}},
-  \code{\link{lighten}}, \code{\link{process_input}}
+  \code{\link{get_gxp}}, \code{\link{get_pi}},
+  \code{\link{join_list}}, \code{\link{lighten}},
+  \code{\link{process_input}}
 }
 \concept{General functions}

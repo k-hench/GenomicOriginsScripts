@@ -4,7 +4,7 @@
 \alias{get_dxy}
 \title{Import dxy data}
 \usage{
-get_dxy(file)
+get_dxy(file, kb = "50k")
 }
 \description{
 \code{get_dxy} imports dxy data, adds the genomic position and the run.
@@ -17,7 +17,8 @@ run name are added.
 \seealso{
 Other General functions: \code{\link{darken}},
   \code{\link{get_fst}}, \code{\link{get_gxp}},
-  \code{\link{join_list}}, \code{\link{lighten}},
-  \code{\link{process_input}}, \code{\link{refactor}}
+  \code{\link{get_pi}}, \code{\link{join_list}},
+  \code{\link{lighten}}, \code{\link{process_input}},
+  \code{\link{refactor}}
 }
 \concept{General functions}

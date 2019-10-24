@@ -14,7 +14,15 @@ tidiverse github forum:
 https://github.com/tidyverse/ggplot2/issues/1399
 }
 \seealso{
-Other Suppl. Figure SX: \code{\link{plot_fishes_location}},
+Other Suppl. Figure SX: \code{\link{StatTreeData}},
+  \code{\link{anno_pair_flag}}, \code{\link{fish_plot2}},
+  \code{\link{fish_plot}}, \code{\link{fst_bar_row_run}},
+  \code{\link{geom_nodepoint_support}},
+  \code{\link{get_tree}},
+  \code{\link{plot_fishes_location}},
+  \code{\link{plot_pair_run}}, \code{\link{refactor_run}},
+  \code{\link{rescale_fst}}, \code{\link{root_manual}},
+  \code{\link{setup_tree_data}},
   \code{\link{summarise_model}}
 }
 \concept{Suppl. Figure SX}

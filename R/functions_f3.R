@@ -99,10 +99,10 @@ no_title <- function(...){theme(axis.title.y = element_blank(),
 #' @family Figure 3
 #'
 #' @export
-get_gxp_long <- function(file){
+get_gxp_long <- function(file, kb = 10){
   trt <- file %>%
     str_remove('^.*/') %>%
-    str_remove('.lm.50k.5k.txt.gz')
+    str_remove(str_c('.lm.',kb, 'k.',kb/10, 'k.txt.gz'))
 
   data <- file %>%
     vroom::vroom(delim = "\t") %>%

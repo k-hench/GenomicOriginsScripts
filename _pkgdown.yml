@@ -19,6 +19,7 @@ reference:
       - get_dxy
       - get_gxp
       - get_fst
+      - get_pi
       - join_list
       - lighten
       - process_input
@@ -79,3 +80,27 @@ reference:
       Functions specific to Suppl. Figure X2.
     contents:
     - read_sc
+  - title: "Suppl. Figure X3"
+    desc: >
+      Functions specific to Suppl. Figure X3.
+    contents:
+    - anno_pair_flag
+    - fst_bar_row_run
+    - plot_pair_run
+    - refactor_run
+    - rescale_fst
+  - title: "Suppl. Figure X4"
+    desc: >
+      Functions specific to Suppl. Figure X4.
+    contents:
+    - fish_plot
+    - fish_plot2
+  - title: "Suppl. Figure X7"
+    desc: >
+      Functions specific to Suppl. Figure X7.
+    contents:
+    - root_manual
+    - setup_tree_data
+    - get_tree
+    - StatTreeData
+    - geom_nodepoint_support

@@ -45,7 +45,7 @@ add_gpos <- function(tib, ...){
 get_fst <- function(file, kb = "50k"){
   run <- file %>%
     str_extract(., str_c('[a-z]{3}-[a-z]{3}-[a-z]{3}.',kb)) %>%
-    str_remove(., kb) %>%
+    str_remove(., str_c('.',kb)) %>%
     str_replace(.,'([a-z]{3})-([a-z]{3})-([a-z]{3})','\\2\\1-\\3\\1')
 
   #read_tsv(file) %>%
@@ -68,7 +68,7 @@ get_fst <- function(file, kb = "50k"){
 get_dxy <- function(file, kb = "50k"){
   run <- file %>%
     str_extract(., str_c('[a-z]{6}-[a-z]{6}.',kb)) %>%
-    str_remove(., kb)
+    str_remove(., str_c('.',kb))
 
   #read_csv(file) %>%
   vroom::vroom(file, delim = ",") %>%
@@ -99,12 +99,27 @@ get_gxp <- function(file){
 
   trait_label <- str_c(trait_panels[trait],':italic(p)~(GxP[',trait,'])')
 
-  #file %>%
-  #  read_tsv() %>%
   vroom::vroom(file, delim = "\t") %>%
     add_gpos() %>%
     select(GPOS, AVG_p_wald) %>%
     setNames(., nm = c('GPOS',trait_label))
+}
+
+
+#' Import diversity data
+#'
+#' \code{get_pi} imports diversity data and adds the genomic position.
+#'
+#' The data is imported and genomic position and species name are added.
+#'
+#' @family General functions
+#'
+#' @export
+get_pi <- function(file){
+  vroom::vroom(file, delim = "\t") %>%
+    left_join(., hypogen::hypo_chrom_start) %>%
+    mutate(gpos = (BIN_START + BIN_END)/2 + GSTART,
+           spec = file %>% str_remove('^.*/') %>% str_sub(.,1,6))
 }
 
 #' Iterate left_join over list

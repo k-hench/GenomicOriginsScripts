@@ -12,7 +12,8 @@ lighten(color, factor = 0.4)
 \seealso{
 Other General functions: \code{\link{darken}},
   \code{\link{get_dxy}}, \code{\link{get_fst}},
-  \code{\link{get_gxp}}, \code{\link{join_list}},
-  \code{\link{process_input}}, \code{\link{refactor}}
+  \code{\link{get_gxp}}, \code{\link{get_pi}},
+  \code{\link{join_list}}, \code{\link{process_input}},
+  \code{\link{refactor}}
 }
 \concept{General functions}

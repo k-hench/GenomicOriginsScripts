@@ -51,6 +51,13 @@ clr2 <- c(
 #' @export
 plot_clr <- rgb(.2,.2,.2)
 
+#' Default background bar color
+#'
+#' \code{clr_below} is the default background bar color.
+#'
+#' @export
+clr_below <- 'lightgray'#rgb(.8,.8,.8)
+
 #' Default plot size
 #'
 #' \code{plot_size} sets the default size of data points in plots.

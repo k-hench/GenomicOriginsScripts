@@ -10,7 +10,15 @@ summarise_model(data)
 \code{summarise_model} sumamrizes model statistics in a tibble row.
 }
 \seealso{
-Other Suppl. Figure SX: \code{\link{geom_hypo_grob2}},
-  \code{\link{plot_fishes_location}}
+Other Suppl. Figure SX: \code{\link{StatTreeData}},
+  \code{\link{anno_pair_flag}}, \code{\link{fish_plot2}},
+  \code{\link{fish_plot}}, \code{\link{fst_bar_row_run}},
+  \code{\link{geom_hypo_grob2}},
+  \code{\link{geom_nodepoint_support}},
+  \code{\link{get_tree}},
+  \code{\link{plot_fishes_location}},
+  \code{\link{plot_pair_run}}, \code{\link{refactor_run}},
+  \code{\link{rescale_fst}}, \code{\link{root_manual}},
+  \code{\link{setup_tree_data}}
 }
 \concept{Suppl. Figure SX}

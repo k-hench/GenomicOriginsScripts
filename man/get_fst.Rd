@@ -4,7 +4,7 @@
 \alias{get_fst}
 \title{Import Fst data}
 \usage{
-get_fst(file)
+get_fst(file, kb = "50k")
 }
 \description{
 \code{get_fst} imports Fst data, adds the genomic position and the run.
@@ -17,7 +17,8 @@ run name are added.
 \seealso{
 Other General functions: \code{\link{darken}},
   \code{\link{get_dxy}}, \code{\link{get_gxp}},
-  \code{\link{join_list}}, \code{\link{lighten}},
-  \code{\link{process_input}}, \code{\link{refactor}}
+  \code{\link{get_pi}}, \code{\link{join_list}},
+  \code{\link{lighten}}, \code{\link{process_input}},
+  \code{\link{refactor}}
 }
 \concept{General functions}
