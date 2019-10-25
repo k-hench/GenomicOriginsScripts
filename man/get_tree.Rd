@@ -4,7 +4,7 @@
 \alias{get_tree}
 \title{import phylogenetic tree}
 \usage{
-get_tree(loc, mode, pttrn, tree_dir, ...)
+get_tree(loc, file, tree_dir, ...)
 }
 \description{
 \code{get_tree} imports a phylogenetic tree.

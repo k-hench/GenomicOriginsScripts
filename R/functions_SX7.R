@@ -39,8 +39,8 @@ setup_tree_data <- function(data) {
 #' @family Suppl. Figure SX
 #'
 #' @export
-get_tree <- function(loc, mode, pttrn, tree_dir, ...){
-  tree <- read.tree(stringr::str_c(tree_dir, 'all_samples.',loc,'.',mode,'.whg.SNP.tree'))
+get_tree <- function(loc, file, tree_dir, ...){
+  tree <- read.tree(stringr::str_c(tree_dir, file))
 
   if(loc == 'all'){
     pttrn <- '.*floflo'
