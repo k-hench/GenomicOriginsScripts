@@ -190,6 +190,18 @@ sp_names <- c(
   uni = "unicolor"
 )
 
+#' Population order
+#'
+#' \code{pop_levels} provides the hierachic order of the populations.
+#'
+#' The sampled populatinos are alphabetically ordered, first
+#' by location, then by species.
+#'
+#' @export
+pop_levels <- c("indbel", "maybel", "nigbel", "puebel", "unibel",
+                "abehon", "gumhon", "nighon", "puehon", "ranhon", "unihon",
+                "nigpan", "puepan", "unipan")
+
 #' Project case
 #'
 #' \code{project_case} manages the format of labels for figure panels.

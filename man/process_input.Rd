@@ -11,7 +11,8 @@ process_input(script_name, args)
 }
 \seealso{
 Other General functions: \code{\link{darken}},
-  \code{\link{get_dxy}}, \code{\link{get_fst}},
+  \code{\link{export_2_latex}}, \code{\link{get_dxy}},
+  \code{\link{get_fst_fixed}}, \code{\link{get_fst}},
   \code{\link{get_gxp}}, \code{\link{get_pi}},
   \code{\link{join_list}}, \code{\link{lighten}},
   \code{\link{refactor}}

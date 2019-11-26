@@ -11,7 +11,8 @@ join_list(lst)
 }
 \seealso{
 Other General functions: \code{\link{darken}},
-  \code{\link{get_dxy}}, \code{\link{get_fst}},
+  \code{\link{export_2_latex}}, \code{\link{get_dxy}},
+  \code{\link{get_fst_fixed}}, \code{\link{get_fst}},
   \code{\link{get_gxp}}, \code{\link{get_pi}},
   \code{\link{lighten}}, \code{\link{process_input}},
   \code{\link{refactor}}

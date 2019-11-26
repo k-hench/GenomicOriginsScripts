@@ -172,3 +172,34 @@ refactor <- function(self,globals){
   factor(as.character(self$run),
          levels = c(levels(globals$run)))
 }
+
+#' Export latex tables
+#'
+#' \code{export_2_latex} exports a formated latex table.
+#'
+#' @family General functions
+#'
+#' @export
+export_2_latex <- function(table, name){
+  table %>%
+    mutate(`\\\\\\hline` = '\\\\') %>%
+    write_delim(.,path = '.tmp.tex',delim = '&')
+  # clean last column
+  n <- names(table) %>% length()
+
+  # open latex table
+  write_lines(str_c('\\begin{tabular}{',
+                    str_c(rep(' c',n),collapse = ''),
+                    ' }'), name)
+  # add table body
+  read_lines('.tmp.tex') %>%
+    str_replace(.,'&\\\\',' \\\\') %>%
+    str_replace(.,'&',' & ') %>%
+    write_lines(name, append = TRUE)
+
+  # close latex table
+  write_lines('\\end{tabular}', name, append = TRUE)
+  # remove temporary file
+  file.remove('.tmp.tex')
+  message(str_c('Exportet latex table to "',name,'".'))
+}

@@ -10,12 +10,33 @@ template:
     bootswatch: yeti
 
 reference:
+  - title: "Project configuration"
+    desc: >
+      General settings that are used to keep plots consistent.
+    contents:
+      - clr
+      - clr2
+      - clr_below
+      - clr_loc
+      - fll_fun
+      - fll_n
+      - loc_names
+      - outlr_clr
+      - plot_clr
+      - plot_size
+      - pop_levels
+      - project_case
+      - project_inv_case
+      - shps
+      - sp_labs
+      - sp_names
   - title: "General functions"
     desc: >
       Functions that are used at differnet places.
     contents:
       - add_gpos
       - darken
+      - export_2_latex
       - get_dxy
       - get_gxp
       - get_fst
@@ -104,3 +125,10 @@ reference:
     - get_tree
     - StatTreeData
     - geom_nodepoint_support
+  - title: "Suppl. Figure X8"
+    desc: >
+      Functions specific to Suppl. Figure X8.
+    contents:
+    - collapse_peaks
+    - get_fst_fixed
+    - reformat_run_name
