@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Iterate left_join over list — join_list • GenomicOriginsScripts</title>
+<title>Collect hamlet genes — get_genes • GenomicOriginsScripts</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Iterate left_join over list — join_list" />
-<meta property="og:description" content="join_list binds a list of tables according to a common column." />
+<meta property="og:title" content="Collect hamlet genes — get_genes" />
+<meta property="og:description" content="get_genes collects the genes within a outlier window." />
 <meta property="og:image" content="https://k-hench.github.io/GenomicOriginsScripts/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -113,26 +113,21 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Iterate left_join over list</h1>
-    <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/functions_general.R'><code>R/functions_general.R</code></a></small>
-    <div class="hidden name"><code>join_list.Rd</code></div>
+    <h1>Collect hamlet genes</h1>
+    <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/functions_tables.R'><code>R/functions_tables.R</code></a></small>
+    <div class="hidden name"><code>get_genes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>join_list</code> binds a list of tables according to a common column.</p>
+    <p><code>get_genes</code> collects the genes within a outlier window.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>join_list</span>(<span class='no'>lst</span>)</pre>
+    <pre class="usage"><span class='fu'>get_genes</span>(<span class='no'>gid</span>, <span class='no'>chrom</span>, <span class='no'>start</span>, <span class='no'>end</span>, <span class='no'>...</span>)</pre>
 
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other General functions: <code><a href='darken.html'>darken</a></code>,
-  <code><a href='export_2_latex.html'>export_2_latex</a></code>, <code><a href='get_dxy.html'>get_dxy</a></code>,
-  <code><a href='get_fst_fixed.html'>get_fst_fixed</a></code>, <code><a href='get_fst.html'>get_fst</a></code>,
-  <code><a href='get_gxp.html'>get_gxp</a></code>, <code><a href='get_pi.html'>get_pi</a></code>,
-  <code><a href='lighten.html'>lighten</a></code>, <code><a href='process_input.html'>process_input</a></code>,
-  <code><a href='refactor.html'>refactor</a></code></p></div>
+    <div class='dont-index'><p>Other Table functions: <code><a href='as_multirow.html'>as_multirow</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

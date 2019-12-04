@@ -36,7 +36,6 @@ reference:
     contents:
       - add_gpos
       - darken
-      - export_2_latex
       - get_dxy
       - get_gxp
       - get_fst
@@ -45,6 +44,13 @@ reference:
       - lighten
       - process_input
       - refactor
+  - title: "Tables"
+    desc: >
+      Functions needed to compile tables.
+    contents:
+      - as_multirow
+      - export_2_latex
+      - get_genes
   - title: "Figure 1"
     desc: >
       Functions specific to Figure 1.
@@ -89,6 +95,12 @@ reference:
       - plot_panel_twisst
       - prep_data
       - theme_panels
+  - title: "Figure 4"
+    desc: >
+      Functions specific to Figure 4.
+    contents:
+      - get_cc
+      - get_msmc
   - title: "Suppl. Figure X1"
     desc: >
       Functions specific to Suppl. Figure X1.

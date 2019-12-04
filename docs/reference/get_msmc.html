@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Iterate left_join over list — join_list • GenomicOriginsScripts</title>
+<title>Import msmc data — get_msmc • GenomicOriginsScripts</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Iterate left_join over list — join_list" />
-<meta property="og:description" content="join_list binds a list of tables according to a common column." />
+<meta property="og:title" content="Import msmc data — get_msmc" />
+<meta property="og:description" content="get_msmc imports msc data." />
 <meta property="og:image" content="https://k-hench.github.io/GenomicOriginsScripts/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -113,31 +113,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Iterate left_join over list</h1>
-    <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/functions_general.R'><code>R/functions_general.R</code></a></small>
-    <div class="hidden name"><code>join_list.Rd</code></div>
+    <h1>Import msmc data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/functions_f4.R'><code>R/functions_f4.R</code></a></small>
+    <div class="hidden name"><code>get_msmc.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>join_list</code> binds a list of tables according to a common column.</p>
+    <p><code>get_msmc</code> imports msc data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>join_list</span>(<span class='no'>lst</span>)</pre>
+    <pre class="usage"><span class='fu'>get_msmc</span>(<span class='no'>file</span>, <span class='no'>msmc_path</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>3.7e-08</span>, <span class='kw'>gen</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
 
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The run name (the pair wise species comparison) is extracted from the file name,
+the data is imported and the run name is added.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other General functions: <code><a href='darken.html'>darken</a></code>,
-  <code><a href='export_2_latex.html'>export_2_latex</a></code>, <code><a href='get_dxy.html'>get_dxy</a></code>,
-  <code><a href='get_fst_fixed.html'>get_fst_fixed</a></code>, <code><a href='get_fst.html'>get_fst</a></code>,
-  <code><a href='get_gxp.html'>get_gxp</a></code>, <code><a href='get_pi.html'>get_pi</a></code>,
-  <code><a href='lighten.html'>lighten</a></code>, <code><a href='process_input.html'>process_input</a></code>,
-  <code><a href='refactor.html'>refactor</a></code></p></div>
+    <div class='dont-index'><p>Other Figure 4: <code><a href='get_cc.html'>get_cc</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#details">Details</a></li>
       <li><a href="#see-also">See also</a></li>
     </ul>
 

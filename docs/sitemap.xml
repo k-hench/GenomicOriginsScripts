@@ -13,6 +13,9 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/anno_pair_flag.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/as_multirow.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/ax_scl.html</loc>
   </url>
   <url>
@@ -70,6 +73,9 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/geom_nodepoint_support.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_cc.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_clr.html</loc>
   </url>
   <url>
@@ -85,6 +91,9 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_fst_fixed.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_genes.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_gxp.html</loc>
   </url>
   <url>
@@ -92,6 +101,9 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_isolated_topos.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_msmc.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_neighbour_topos.html</loc>
