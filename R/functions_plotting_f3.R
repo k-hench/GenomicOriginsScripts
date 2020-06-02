@@ -191,7 +191,9 @@ plot_panel_fst <- function(lg, start, end, ...){
     # layout x ayis
     scale_x_continuous(name = lg, expand = c(0,0),position = 'top') +
     # layout y ayis
-    scale_y_continuous(name = expression(bolditalic(F[ST])), expand = c(0,0))+
+    scale_y_continuous(name = expression(bolditalic(F[ST])),
+                       expand = c(0,0),
+                       limits = c(-0.02, 0.85))+
     # legend styling
     guides(color=guide_colorbar(barheight = unit(5,'pt'),barwidth = unit(200,'pt')))+
     # use same plot appreance for all panels
@@ -232,7 +234,9 @@ plot_panel_dxy <- function(lg, start, end, ...){
     # layout x ayis
     scale_x_continuous(name = lg, expand = c(0,0),position = 'top') +
     # layout y ayis
-    scale_y_continuous(name = expression(bolditalic(d[XY])), expand = c(0,0))+
+    scale_y_continuous(name = expression(bolditalic(d[XY])),
+                       expand = c(0,0),
+                       limits = c(0.0009, 0.007))+
     # legend styling
     guides(color=guide_colorbar(barheight = unit(5,'pt'),barwidth = unit(300,'pt')))+
     # use same plot appreance for all panels
@@ -315,7 +319,8 @@ plot_panel_delta_dxy <- function(lg, start, end, ...){
                        position = 'top') +
     # layout y ayis
     scale_y_continuous(name = expression(bolditalic(Delta~d[XY])),
-                       expand = c(0,0))+
+                       expand = c(0,0),
+                       limits = c(0, 0.0051))+
     # use same plot appreance for all panels
     theme_panels()
 }
