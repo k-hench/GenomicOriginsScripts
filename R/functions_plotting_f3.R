@@ -40,9 +40,12 @@ plot_curtain <- function(loc = 'bel', outlier_id, outlier_nr, lg, start, end,
   } else {
     p_curtain <- cowplot::plot_grid(p_g + no_title(),
                                     p_gxp + no_title(),
-                                    p_fst + no_title(),
-                                    p_dxy + no_title(),
-                                    p_delta_dxy + no_title(),
+                                    p_fst + no_title(axis.text.y = element_blank(),
+                                                     axis.ticks.y = element_blank()),
+                                    p_dxy + no_title(axis.text.y = element_blank(),
+                                                     axis.ticks.y = element_blank()),
+                                    p_delta_dxy + no_title(axis.text.y = element_blank(),
+                                                           axis.ticks.y = element_blank()),
                                     p_t1 + no_title(axis.text.y = element_blank(),
                                                     axis.ticks.y = element_blank()),
                                     p_t2 + no_title(axis.text.y = element_blank(),
@@ -171,7 +174,7 @@ plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size ,ne
 #' @family Figure 3
 #'
 #' @export
-plot_panel_fst <- function(lg, start, end, ...){
+plot_panel_fst <- function(lg, start, end, xlab = TRUE, ...){
   ggplot2::ggplot() +
     # add outlier area
     geom_rect(inherit.aes = FALSE, data = tibble(start = start, end=end),
@@ -189,11 +192,11 @@ plot_panel_fst <- function(lg, start, end, ...){
     scale_color_gradientn(name = expression(global~weighted~italic(F[ST])),
                           colours = hypogen::hypo_clr_LGs[1:24])+
     # layout x ayis
-    scale_x_continuous(name = lg, expand = c(0,0),position = 'top') +
+    scale_x_continuous(name = lg, expand = c(0,0), position = 'top') +
     # layout y ayis
     scale_y_continuous(name = expression(bolditalic(F[ST])),
                        expand = c(0,0),
-                       limits = c(-0.02, 0.85))+
+                       limits = c(-0.02, 0.88))+
     # legend styling
     guides(color=guide_colorbar(barheight = unit(5,'pt'),barwidth = unit(200,'pt')))+
     # use same plot appreance for all panels
@@ -236,7 +239,7 @@ plot_panel_dxy <- function(lg, start, end, ...){
     # layout y ayis
     scale_y_continuous(name = expression(bolditalic(d[XY])),
                        expand = c(0,0),
-                       limits = c(0.0009, 0.007))+
+                       limits = c(0.0009, 0.0075))+
     # legend styling
     guides(color=guide_colorbar(barheight = unit(5,'pt'),barwidth = unit(300,'pt')))+
     # use same plot appreance for all panels
