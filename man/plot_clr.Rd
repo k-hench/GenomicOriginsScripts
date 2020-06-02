@@ -4,7 +4,9 @@
 \name{plot_clr}
 \alias{plot_clr}
 \title{Default plot color}
-\format{An object of class \code{character} of length 1.}
+\format{
+An object of class \code{character} of length 1.
+}
 \usage{
 plot_clr
 }

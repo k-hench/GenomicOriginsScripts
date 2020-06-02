@@ -504,3 +504,40 @@ plot_leg <- function(spec1 = 'puella', spec2 = 'maya', color = "#084082ff", size
       theme_void()
   }
 }
+
+#' Create the fst population tree panel
+#'
+#' \code{plot_fst_poptree} plots the fst population tree panel of a selected outlier window
+#'
+#' @family Figure 3
+#'
+#' @export
+plot_fst_poptree <- function(gid, data_nj, ...){
+
+  data_nj$edge.length[data_nj$edge.length < 0 ] <- 0
+
+  p <- data_nj %>%
+    tidygraph::as_tbl_graph(layout = "dendrogram",
+                            length = length,
+                            directed = TRUE) %>%
+    mutate(leaf = node_is_leaf()) %>%
+    ggraph(layout = "dendrogram",
+           length = length,
+           circular = TRUE) +
+    geom_edge_link()+
+    geom_node_point(aes(filter = leaf,
+                        fill = str_sub(name, 1, 3),
+                        shape = str_sub(name, 4, 6)))+
+    scale_fill_manual("species",
+                      values = clr,
+                      guide = guide_legend(override.aes = list(shape = 21),
+                                           nrow = 1))+
+    scale_shape_manual("location",
+                       values = 21:23) +
+    theme_void()+
+    theme(legend.position = "none") +
+    coord_equal()+
+    scale_y_reverse()
+
+  p
+}

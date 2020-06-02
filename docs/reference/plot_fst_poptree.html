@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Default plot size — plot_size • GenomicOriginsScripts</title>
+<title>Create the fst population tree panel — plot_fst_poptree • GenomicOriginsScripts</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Default plot size — plot_size" />
-<meta property="og:description" content="plot_size sets the default size of data points in plots." />
+<meta property="og:title" content="Create the fst population tree panel — plot_fst_poptree" />
+<meta property="og:description" content="plot_fst_poptree plots the fst population tree panel of a selected outlier window" />
 <meta property="og:image" content="https://k-hench.github.io/GenomicOriginsScripts/logo.png" />
 
 
@@ -116,24 +116,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Default plot size</h1>
-    <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/project_config.R'><code>R/project_config.R</code></a></small>
-    <div class="hidden name"><code>plot_size.Rd</code></div>
+    <h1>Create the fst population tree panel</h1>
+    <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/functions_plotting_f3.R'><code>R/functions_plotting_f3.R</code></a></small>
+    <div class="hidden name"><code>plot_fst_poptree.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>plot_size</code> sets the default size of data points in plots.</p>
+    <p><code>plot_fst_poptree</code> plots the fst population tree panel of a selected outlier window</p>
     </div>
 
-    <pre class="usage"><span class='no'>plot_size</span></pre>
+    <pre class="usage"><span class='fu'>plot_fst_poptree</span>(<span class='no'>gid</span>, <span class='no'>data_nj</span>, <span class='no'>...</span>)</pre>
 
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>An object of class <code>numeric</code> of length 1.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This sets the default size of data points thoughout the figures.</p>
+    <div class='dont-index'><p>Other Figure 3: 
+<code><a href='ax_scl.html'>ax_scl</a>()</code>,
+<code><a href='cross_spec.html'>cross_spec</a>()</code>,
+<code><a href='custom_annoplot.html'>custom_annoplot</a>()</code>,
+<code><a href='dist_tibble.html'>dist_tibble</a>()</code>,
+<code><a href='distances_tree.html'>distances_tree</a>()</code>,
+<code><a href='get_clr.html'>get_clr</a>()</code>,
+<code><a href='get_dist.html'>get_dist</a>()</code>,
+<code><a href='get_gxp_long.html'>get_gxp_long</a>()</code>,
+<code><a href='get_isolated_topos.html'>get_isolated_topos</a>()</code>,
+<code><a href='get_neighbour_topos.html'>get_neighbour_topos</a>()</code>,
+<code><a href='is_isolated.html'>is_isolated</a>()</code>,
+<code><a href='min_dist.html'>min_dist</a>()</code>,
+<code><a href='no_title.html'>no_title</a>()</code>,
+<code><a href='plot_curtain.html'>plot_curtain</a>()</code>,
+<code><a href='plot_fish_zoom.html'>plot_fish_zoom</a>()</code>,
+<code><a href='plot_leg.html'>plot_leg</a>()</code>,
+<code><a href='plot_panel_anno.html'>plot_panel_anno</a>()</code>,
+<code><a href='plot_panel_delta_dxy.html'>plot_panel_delta_dxy</a>()</code>,
+<code><a href='plot_panel_dxy.html'>plot_panel_dxy</a>()</code>,
+<code><a href='plot_panel_fst.html'>plot_panel_fst</a>()</code>,
+<code><a href='plot_panel_gxp.html'>plot_panel_gxp</a>()</code>,
+<code><a href='plot_panel_twisst.html'>plot_panel_twisst</a>()</code>,
+<code><a href='prep_data.html'>prep_data</a>()</code>,
+<code><a href='theme_panels.html'>theme_panels</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

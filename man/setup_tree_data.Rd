@@ -10,15 +10,20 @@ setup_tree_data(data)
 \code{setup_tree_data} sets up phylo tree data.
 }
 \seealso{
-Other Suppl. Figure SX: \code{\link{StatTreeData}},
-  \code{\link{anno_pair_flag}}, \code{\link{fish_plot2}},
-  \code{\link{fish_plot}}, \code{\link{fst_bar_row_run}},
-  \code{\link{geom_hypo_grob2}},
-  \code{\link{geom_nodepoint_support}},
-  \code{\link{get_tree}},
-  \code{\link{plot_fishes_location}},
-  \code{\link{plot_pair_run}}, \code{\link{refactor_run}},
-  \code{\link{rescale_fst}}, \code{\link{root_manual}},
-  \code{\link{summarise_model}}
+Other Suppl. Figure SX: 
+\code{\link{StatTreeData}},
+\code{\link{anno_pair_flag}()},
+\code{\link{fish_plot2}()},
+\code{\link{fish_plot}()},
+\code{\link{fst_bar_row_run}()},
+\code{\link{geom_hypo_grob2}()},
+\code{\link{geom_nodepoint_support}()},
+\code{\link{get_tree}()},
+\code{\link{plot_fishes_location}()},
+\code{\link{plot_pair_run}()},
+\code{\link{refactor_run}()},
+\code{\link{rescale_fst}()},
+\code{\link{root_manual}()},
+\code{\link{summarise_model}()}
 }
 \concept{Suppl. Figure SX}

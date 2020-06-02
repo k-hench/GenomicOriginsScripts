@@ -91,6 +91,9 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_fst_fixed.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_fst_summary_data.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_genes.html</loc>
   </url>
   <url>
@@ -161,6 +164,9 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_fishes_location.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_fst_poptree.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_leg.html</loc>

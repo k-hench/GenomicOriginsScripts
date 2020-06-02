@@ -4,7 +4,9 @@
 \name{StatTreeData}
 \alias{StatTreeData}
 \title{ggplot layer for node support}
-\format{An object of class \code{StatTreeLabel} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 3.}
+\format{
+An object of class \code{StatTreeLabel} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 3.
+}
 \usage{
 StatTreeData
 }
@@ -12,17 +14,21 @@ StatTreeData
 \code{StatTreeData} provides a custom ggplot layer for node support.
 }
 \seealso{
-Other Suppl. Figure SX: \code{\link{anno_pair_flag}},
-  \code{\link{fish_plot2}}, \code{\link{fish_plot}},
-  \code{\link{fst_bar_row_run}},
-  \code{\link{geom_hypo_grob2}},
-  \code{\link{geom_nodepoint_support}},
-  \code{\link{get_tree}},
-  \code{\link{plot_fishes_location}},
-  \code{\link{plot_pair_run}}, \code{\link{refactor_run}},
-  \code{\link{rescale_fst}}, \code{\link{root_manual}},
-  \code{\link{setup_tree_data}},
-  \code{\link{summarise_model}}
+Other Suppl. Figure SX: 
+\code{\link{anno_pair_flag}()},
+\code{\link{fish_plot2}()},
+\code{\link{fish_plot}()},
+\code{\link{fst_bar_row_run}()},
+\code{\link{geom_hypo_grob2}()},
+\code{\link{geom_nodepoint_support}()},
+\code{\link{get_tree}()},
+\code{\link{plot_fishes_location}()},
+\code{\link{plot_pair_run}()},
+\code{\link{refactor_run}()},
+\code{\link{rescale_fst}()},
+\code{\link{root_manual}()},
+\code{\link{setup_tree_data}()},
+\code{\link{summarise_model}()}
 }
 \concept{Suppl. Figure SX}
 \keyword{datasets}

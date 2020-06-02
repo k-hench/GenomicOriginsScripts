@@ -10,11 +10,17 @@ darken(color, factor = 0.4)
 \code{darken} makes a darker version of a given color.
 }
 \seealso{
-Other General functions: \code{\link{export_2_latex}},
-  \code{\link{get_dxy}}, \code{\link{get_fst_fixed}},
-  \code{\link{get_fst}}, \code{\link{get_gxp}},
-  \code{\link{get_pi}}, \code{\link{join_list}},
-  \code{\link{lighten}}, \code{\link{process_input}},
-  \code{\link{refactor}}
+Other General functions: 
+\code{\link{export_2_latex}()},
+\code{\link{get_dxy}()},
+\code{\link{get_fst_fixed}()},
+\code{\link{get_fst_summary_data}()},
+\code{\link{get_fst}()},
+\code{\link{get_gxp}()},
+\code{\link{get_pi}()},
+\code{\link{join_list}()},
+\code{\link{lighten}()},
+\code{\link{process_input}()},
+\code{\link{refactor}()}
 }
 \concept{General functions}

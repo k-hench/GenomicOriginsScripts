@@ -14,6 +14,7 @@ The data is imported and run components are extracted from the a reference table
 and added to the data.
 }
 \seealso{
-Other Figure 4: \code{\link{get_msmc}}
+Other Figure 4: 
+\code{\link{get_msmc}()}
 }
 \concept{Figure 4}

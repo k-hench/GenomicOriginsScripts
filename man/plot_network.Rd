@@ -4,8 +4,7 @@
 \alias{plot_network}
 \title{Plot pariwise species comparisons per location}
 \usage{
-plot_network(loc, nodes, edges, asp = 0.8, sep = 0,
-  node_lab_shift = 0)
+plot_network(loc, nodes, edges, asp = 0.8, sep = 0, node_lab_shift = 0)
 }
 \description{
 \code{plot_network} creates a ggplot with a network of species comparisons.
@@ -14,9 +13,12 @@ plot_network(loc, nodes, edges, asp = 0.8, sep = 0,
 This creates a network for all pairwise species comparisons within a location.
 }
 \seealso{
-Other Figure 1: \code{\link{make_faint_clr}},
-  \code{\link{network_layout}}, \code{\link{plot_fish}},
-  \code{\link{summarize_dxy}}, \code{\link{summarize_fst}},
-  \code{\link{whisker_points}}
+Other Figure 1: 
+\code{\link{make_faint_clr}()},
+\code{\link{network_layout}()},
+\code{\link{plot_fish}()},
+\code{\link{summarize_dxy}()},
+\code{\link{summarize_fst}()},
+\code{\link{whisker_points}()}
 }
 \concept{Figure 1}

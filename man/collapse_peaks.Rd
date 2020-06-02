@@ -10,6 +10,7 @@ collapse_peaks(x)
 \code{collapse_peaks} collapses all Fst peaks of a given run
 }
 \seealso{
-Other Figure SX: \code{\link{reformat_run_name}}
+Other Figure SX: 
+\code{\link{reformat_run_name}()}
 }
 \concept{Figure SX}

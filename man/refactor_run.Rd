@@ -10,15 +10,20 @@ refactor_run(self, globals)
 \code{refactor_run} reorder species pairs according to fst.
 }
 \seealso{
-Other Suppl. Figure SX: \code{\link{StatTreeData}},
-  \code{\link{anno_pair_flag}}, \code{\link{fish_plot2}},
-  \code{\link{fish_plot}}, \code{\link{fst_bar_row_run}},
-  \code{\link{geom_hypo_grob2}},
-  \code{\link{geom_nodepoint_support}},
-  \code{\link{get_tree}},
-  \code{\link{plot_fishes_location}},
-  \code{\link{plot_pair_run}}, \code{\link{rescale_fst}},
-  \code{\link{root_manual}}, \code{\link{setup_tree_data}},
-  \code{\link{summarise_model}}
+Other Suppl. Figure SX: 
+\code{\link{StatTreeData}},
+\code{\link{anno_pair_flag}()},
+\code{\link{fish_plot2}()},
+\code{\link{fish_plot}()},
+\code{\link{fst_bar_row_run}()},
+\code{\link{geom_hypo_grob2}()},
+\code{\link{geom_nodepoint_support}()},
+\code{\link{get_tree}()},
+\code{\link{plot_fishes_location}()},
+\code{\link{plot_pair_run}()},
+\code{\link{rescale_fst}()},
+\code{\link{root_manual}()},
+\code{\link{setup_tree_data}()},
+\code{\link{summarise_model}()}
 }
 \concept{Suppl. Figure SX}

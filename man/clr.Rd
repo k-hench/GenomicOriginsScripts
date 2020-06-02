@@ -4,7 +4,9 @@
 \name{clr}
 \alias{clr}
 \title{Hamlet colors (standard)}
-\format{An object of class \code{character} of length 11.}
+\format{
+An object of class \code{character} of length 11.
+}
 \usage{
 clr
 }

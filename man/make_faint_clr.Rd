@@ -10,9 +10,12 @@ make_faint_clr(loc)
 \code{make_faint_clr} creates a faint version of a given color.
 }
 \seealso{
-Other Figure 1: \code{\link{network_layout}},
-  \code{\link{plot_fish}}, \code{\link{plot_network}},
-  \code{\link{summarize_dxy}}, \code{\link{summarize_fst}},
-  \code{\link{whisker_points}}
+Other Figure 1: 
+\code{\link{network_layout}()},
+\code{\link{plot_fish}()},
+\code{\link{plot_network}()},
+\code{\link{summarize_dxy}()},
+\code{\link{summarize_fst}()},
+\code{\link{whisker_points}()}
 }
 \concept{Figure 1}

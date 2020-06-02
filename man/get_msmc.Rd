@@ -14,6 +14,7 @@ The run name (the pair wise species comparison) is extracted from the file name,
 the data is imported and the run name is added.
 }
 \seealso{
-Other Figure 4: \code{\link{get_cc}}
+Other Figure 4: 
+\code{\link{get_cc}()}
 }
 \concept{Figure 4}

@@ -23,6 +23,7 @@ The topology ranks are added to the full data set and a window
 column caontaing the location is added for faceting.
 }
 \seealso{
-Other Figure 2: \code{\link{get_twisst_data}}
+Other Figure 2: 
+\code{\link{get_twisst_data}()}
 }
 \concept{Figure 2}

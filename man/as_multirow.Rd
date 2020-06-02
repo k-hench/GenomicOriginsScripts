@@ -10,6 +10,7 @@ as_multirow(x, n)
 \code{as_multirow} formats multirow content for latex tables.
 }
 \seealso{
-Other Table functions: \code{\link{get_genes}}
+Other Table functions: 
+\code{\link{get_genes}()}
 }
 \concept{Table functions}

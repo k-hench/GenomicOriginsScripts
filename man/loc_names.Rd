@@ -4,7 +4,9 @@
 \name{loc_names}
 \alias{loc_names}
 \title{Location names}
-\format{An object of class \code{character} of length 4.}
+\format{
+An object of class \code{character} of length 4.
+}
 \usage{
 loc_names
 }

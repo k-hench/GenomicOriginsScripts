@@ -13,9 +13,12 @@ plot_fish(short, x = 0, y = 0, height = 0.75, width = 0.75)
 This is used to annotate plots.
 }
 \seealso{
-Other Figure 1: \code{\link{make_faint_clr}},
-  \code{\link{network_layout}}, \code{\link{plot_network}},
-  \code{\link{summarize_dxy}}, \code{\link{summarize_fst}},
-  \code{\link{whisker_points}}
+Other Figure 1: 
+\code{\link{make_faint_clr}()},
+\code{\link{network_layout}()},
+\code{\link{plot_network}()},
+\code{\link{summarize_dxy}()},
+\code{\link{summarize_fst}()},
+\code{\link{whisker_points}()}
 }
 \concept{Figure 1}

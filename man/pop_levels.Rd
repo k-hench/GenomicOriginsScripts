@@ -4,7 +4,9 @@
 \name{pop_levels}
 \alias{pop_levels}
 \title{Population order}
-\format{An object of class \code{character} of length 14.}
+\format{
+An object of class \code{character} of length 14.
+}
 \usage{
 pop_levels
 }

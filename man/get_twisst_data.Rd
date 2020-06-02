@@ -21,6 +21,7 @@ the position information is merged, reformated and the
 genomic positions are added.
 }
 \seealso{
-Other Figure 2: \code{\link{match_twisst_files}}
+Other Figure 2: 
+\code{\link{match_twisst_files}()}
 }
 \concept{Figure 2}

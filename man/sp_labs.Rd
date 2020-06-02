@@ -4,7 +4,9 @@
 \name{sp_labs}
 \alias{sp_labs}
 \title{Species labels}
-\format{An object of class \code{expression} of length 11.}
+\format{
+An object of class \code{expression} of length 11.
+}
 \usage{
 sp_labs
 }

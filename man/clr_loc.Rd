@@ -4,7 +4,9 @@
 \name{clr_loc}
 \alias{clr_loc}
 \title{Location colors}
-\format{An object of class \code{character} of length 4.}
+\format{
+An object of class \code{character} of length 4.
+}
 \usage{
 clr_loc
 }

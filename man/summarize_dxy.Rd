@@ -14,9 +14,12 @@ dxy data is imported, filtered for non-overlapping windows
 and boxplot statistics are created.
 }
 \seealso{
-Other Figure 1: \code{\link{make_faint_clr}},
-  \code{\link{network_layout}}, \code{\link{plot_fish}},
-  \code{\link{plot_network}}, \code{\link{summarize_fst}},
-  \code{\link{whisker_points}}
+Other Figure 1: 
+\code{\link{make_faint_clr}()},
+\code{\link{network_layout}()},
+\code{\link{plot_fish}()},
+\code{\link{plot_network}()},
+\code{\link{summarize_fst}()},
+\code{\link{whisker_points}()}
 }
 \concept{Figure 1}

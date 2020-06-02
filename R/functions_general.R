@@ -172,3 +172,40 @@ refactor <- function(self,globals){
   factor(as.character(self$run),
          levels = c(levels(globals$run)))
 }
+
+#' Import fst summary data for outlier windows
+#'
+#' \code{get_fst_summary_data} imports pair wise fst summary data for outlier windows.
+#'
+#'
+#' @family General functions
+#'
+#' @export
+get_fst_summary_data <- function(gid){
+  file <- str_c(fst_summary_path, gid, ".fst.all.tsv")
+  data <- read_tsv(str_c(file)) %>%
+    mutate(weighted_fst = ifelse(weighted_fst < 0, 0, weighted_fst))
+
+  data_w <- data %>%
+    select(run, weighted_fst) %>%
+    separate(run, into = c("pop1", "pop2"), sep = "-") %>%
+    bind_rows(tibble( pop1 = c("abehon", "unipan"), pop2 = pop1)) %>%
+    arrange(pop1, pop2) %>%
+    pivot_wider(names_from = pop2,
+                values_from = weighted_fst)
+
+  data_m <- data_w %>% select(abehon:unipan) %>% as.matrix()
+  rownames(data_m) <- data_w$pop1
+
+  data_m_t <- data_m %>% t()
+
+  data_m2 <- data_m
+  data_m2[lower.tri(data_m2)] <- data_m_t[lower.tri(data_m_t)]
+  data_m2[is.na(data_m2)] <- 0
+  data_nj <- nj(data_m2)
+
+  tibble(gid = gid,
+         data = list(data),
+         data_m2 = list(data_m2),
+         data_nj = list(data_nj))
+}

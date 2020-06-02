@@ -1,6 +1,6 @@
 Package: GenomicOriginsScripts
 Title: Provides the R scripts for the paper "The genomic origins of a marine radiation"
-Version: 0.0.0.90023
+Version: 0.0.0.90024
 Authors@R: 
     person(given = "Kosmas",
            family = "Hench",
@@ -22,4 +22,4 @@ Depends: tidyverse,
 Imports: ggforce,
          hypoimg
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0

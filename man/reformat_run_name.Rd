@@ -10,6 +10,7 @@ reformat_run_name(run)
 \code{reformat_run_name} formats run to "specloc-specloc" format.
 }
 \seealso{
-Other Figure SX: \code{\link{collapse_peaks}}
+Other Figure SX: 
+\code{\link{collapse_peaks}()}
 }
 \concept{Figure SX}

@@ -4,7 +4,9 @@
 \name{shps}
 \alias{shps}
 \title{Location shapes}
-\format{An object of class \code{numeric} of length 4.}
+\format{
+An object of class \code{numeric} of length 4.
+}
 \usage{
 shps
 }

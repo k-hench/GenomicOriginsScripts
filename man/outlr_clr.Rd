@@ -4,7 +4,9 @@
 \name{outlr_clr}
 \alias{outlr_clr}
 \title{Outlier color}
-\format{An object of class \code{character} of length 1.}
+\format{
+An object of class \code{character} of length 1.
+}
 \usage{
 outlr_clr
 }

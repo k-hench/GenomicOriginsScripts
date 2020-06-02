@@ -39,6 +39,7 @@ reference:
       - get_dxy
       - get_gxp
       - get_fst
+      - get_fst_summary_data
       - get_pi
       - join_list
       - lighten
@@ -91,6 +92,7 @@ reference:
       - plot_panel_delta_dxy
       - plot_panel_dxy
       - plot_panel_fst
+      - plot_fst_poptree
       - plot_panel_gxp
       - plot_panel_twisst
       - prep_data

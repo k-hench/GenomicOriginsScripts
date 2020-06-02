@@ -10,6 +10,7 @@ get_genes(gid, chrom, start, end, ...)
 \code{get_genes} collects the genes within a outlier window.
 }
 \seealso{
-Other Table functions: \code{\link{as_multirow}}
+Other Table functions: 
+\code{\link{as_multirow}()}
 }
 \concept{Table functions}
