@@ -196,7 +196,7 @@ plot_panel_fst <- function(lg, start, end, xlab = TRUE, ...){
     # layout y ayis
     scale_y_continuous(name = expression(bolditalic(F[ST])),
                        expand = c(0,0),
-                       limits = c(-0.02, 0.92))+
+                       limits = c(-0.07, 0.92))+
     # legend styling
     guides(color=guide_colorbar(barheight = unit(5,'pt'),barwidth = unit(200,'pt')))+
     # use same plot appreance for all panels
