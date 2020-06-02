@@ -262,7 +262,8 @@ plot_panel_gxp <- function(lg, start, end, trait, ...){
                        MID_POS<end+window_buffer*1.25) ,
               aes(x = MID_POS, y = AVG_p_wald,
                   color = trt),size = .6) +
-    hypoimg::geom_hypo_grob(data = tibble(grob = hypoimg::hypo_trait_img$grob_circle[hypoimg::hypo_trait_img$trait == trait]),
+    hypoimg::geom_hypo_grob(data = tibble(grob = trait_grob[[trait]]),
+                              #tibble(grob = hypoimg::hypo_trait_img$grob_circle[hypoimg::hypo_trait_img$trait == trait]),
                             aes(grob = grob, angle = 0, height = .65),
                             inherit.aes = FALSE, x = .9, y = 0.65)+
     # use same boundaries for all panels

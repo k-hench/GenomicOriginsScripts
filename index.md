@@ -9,5 +9,5 @@ the figures and the supplementary figures of the paper
 To install **GenomicOriginsScripts** please run:
 
 ```r
-devtools::install_github("k-hench/GenomicOriginsScripts")
+remotes::install_github("k-hench/GenomicOriginsScripts")
 ```
