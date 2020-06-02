@@ -5,7 +5,7 @@
 \title{Manage plot panels for a single outlier window}
 \usage{
 plot_curtain(loc = "bel", outlier_id, outlier_nr, lg, start, end,
-  cool_genes, text = TRUE, label, ...)
+  cool_genes, text = TRUE, label, trait, ...)
 }
 \description{
 \code{plot_curtain} calls all individual plotting functions needed for a single outlier zoom

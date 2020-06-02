@@ -4,7 +4,7 @@
 \alias{match_twisst_files}
 \title{Import all topology weighting data sets for a location}
 \usage{
-match_twisst_files(loc, window_size = 50, panel = "a")
+match_twisst_files(loc, window_size = 200, panel = "a")
 }
 \description{
 \code{match_twisst_files} imports all topology weighting data sets for a location.

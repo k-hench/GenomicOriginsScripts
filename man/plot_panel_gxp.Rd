@@ -4,7 +4,7 @@
 \alias{plot_panel_gxp}
 \title{Create the genotype x phenotype panel}
 \usage{
-plot_panel_gxp(lg, start, end, ...)
+plot_panel_gxp(lg, start, end, trait, ...)
 }
 \description{
 \code{plot_panel_gxp} plots the genotype x phenotype panel of a selected outlier window

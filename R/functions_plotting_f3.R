@@ -13,13 +13,13 @@
 #'
 #' @export
 plot_curtain <- function(loc = 'bel', outlier_id, outlier_nr, lg, start, end,
-                         cool_genes,text = TRUE, label,...){
+                         cool_genes,text = TRUE, label, trait, ...){
   p_g <- plot_panel_anno(lg = lg, outlier_id = outlier_id, label = label,
                          start = start,end = end, genes = cool_genes)
   p_fst <- plot_panel_fst(lg = lg, start = start,end = end)
   p_dxy <- plot_panel_dxy(lg = lg, start = start,end = end)
   p_delta_dxy <- plot_panel_delta_dxy(lg = lg, start = start,end = end)
-  p_gxp <- plot_panel_gxp(lg = lg, start = start,end = end)
+  p_gxp <- plot_panel_gxp(lg = lg, start = start,end = end, trait = trait)
   p_t1 <- plot_panel_twisst(loc = loc, lg = lg, start = start,end = end, window_size = 200,
                             neighbours = tibble(left_neighbour = 'ind', right_neighbour = 'may', palette = twisst_clr['Blue']),
                             xlab = FALSE, highlight_mode = 'pair')
@@ -247,7 +247,7 @@ plot_panel_dxy <- function(lg, start, end, ...){
 #' @family Figure 3
 #'
 #' @export
-plot_panel_gxp <- function(lg, start, end, ...){
+plot_panel_gxp <- function(lg, start, end, trait, ...){
   ggplot2::ggplot() +
     # add outlier area
     geom_rect(inherit.aes = FALSE,
@@ -262,6 +262,9 @@ plot_panel_gxp <- function(lg, start, end, ...){
                        MID_POS<end+window_buffer*1.25) ,
               aes(x = MID_POS, y = AVG_p_wald,
                   color = trt),size = .6) +
+    hypoimg::geom_hypo_grob(data = tibble(grob = hypoimg::hypo_trait_img$grob_circle[hypoimg::hypo_trait_img$trait == trait]),
+                            aes(grob = grob, angle = 0, height = .65),
+                            inherit.aes = FALSE, x = .9, y = 0.65)+
     # use same boundaries for all panels
     coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
     # define color scheme

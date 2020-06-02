@@ -66,7 +66,7 @@ get_twisst_data <- function(loc,w_in,d_in,smooth = FALSE, span = 0.01){
 #' @family Figure 2
 #'
 #' @export
-match_twisst_files <- function(loc, window_size = 50,panel = 'a'){
+match_twisst_files <- function(loc, window_size = 200,panel = 'a'){
   weight_files <- dir(w_path, pattern = loc) %>% .[grepl(str_c('w',window_size),.)]
   data_files <- dir(str_c(d_path, loc, '/'), pattern = 'LG.*data.tsv') %>% .[grepl(str_c('w',window_size),.)]
 
