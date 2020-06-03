@@ -529,11 +529,11 @@ plot_fst_poptree <- function(gid, data_nj, ...){
     geom_node_point(aes(filter = leaf,
                         fill = str_sub(name, 1, 3),
                         shape = str_sub(name, 4, 6)))+
-    scale_fill_manual("species",
+    scale_fill_manual("Species",
                       values = clr,
                       guide = guide_legend(override.aes = list(shape = 21),
                                            nrow = 1))+
-    scale_shape_manual("location",
+    scale_shape_manual("Location",
                        values = 21:23) +
     theme_void()+
     theme(legend.position = "none") +
