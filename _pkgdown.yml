@@ -146,3 +146,10 @@ reference:
     - collapse_peaks
     - get_fst_fixed
     - reformat_run_name
+  - title: "Suppl. Figure X9"
+    desc: >
+      Functions specific to Suppl. Figure X9.
+    contents:
+    - add_spec_drawing
+    - adm_plot
+    - data_amdx

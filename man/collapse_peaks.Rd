@@ -11,6 +11,9 @@ collapse_peaks(x)
 }
 \seealso{
 Other Figure SX: 
+\code{\link{add_spec_drawing}()},
+\code{\link{adm_plot}()},
+\code{\link{data_amdx}()},
 \code{\link{reformat_run_name}()}
 }
 \concept{Figure SX}
