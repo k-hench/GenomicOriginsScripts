@@ -1,0 +1,73 @@
+#' Get hybridization data
+#'
+#' \code{getPofZ} imports hybridization data
+#'
+#' @family Figure SX
+#'
+#' @export
+getPofZ <- function(base_dir, folder){
+  runname <- folder %>% str_remove("newHyb.") %>% str_remove(".80SNPs.txt_Results")
+
+  pops <- c(str_sub(runname,1,6),str_sub(runname,-6,-1))
+  result_dir <- str_c(base_dir, folder,"/")
+
+  pofz <- dir(result_dir, pattern = "PofZ.txt")
+  inds <- dir(result_dir, pattern = "_individuals.txt")
+
+  colN <- c("P1", "P1_bc", "P2", "P2_bc")
+
+  NHres <- vroom::vroom(str_c(result_dir, pofz),
+                        delim = '\t',
+                        skip = 1,
+                        col_names  = c('indNR', 'IndivName', colN[1], colN[3],
+                                       'F1', 'F2', colN[2], colN[4])) %>%
+    mutate(IndivName = vroom::vroom(str_c(result_dir, inds),
+                                    delim = ',',
+                                    col_names =  c('IndivName'))[,1] %>%
+             unname() %>%
+             unlist() )
+
+  bin_tib <- tibble(bin_generic = c(colN, "F1", "F2"),
+                    bin = c(paste0(c(pops[1],pops[1],pops[2],pops[2]),
+                                   c('_pure','_BC','_pure','_BC')), "F1", "F2"))
+
+  data <- NHres %>%
+    pivot_longer(names_to = 'bin_generic',
+                 values_to= "post_prob",
+                 cols = c(-indNR, -IndivName)) %>%
+    left_join(bin_tib) %>%
+    mutate(run = runname,
+           loc = str_sub(run,-3,-1),
+           ind_order = str_c(str_sub(IndivName,-6,-1),"_",str_sub(IndivName,1,-7)))
+
+  return(data)
+}
+
+#' Plot hybridization data
+#'
+#' \code{getPofZ} plot hybridization data of a location
+#'
+#' @family Figure SX
+#'
+#' @export
+plot_loc <- function(loc){
+  data <- map_dfr(.x = folders[str_detect(folders, loc)],
+                  .f = getPofZ,
+                  base_dir = base_dir)
+
+  lvls <- c("P1", "P1_bc","F1", "F2", "P2_bc", "P2")
+
+  clr <- paletteer_c("ggthemes::Red-Green-Gold Diverging",3) %>%
+    c(.,clr_lighten(.)) %>% color() %>% .[c(1,4,2,5,6,3)] %>%
+    set_names(nm = lvls)
+
+  data  %>%
+    ggplot(aes(x = ind_order, y = post_prob, fill = bin_generic))+
+    geom_bar(position = 'stack', stat = "identity")+
+    scale_fill_manual(values = clr)+
+    facet_grid(run~.)+
+    theme_minimal()+
+    theme(legend.position = "bottom",
+          axis.text.x = element_text(angle = 90),
+          axis.title = element_blank())
+}

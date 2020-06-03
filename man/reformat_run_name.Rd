@@ -14,6 +14,8 @@ Other Figure SX:
 \code{\link{add_spec_drawing}()},
 \code{\link{adm_plot}()},
 \code{\link{collapse_peaks}()},
-\code{\link{data_amdx}()}
+\code{\link{data_amdx}()},
+\code{\link{getPofZ}()},
+\code{\link{plot_loc}()}
 }
 \concept{Figure SX}

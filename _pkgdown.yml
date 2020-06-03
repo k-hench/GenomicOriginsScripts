@@ -153,3 +153,9 @@ reference:
     - add_spec_drawing
     - adm_plot
     - data_amdx
+  - title: "Suppl. Figure X10"
+    desc: >
+      Functions specific to Suppl. Figure X10.
+    contents:
+    - getPofZ
+    - plot_loc
