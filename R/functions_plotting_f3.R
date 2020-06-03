@@ -321,7 +321,7 @@ plot_panel_delta_dxy <- function(lg, start, end, ...){
                        expand = c(0, 0),
                        position = 'top') +
     # layout y ayis
-    scale_y_continuous(name = expression(Delta~bolditalic(d[XY])),
+    scale_y_continuous(name = expression(bolditalic(Δ~d[XY])),
                        expand = c(0, 0),
                        limits = c(0, 0.0051))+
     # use same plot appreance for all panels
