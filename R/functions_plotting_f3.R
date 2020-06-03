@@ -311,18 +311,18 @@ plot_panel_delta_dxy <- function(lg, start, end, ...){
     # add outlier area
     geom_rect(inherit.aes = FALSE, data = tibble(start = start, end=end),
               aes(xmin = start, xmax = end),ymin = -Inf, ymax = Inf,
-              fill=rgb(1,1,1,.3),color = rgb(1,1,1,.9)) +
+              fill=rgb(1, 1, 1, .3), color = rgb(1, 1, 1, .9)) +
     # use same boundaries for all panels
     coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
     # layout x ayis
     scale_x_continuous(name = lg,
                        limits = c(start-window_buffer*1.25,
                                   end+window_buffer*1.25),
-                       expand = c(0,0),
+                       expand = c(0, 0),
                        position = 'top') +
     # layout y ayis
-    scale_y_continuous(name = expression(bolditalic(Delta~d[XY])),
-                       expand = c(0,0),
+    scale_y_continuous(name = expression(Delta~bolditalic(d[XY])),
+                       expand = c(0, 0),
                        limits = c(0, 0.0051))+
     # use same plot appreance for all panels
     theme_panels()
@@ -353,8 +353,9 @@ custom_annoplot <- function (..., searchLG, xrange, genes_of_interest = c(), gen
                        aes(xmin = ps, xmax = pe, ymin = yl - (width/2), ymax = yl + (width/2), group = Parent),
                        fill = alpha(gene_color,.6), col = gene_color, lwd = 0.1) +
     # add outlier area
-    geom_rect(inherit.aes = FALSE, data = tibble(start = start, end=end),
-              aes(xmin = start, xmax = end),ymin = -Inf, ymax = Inf,
+    geom_rect(inherit.aes = FALSE, data = tibble(start = start, end = end),
+              aes(xmin = start, xmax = end),
+              ymin = -Inf, ymax = Inf,
               fill=rgb(1,1,1,.3),color = rgb(1,1,1,.9)) +
     # add gene direction if known
     ggplot2::geom_segment(data = (df_list[[1]] %>% filter(strand %in% c("+", "-"))),
@@ -395,7 +396,7 @@ plot_panel_anno <- function(outlier_id, label, lg, start, end, genes = c(),...){
                        limits = c(start-window_buffer*1.25,end+window_buffer*1.25),
                        labels = ax_scl)+
     # layout y ayis
-    scale_y_continuous(name = expression(bolditalic(Genes)), expand = c(0,.4))+
+    scale_y_continuous(name = expression(bolditalic(Annotation)), expand = c(0,.4))+
     # use same boundaries for all panels
     coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
     # special panel layout for annotation panel
