@@ -159,3 +159,8 @@ reference:
     contents:
     - getPofZ
     - plot_loc
+  - title: "Suppl. Figure X11"
+    desc: >
+      Functions specific to Suppl. Figure X11.
+    contents:
+    - get_gxp_both_models

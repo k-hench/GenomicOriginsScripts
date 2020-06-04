@@ -15,6 +15,7 @@ Other Figure SX:
 \code{\link{adm_plot}()},
 \code{\link{collapse_peaks}()},
 \code{\link{data_amdx}()},
+\code{\link{get_gxp_both_models}()},
 \code{\link{plot_loc}()},
 \code{\link{reformat_run_name}()}
 }

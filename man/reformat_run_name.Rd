@@ -16,6 +16,7 @@ Other Figure SX:
 \code{\link{collapse_peaks}()},
 \code{\link{data_amdx}()},
 \code{\link{getPofZ}()},
+\code{\link{get_gxp_both_models}()},
 \code{\link{plot_loc}()}
 }
 \concept{Figure SX}
