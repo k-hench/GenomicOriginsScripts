@@ -94,6 +94,6 @@ match_twisst_files <- function(loc, window_size = 200,panel = 'a'){
            topo_rel = topo_nr/max(topo_nr))
 
   data <- data %>%
-    mutate(window = str_c(project_case(panel),':~weighting[',loc,']'))
+    mutate(window = str_c(project_case(panel),':~italic(w)[',loc,']'))
   return(data)
 }
