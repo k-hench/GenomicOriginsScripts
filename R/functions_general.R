@@ -97,7 +97,7 @@ get_gxp <- function(file){
     str_remove('^.*/') %>%
     str_remove('\\..*')
 
-  trait_label <- str_c(trait_panels[trait],':italic(p)~(GxP[',trait,'])')
+  trait_label <- str_c(trait_panels[trait],':italic(p)[',trait,']')
 
   vroom::vroom(file, delim = "\t") %>%
     add_gpos() %>%
