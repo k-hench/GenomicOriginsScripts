@@ -81,7 +81,8 @@ plot_loc <- function(loc){
     facet_grid(run2~.)+
     theme_minimal()+
     theme(legend.position = "bottom",
-          strip.text = element_markdown(),
+          strip.text.x  = element_markdown(),
+          strip.text.y  = element_markdown(),
           axis.text.x = element_markdown(angle = 90),
           axis.title.x = element_blank())
 }
