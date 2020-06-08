@@ -65,7 +65,7 @@ plot_loc <- function(loc){
     ggplot(aes(x = ind_order, y = post_prob, fill = bin_generic))+
     geom_bar(position = 'stack', stat = "identity")+
     scale_fill_manual(values = clr) +
-    scale_y_continuous("Posterior probability")+
+    labs(y = "Posterior probability")+
     facet_grid(run~.)+
     theme_minimal()+
     theme(legend.position = "bottom",
