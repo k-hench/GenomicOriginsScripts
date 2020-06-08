@@ -55,6 +55,17 @@ plot_loc <- function(loc){
                   .f = getPofZ,
                   base_dir = base_dir)
 
+  is_hybr <- data %>%
+    filter(!(grepl(pattern = "_pure", bin))) %>%
+    filter(post_prob > .99) %>%
+    .$ind_order %>% unique()
+
+  data <- data %>%
+    mutate(ind_label = ifelse(ind_order %in% is_hybr, str_c("**", ind_order, "**"), ind_order),
+           run2 = str_c("*H. ",sp_names[str_sub(run,1,3)],"* - *H. ",sp_names[str_sub(run,5,7)],"*"))
+
+  data_labs <- data %>% filter(!duplicated(ind_order)) %>% select(ind_order, ind_label)
+
   lvls <- c("P1", "P1_bc","F1", "F2", "P2_bc", "P2")
 
   clr <- paletteer_c("ggthemes::Red-Green-Gold Diverging",3) %>%
@@ -65,10 +76,11 @@ plot_loc <- function(loc){
     ggplot(aes(x = ind_order, y = post_prob, fill = bin_generic))+
     geom_bar(position = 'stack', stat = "identity")+
     scale_fill_manual(values = clr) +
-    labs(y = "Posterior probability")+
-    facet_grid(run~.)+
+    scale_x_discrete(breaks = data_labs$ind_order, labels = data_labs$ind_label)+
+    labs(y = "Posterior probability", title = loc_names[loc])+
+    facet_grid(run2~.)+
     theme_minimal()+
     theme(legend.position = "bottom",
-          axis.text.x = element_text(angle = 90),
+          axis.text.x = element_markdown(angle = 90),
           axis.title.x = element_blank())
 }
