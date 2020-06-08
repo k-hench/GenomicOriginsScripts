@@ -62,7 +62,7 @@ plot_loc <- function(loc){
 
   data <- data %>%
     mutate(ind_label = ifelse(ind_order %in% is_hybr, str_c("**", ind_order, "**"), ind_order),
-           run2 = str_c("*H. ",sp_names[str_sub(run,1,3)],"* - *H. ",sp_names[str_sub(run,5,7)],"*"))
+           run2 = str_c("*H. ", sp_names[str_sub(string = run,1,3)],"* - *H. ", sp_names[str_sub(string = run,8,10)],"*"))
 
   data_labs <- data %>% filter(!duplicated(ind_order)) %>% select(ind_order, ind_label)
 
@@ -81,6 +81,7 @@ plot_loc <- function(loc){
     facet_grid(run2~.)+
     theme_minimal()+
     theme(legend.position = "bottom",
+          strip.text = element_markdown(),
           axis.text.x = element_markdown(angle = 90),
           axis.title.x = element_blank())
 }
