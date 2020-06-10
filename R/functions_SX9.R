@@ -33,32 +33,32 @@ adm_plot <- function(gid_in){
     left_join(sample_order) %>%
     left_join(pheno_facet) %>%
     filter(gid == gid_in) %>%
-    ggplot(aes(x = factor(ord_nr)))+
-    geom_bar(stat = 'identity',
+    ggplot(aes(x = factor(ord_nr))) +
+    geom_bar(stat = "identity",
              position = "stack",
-             aes (y = prop, fill = bin))+
+             aes(y = prop, fill = bin)) +
     geom_point(data = pheno_plot_data %>%
                  filter(trait == gid_traits[[gid_in]]),
-               aes(y = -.075,
-                   fill = factor(phenotype)),
-               shape = 21)+
+               aes(y = -0.1,  fill = factor(phenotype)),
+               shape = 21) +
     scale_y_continuous(gid_labels[[gid_in]],
-                       expand = c(0,0),
-                       breaks = c(-.075,0,.5,1),
-                       labels = c(gid_traits[[gid_in]],0,.5,1),
-                       limits = c(-.125,1))+
+                       expand = c(0, 0),
+                       breaks = c(-0.1, 0, 0.5, 1),
+                       labels = c(trait_icons[[gid_in]], 0, 0.5, 1),
+                       limits = c(-0.125, 1)) +
     scale_x_discrete(breaks = sample_order$ord_nr,
                      labels = sample_order$id) +
-    scale_fill_manual(values = c(RColorBrewer::brewer.pal(4,"Greys")[2:3] %>%
+    scale_fill_manual(values = c(RColorBrewer::brewer.pal(4, "Greys")[2:3] %>%
                                    set_names(nm = c("bin01", "bin02")),
-                                 `0` = "white", `1` = "black"),
-                      na.value = "gray")+
-    theme_minimal()+
+                                 `0` = "white", `1` = "black"), na.value = "gray") +
+    theme_minimal() +
     theme(plot.title = element_text(size = 9),
           legend.position = "none",
+          axis.title.y = element_text(vjust = -6),
           axis.title.x = element_blank(),
           axis.ticks = element_blank(),
-          axis.text.x = element_blank())
+          axis.text.x = element_blank(),
+          axis.text.y = element_markdown())
 }
 
 #' Add fish annotation
