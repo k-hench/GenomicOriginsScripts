@@ -84,5 +84,6 @@ plot_loc <- function(loc){
           strip.text.x  = element_markdown(),
           strip.text.y  = element_markdown(),
           axis.text.x = element_markdown(angle = 90),
-          axis.title.x = element_blank())
+          axis.title.x = element_blank(),
+          axis.title.y = element_text(vjust = 2))
 }
