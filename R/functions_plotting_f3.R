@@ -36,7 +36,8 @@ plot_curtain <- function(loc = 'bel', outlier_id, outlier_nr, lg, start, end,
                                     p_fst, p_dxy,
                                     p_delta_dxy,
                                     p_t1,p_t2,p_t3,
-                                    ncol = 1, align = 'v')
+                                    ncol = 1, align = 'v',
+                                    rel_heights = c(1, rep(.85, 7)))
   } else {
     p_curtain <- cowplot::plot_grid(p_g + no_title(),
                                     p_gxp + no_title(),
@@ -52,7 +53,8 @@ plot_curtain <- function(loc = 'bel', outlier_id, outlier_nr, lg, start, end,
                                                     axis.ticks.y = element_blank()),
                                     p_t3 + no_title(axis.text.y = element_blank(),
                                                     axis.ticks.y = element_blank()),
-                                    ncol = 1, align = 'v')
+                                    ncol = 1, align = 'v',
+                                    rel_heights = c(1, rep(.85, 7)))
   }
   p_curtain
 }
