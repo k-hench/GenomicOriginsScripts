@@ -534,13 +534,13 @@ plot_fst_poptree <- function(gid, data_nj, ...){
                     size = 1.5,)+
     scale_fill_manual("Species",
                       values = clr,
-                      labels = loc_names,
+                      labels = sp_names %>%
+                        str_c("*H. ",.,"*") %>%
+                        set_names(nm = names(sp_names)),
                       guide = guide_legend(override.aes = list(shape = 21),
                                            nrow = 1))+
     scale_shape_manual("Location",
-                       labels = sp_names %>%
-                         str_c("*H. ",.,"*") %>%
-                         set_names(nm = names(sp_names)),
+                       labels = loc_names,
                        values = 21:23) +
     theme_void()+
     theme(legend.position = "none",
