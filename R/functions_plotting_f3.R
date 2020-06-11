@@ -326,7 +326,7 @@ plot_panel_delta_dxy <- function(lg, start, end, ...){
     scale_y_continuous(name = expression(bolditalic(Δ~d[XY])),
                        expand = c(0, 0),
                        breaks = c(0, 0.0025, 0.005),
-                       labels = c("0", "", "0.005"),
+                      # labels = c("0", "", "0.005"),
                        limits = c(0, 0.0051))+
     # use same plot appreance for all panels
     theme_panels()
