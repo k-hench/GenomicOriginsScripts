@@ -17,6 +17,8 @@ Other Figure SX:
 \code{\link{data_amdx}()},
 \code{\link{getPofZ}()},
 \code{\link{get_gxp_both_models}()},
-\code{\link{reformat_run_name}()}
+\code{\link{label_spacer}()},
+\code{\link{reformat_run_name}()},
+\code{\link{theme_hyb}()}
 }
 \concept{Figure SX}

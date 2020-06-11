@@ -16,7 +16,9 @@ Other Figure SX:
 \code{\link{collapse_peaks}()},
 \code{\link{getPofZ}()},
 \code{\link{get_gxp_both_models}()},
+\code{\link{label_spacer}()},
 \code{\link{plot_loc}()},
-\code{\link{reformat_run_name}()}
+\code{\link{reformat_run_name}()},
+\code{\link{theme_hyb}()}
 }
 \concept{Figure SX}

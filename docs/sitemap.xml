@@ -142,6 +142,9 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/join_list.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/label_spacer.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/lighten.html</loc>
   </url>
   <url>
@@ -269,6 +272,9 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/summarize_fst.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/theme_hyb.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/theme_panels.html</loc>

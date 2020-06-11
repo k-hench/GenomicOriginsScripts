@@ -85,5 +85,32 @@ plot_loc <- function(loc){
           strip.text.y  = element_markdown(),
           axis.text.x = element_markdown(angle = 90),
           axis.title.x = element_blank(),
-          axis.title.y = element_text(vjust = 2))
+          axis.title.y = element_text(vjust = 4))
 }
+
+#' Custom ggplot theme
+#'
+#'\code{theme_hyb} ggplot theme for hybridization plots
+#'
+#' @family Figure SX
+#'
+#' @export
+theme_hyb <-  function(legend.position = "none",...){
+  list(scale_y_continuous(breaks = c(0,.5,1)),
+       theme(legend.position = legend.position,
+             legend.background = element_rect(fill = "white",colour = rgb(1,1,1,0)),
+             legend.direction = "horizontal",
+             legend.justification = c(1,1),
+             strip.text.y = element_markdown(angle = 0,hjust = 0),
+             ...))
+}
+
+#' Adjust plot sizes
+#'
+#' \code{label_spacer} adjusts plot sizes with respect to presence of labels
+#'
+#' @family Figure SX
+#'
+#' @export
+label_spacer <- function(x, plus = 1.1){x + plus}
+
