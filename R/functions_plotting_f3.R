@@ -531,7 +531,7 @@ plot_fst_poptree <- function(gid, data_nj, ...){
     geom_node_point(aes(filter = leaf,
                         fill = str_sub(name, 1, 3),
                         shape = str_sub(name, 4, 6)),
-                    size = 1.5,)+
+                    size = 2.5,)+
     scale_fill_manual("Species",
                       values = clr,
                       labels = sp_names %>%
