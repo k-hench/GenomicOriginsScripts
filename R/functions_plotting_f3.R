@@ -323,6 +323,8 @@ plot_panel_delta_dxy <- function(lg, start, end, ...){
     # layout y ayis
     scale_y_continuous(name = expression(bolditalic(Δ~d[XY])),
                        expand = c(0, 0),
+                       breaks = c(0, 0.0025, 0.005),
+                       labels = c("0", "", "0.005"),
                        limits = c(0, 0.0051))+
     # use same plot appreance for all panels
     theme_panels()
@@ -532,13 +534,17 @@ plot_fst_poptree <- function(gid, data_nj, ...){
                     size = 1.5,)+
     scale_fill_manual("Species",
                       values = clr,
-                      labels = sp_names %>% str_c("H.~",.) %>% set_names(nm = names(sp_names)),
+                      labels = loc_names,
                       guide = guide_legend(override.aes = list(shape = 21),
                                            nrow = 1))+
     scale_shape_manual("Location",
+                       labels = sp_names %>%
+                         str_c("*H. ",.,"*") %>%
+                         set_names(nm = names(sp_names)),
                        values = 21:23) +
     theme_void()+
-    theme(legend.position = "none") +
+    theme(legend.position = "none",
+          legend.text = element_markdown()) +
     coord_equal()+
     scale_y_reverse()
 
