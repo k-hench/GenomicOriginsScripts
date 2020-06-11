@@ -157,7 +157,7 @@ plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size ,ne
     scale_x_continuous(limits = c(start-window_buffer*1.25,end+window_buffer*1.25),expand = c(0,0),
                        labels = ax_scl) +
     # layout y ayis
-    scale_y_continuous(expression(bolditalic(Weighting)), expand = c(0.01, 0.01))+
+    scale_y_continuous(expression(bolditalic(w)), expand = c(0.01, 0.01))+
     # use same plot appreance for all panels
     theme_panels()
 
@@ -396,7 +396,7 @@ plot_panel_anno <- function(outlier_id, label, lg, start, end, genes = c(),...){
                        limits = c(start-window_buffer*1.25,end+window_buffer*1.25),
                        labels = ax_scl)+
     # layout y ayis
-    scale_y_continuous(name = expression(bolditalic(Annotation)), expand = c(0,.4))+
+    scale_y_continuous(name = expression(bolditalic(Genes)), expand = c(0,.4))+
     # use same boundaries for all panels
     coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
     # special panel layout for annotation panel
@@ -528,9 +528,11 @@ plot_fst_poptree <- function(gid, data_nj, ...){
     geom_edge_link()+
     geom_node_point(aes(filter = leaf,
                         fill = str_sub(name, 1, 3),
-                        shape = str_sub(name, 4, 6)))+
+                        shape = str_sub(name, 4, 6)),
+                    size = 1.5,)+
     scale_fill_manual("Species",
                       values = clr,
+                      labels = sp_names %>% str_c("H.~",.) %>% set_names(nm = names(sp_names)),
                       guide = guide_legend(override.aes = list(shape = 21),
                                            nrow = 1))+
     scale_shape_manual("Location",
