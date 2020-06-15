@@ -2,7 +2,8 @@
 
 The **R** package **GenomicOriginsScripts** provides the scripts needed to reproduce
 the figures and the supplementary figures of the paper
-*The genomic origins of a marine radiation* by Hench, McMillan and Puebla
+*Ancestral variation, hybridization and modularity fuel a marine radiation* by
+Hench, McMillan and Puebla
 
 ## Install
 
@@ -11,3 +12,7 @@ To install **GenomicOriginsScripts** please run:
 ```r
 remotes::install_github("k-hench/GenomicOriginsScripts")
 ```
+
+This package is intended as a supplement to the [code acompanying the publication](https://k-hench.github.io/chapter2/)
+and is used extensively in **R** scripts that produce the
+figures of that publication.
