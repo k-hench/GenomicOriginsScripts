@@ -2,7 +2,7 @@
 #'
 #' \code{root_manual} reroot a tree manually.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 6
 #'
 #' @export
 root_manual <- function(object, outgroup, node = NULL, resolve.root = TRUE, ...) {
@@ -23,7 +23,7 @@ root_manual <- function(object, outgroup, node = NULL, resolve.root = TRUE, ...)
 #'
 #' \code{setup_tree_data} sets up phylo tree data.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 6
 #'
 #' @export
 setup_tree_data <- function(data) {
@@ -36,7 +36,7 @@ setup_tree_data <- function(data) {
 #'
 #' \code{get_tree} imports a phylogenetic tree.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 6
 #'
 #' @export
 get_tree <- function(loc, file, tree_dir, ...){
@@ -53,7 +53,7 @@ get_tree <- function(loc, file, tree_dir, ...){
 #'
 #' \code{StatTreeData} provides a custom ggplot layer for node support.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 6
 #'
 #' @export
 StatTreeData <-  ggproto("StatTreeLabel", Stat,
@@ -67,7 +67,7 @@ StatTreeData <-  ggproto("StatTreeLabel", Stat,
 #'
 #' \code{geom_nodepoint_support} provides the backbone for a custom ggplot layer for node support.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 6
 #'
 #' @export
 geom_nodepoint_support <- function (mapping = NULL, data = NULL, position = "identity",
@@ -88,4 +88,3 @@ geom_nodepoint_support <- function (mapping = NULL, data = NULL, position = "ide
   geom_point_support(mapping, data, position, na.rm, show.legend,
                      inherit.aes, stat = StatTreeData, ...)
 }
-

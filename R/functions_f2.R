@@ -5,7 +5,7 @@
 #' The run name (the pair wise species comparison) is extracted from the file name,
 #' the data is imported and the run name is added.
 #'
-#' @family Figure 4
+#' @family Figure 2
 #'
 #' @export
 get_msmc <- function(file, msmc_path, mu = 3.7e-8, gen = 1){
@@ -27,7 +27,7 @@ get_msmc <- function(file, msmc_path, mu = 3.7e-8, gen = 1){
 #' The data is imported and run components are extracted from the a reference table,
 #' and added to the data.
 #'
-#' @family Figure 4
+#' @family Figure 2
 #'
 #' @export
 get_cc <- function(file, cc_groups, cc_path, mu = 3.7e-8, gen = 1){

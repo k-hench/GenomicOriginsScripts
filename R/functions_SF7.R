@@ -2,7 +2,7 @@
 #'
 #' \code{read_sc} imports a sc data sheet.
 #'
-#' @family Suppl. Figure SX2
+#' @family Suppl Figure 7
 #'
 #' @export
 read_sc <-function(file){
@@ -31,7 +31,7 @@ read_sc <-function(file){
 #' \code{data_amdx} imports the admixture data
 #'
 #'
-#' @family Figure SX
+#' @family Suppl Figure 7
 #'
 #' @export
 data_amdx <- function(gid, k, admx_path){
@@ -53,7 +53,7 @@ data_amdx <- function(gid, k, admx_path){
 #' \code{adm_plot} plots the admixture data
 #'
 #'
-#' @family Figure SX
+#' @family Suppl Figure 7
 #'
 #' @export
 adm_plot <- function(gid_in){
@@ -94,7 +94,7 @@ adm_plot <- function(gid_in){
 #' \code{add_spec_drawing} adds a fish annotation to a plot
 #'
 #'
-#' @family Figure SX
+#' @family Suppl Figure 7
 #'
 #' @export
 add_spec_drawing <- function(spec, pos){

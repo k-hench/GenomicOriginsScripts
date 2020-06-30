@@ -12,7 +12,7 @@
 #' the position information is merged, reformated and the
 #' genomic positions are added.
 #'
-#' @family Figure 2
+#' @family Figure 4
 #'
 #' @export
 get_twisst_data <- function(loc,w_in,d_in,smooth = FALSE, span = 0.01){
@@ -63,7 +63,7 @@ get_twisst_data <- function(loc,w_in,d_in,smooth = FALSE, span = 0.01){
 #' The topology ranks are added to the full data set and a window
 #' column caontaing the location is added for faceting.
 #'
-#' @family Figure 2
+#' @family Figure 4
 #'
 #' @export
 match_twisst_files <- function(loc, window_size = 200,panel = 'a'){

@@ -13,7 +13,6 @@ export_2_latex(table, name)
 Other General functions: 
 \code{\link{darken}()},
 \code{\link{get_dxy}()},
-\code{\link{get_fst_fixed}()},
 \code{\link{get_fst_summary_data}()},
 \code{\link{get_fst}()},
 \code{\link{get_gxp}()},

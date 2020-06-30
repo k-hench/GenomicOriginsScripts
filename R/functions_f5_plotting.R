@@ -9,7 +9,7 @@
 #' depending on the column position (first column/ other column),
 #' the y axis titles are removed.
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 plot_curtain <- function(loc = 'bel', outlier_id, outlier_nr, lg, start, end,
@@ -74,7 +74,7 @@ plot_curtain <- function(loc = 'bel', outlier_id, outlier_nr, lg, start, end,
 #'
 #' Finally, the topologie weighting panel is plotted.
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size ,neighbours,xlab = TRUE, highlight_mode, ...){
@@ -173,7 +173,7 @@ plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size ,ne
 #'
 #' \code{plot_panel_fst} plots the fst panel of a selected outlier window
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 plot_panel_fst <- function(lg, start, end, xlab = TRUE, ...){
@@ -212,7 +212,7 @@ plot_panel_fst <- function(lg, start, end, xlab = TRUE, ...){
 #' The dxy data is subsetted to mathch the outlier area,
 #' then the panel is plotted.
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 plot_panel_dxy <- function(lg, start, end, ...){
@@ -253,7 +253,7 @@ plot_panel_dxy <- function(lg, start, end, ...){
 #' \code{plot_panel_gxp} plots the genotype x phenotype panel of a selected outlier window
 #'
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 plot_panel_gxp <- function(lg, start, end, trait, ...){
@@ -299,7 +299,7 @@ plot_panel_gxp <- function(lg, start, end, trait, ...){
 #' The delta dxy data is subsetted to mathch the outlier area,
 #' then the panel is plotted.
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 plot_panel_delta_dxy <- function(lg, start, end, ...){
@@ -340,7 +340,7 @@ plot_panel_delta_dxy <- function(lg, start, end, ...){
 #' The highlighting of the outlier area is added and the coloration
 #' of genes is simplified to ony a single color.
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 custom_annoplot <- function (..., searchLG, xrange, genes_of_interest = c(), genes_of_sec_interest = c(),
@@ -382,7 +382,7 @@ custom_annoplot <- function (..., searchLG, xrange, genes_of_interest = c(), gen
 #'
 #' The overal column title is created and the annotation data is plotted.
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 plot_panel_anno <- function(outlier_id, label, lg, start, end, genes = c(),...){
@@ -428,7 +428,7 @@ plot_panel_anno <- function(outlier_id, label, lg, start, end, genes = c(),...){
 #'
 #' This funtion is used in the creation of the topologie legend.
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 plot_fish_zoom <- function(anno_tab,idx, height = .1, width = 5){
@@ -450,7 +450,7 @@ plot_fish_zoom <- function(anno_tab,idx, height = .1, width = 5){
 #'
 #' Then the geometry is plotted an the hamlets are added.
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 plot_leg <- function(spec1 = 'puella', spec2 = 'maya', color = "#084082ff", size = .5, mode = 'pair'){
@@ -514,7 +514,7 @@ plot_leg <- function(spec1 = 'puella', spec2 = 'maya', color = "#084082ff", size
 #'
 #' \code{plot_fst_poptree} plots the fst population tree panel of a selected outlier window
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 plot_fst_poptree <- function(gid, data_nj, ...){

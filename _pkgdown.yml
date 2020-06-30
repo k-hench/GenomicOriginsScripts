@@ -59,6 +59,7 @@ reference:
       - summarize_dxy
       - summarize_fst
       - make_faint_clr
+      - network_layout
       - plot_fish
       - plot_network
       - whisker_points
@@ -66,11 +67,17 @@ reference:
     desc: >
       Functions specific to Figure 2.
     contents:
+      - get_cc
+      - get_msmc
+  - title: "Figure 4"
+    desc: >
+      Functions specific to Figure 4.
+    contents:
       - get_twisst_data
       - match_twisst_files
-  - title: "Figure 3"
+  - title: "Figure 5"
     desc: >
-      Functions specific to Figure 3.
+      Functions specific to Figure 5.
     contents:
       - ax_scl
       - custom_annoplot
@@ -97,70 +104,58 @@ reference:
       - plot_panel_twisst
       - prep_data
       - theme_panels
-  - title: "Figure 4"
+  - title: "Suppl. Figure 1"
     desc: >
-      Functions specific to Figure 4.
+      Functions specific to Suppl. Figure 1.
     contents:
-      - get_cc
-      - get_msmc
-  - title: "Suppl. Figure X1"
+      - getPofZ
+      - label_spacer
+      - plot_loc
+      - theme_hyb
+  - title: "Suppl. Figure 2"
     desc: >
-      Functions specific to Suppl. Figure X1.
+      Functions specific to Suppl. Figure 2.
     contents:
-    - geom_hypo_grob2
-    - plot_fishes_location
-    - summarise_model
-  - title: "Suppl. Figure X2"
+      - anno_pair_flag
+      - fst_bar_row_run
+      - plot_pair_run
+      - refactor_run
+      - rescale_fst
+  - title: "Suppl. Figure 3"
     desc: >
-      Functions specific to Suppl. Figure X2.
+      Functions specific to Suppl. Figure 3.
     contents:
-    - read_sc
-  - title: "Suppl. Figure X3"
+      - collapse_peaks
+      - geom_hypo_grob2
+      - get_fst_fixed
+      - plot_fishes_location
+      - reformat_run_name
+      - summarise_model
+  - title: "Suppl. Figure 5"
     desc: >
-      Functions specific to Suppl. Figure X3.
+      Functions specific to Suppl. Figure 5.
     contents:
-    - anno_pair_flag
-    - fst_bar_row_run
-    - plot_pair_run
-    - refactor_run
-    - rescale_fst
-  - title: "Suppl. Figure X4"
+      - fish_plot
+      - fish_plot2
+  - title: "Suppl. Figure 6"
     desc: >
-      Functions specific to Suppl. Figure X4.
+      Functions specific to Suppl. Figure 6.
     contents:
-    - fish_plot
-    - fish_plot2
-  - title: "Suppl. Figure X7"
+      - get_tree
+      - geom_nodepoint_support
+      - root_manual
+      - setup_tree_data
+      - StatTreeData
+  - title: "Suppl. Figure 7"
     desc: >
-      Functions specific to Suppl. Figure X7.
+      Functions specific to Suppl. Figure 7.
     contents:
-    - root_manual
-    - setup_tree_data
-    - get_tree
-    - StatTreeData
-    - geom_nodepoint_support
-  - title: "Suppl. Figure X8"
+      - add_spec_drawing
+      - adm_plot
+      - data_amdx
+      - read_sc
+  - title: "Suppl. Figure 9"
     desc: >
-      Functions specific to Suppl. Figure X8.
+      Functions specific to Suppl. Figure 9.
     contents:
-    - collapse_peaks
-    - get_fst_fixed
-    - reformat_run_name
-  - title: "Suppl. Figure X9"
-    desc: >
-      Functions specific to Suppl. Figure X9.
-    contents:
-    - add_spec_drawing
-    - adm_plot
-    - data_amdx
-  - title: "Suppl. Figure X10"
-    desc: >
-      Functions specific to Suppl. Figure X10.
-    contents:
-    - getPofZ
-    - plot_loc
-  - title: "Suppl. Figure X11"
-    desc: >
-      Functions specific to Suppl. Figure X11.
-    contents:
-    - get_gxp_both_models
+      - get_gxp_both_models

@@ -2,7 +2,7 @@
 #'
 #' \code{cross_spec} creates a cross of all possible species pairs
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 cross_spec <- function(grph){
@@ -15,7 +15,7 @@ cross_spec <- function(grph){
 #'
 #' \code{get_dist} creates a tibble containg distance of a single species pair within a topology
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 get_dist <- function(grph,x,y){
@@ -28,7 +28,7 @@ get_dist <- function(grph,x,y){
 #'
 #' \code{dist_tibble} creates a tibble of all pairwise species distances for a topology
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 dist_tibble <- function(phyl){
@@ -45,7 +45,7 @@ dist_tibble <- function(phyl){
 #' First the distances of all species within all topologies are created.
 #' This is subset for the topologies where the distance between the two species equals 2 (2 edges).
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 get_neighbour_topos <- function(topo_plots,left_neighbour,right_neighbour){
@@ -63,7 +63,7 @@ get_neighbour_topos <- function(topo_plots,left_neighbour,right_neighbour){
 #'
 #' \code{distances_tree} unroots a topology and creates a distance matrix from it
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 distances_tree <- function(tree){
@@ -78,7 +78,7 @@ distances_tree <- function(tree){
 #'
 #' \code{min_dist} finds the minimum distance of a focal species to all other species in a topology
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 min_dist <- function(dist, pop, pops){
@@ -90,7 +90,7 @@ min_dist <- function(dist, pop, pops){
 #'
 #' \code{is_isolated} determines if a species has a sister species within a topology
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 is_isolated <- function(x, pop, pops){
@@ -113,7 +113,7 @@ is_isolated <- function(x, pop, pops){
 #'
 #' The index number of those topologies is exported.
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 get_isolated_topos <- function(topo_plots, left_neighbour, pops){

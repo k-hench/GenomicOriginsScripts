@@ -2,7 +2,7 @@
 #'
 #' \code{get_gxp_both_models} imports gxp data
 #'
-#' @family Figure SX
+#' @family Suppl Figure 9
 #'
 #' @export
 get_gxp_both_models <- function(file, trait, model_type, path){

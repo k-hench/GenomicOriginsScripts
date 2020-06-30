@@ -2,7 +2,7 @@
 #'
 #' \code{fish_plot} provides hamlet pair annotation.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 5
 #'
 #' @export
 fish_plot <- function(spec){
@@ -20,7 +20,7 @@ fish_plot <- function(spec){
 #'
 #' \code{fish_plot2} provides hamlet pair annotation with alternative axis specifications.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 5
 #'
 #' @export
 fish_plot2 <- function(spec){

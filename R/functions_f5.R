@@ -9,7 +9,7 @@
 #' Then, the selected files are imported.
 #'
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 prep_data <- function(loc, window_size = twisst_size, ...){
@@ -34,7 +34,7 @@ prep_data <- function(loc, window_size = twisst_size, ...){
 #' \code{get_clr} gets the most intense color of a given colorbrewer palette
 #'
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 get_clr <- function(palette){
@@ -49,7 +49,7 @@ get_clr <- function(palette){
 #'
 #' This is a scaling funtion to transform bp postions to Mb.
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 ax_scl <- function(x){ x/(10^6) }
@@ -59,7 +59,7 @@ ax_scl <- function(x){ x/(10^6) }
 #'
 #' \code{theme_panels} provides a template for the pannels of Figure 3
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 theme_panels <- function(...){
@@ -81,7 +81,7 @@ theme_panels <- function(...){
 #' This function removes the  y axis title and grid elements
 #' of second and third column panels in Figure 3.
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 no_title <- function(...){theme(axis.title.y = element_blank(),
@@ -96,7 +96,7 @@ no_title <- function(...){theme(axis.title.y = element_blank(),
 #' The phenotype trait name is extracted from the file name.
 #' Then, the data is imported, the genomic poistion and the trait name is added as columns.
 #'
-#' @family Figure 3
+#' @family Figure 5
 #'
 #' @export
 get_gxp_long <- function(file, kb = 10){
@@ -111,4 +111,3 @@ get_gxp_long <- function(file, kb = 10){
     mutate(trt = trt)
   data
 }
-

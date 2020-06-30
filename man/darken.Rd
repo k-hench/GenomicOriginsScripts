@@ -13,7 +13,6 @@ darken(color, factor = 0.4)
 Other General functions: 
 \code{\link{export_2_latex}()},
 \code{\link{get_dxy}()},
-\code{\link{get_fst_fixed}()},
 \code{\link{get_fst_summary_data}()},
 \code{\link{get_fst}()},
 \code{\link{get_gxp}()},

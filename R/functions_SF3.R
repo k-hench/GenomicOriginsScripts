@@ -2,7 +2,7 @@
 #'
 #' \code{summarise_model} sumamrizes model statistics in a tibble row.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 3
 #'
 #' @export
 summarise_model <- function(data){
@@ -26,7 +26,7 @@ summarise_model <- function(data){
 #'
 #' This is used to annotate plots.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 3
 #'
 #' @export
 plot_fishes_location <- function (left, right,loc) {
@@ -53,7 +53,7 @@ plot_fishes_location <- function (left, right,loc) {
 #' tidiverse github forum:
 #' https://github.com/tidyverse/ggplot2/issues/1399
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 3
 #'
 #' @export
 geom_hypo_grob2 <- function(mapping = NULL,
@@ -102,7 +102,7 @@ hypo_geom_grob_custom2 <- ggproto(
 #'
 #' \code{get_fst_percentile} computes summary stats for Fst outlier for a given Fst threshold.
 #'
-#' @family General functions
+#' @family  Suppl Figure 3
 #'
 #' @export
 get_fst_fixed <- function(file, run, fst_threshold,...){
@@ -150,7 +150,7 @@ get_fst_fixed <- function(file, run, fst_threshold,...){
 #'
 #' \code{collapse_peaks} collapses all Fst peaks of a given run
 #'
-#' @family Figure SX
+#' @family  Suppl Figure 3
 #'
 #' @export
 collapse_peaks <- function(x){
@@ -162,7 +162,7 @@ collapse_peaks <- function(x){
 #'
 #' \code{reformat_run_name} formats run to "specloc-specloc" format.
 #'
-#' @family Figure SX
+#' @family  Suppl Figure 3
 #'
 #' @export
 reformat_run_name <- function(run){

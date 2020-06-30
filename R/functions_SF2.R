@@ -2,7 +2,7 @@
 #'
 #' \code{fst_bar_row_run} crates a rescaled global fst bar table.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 2
 #'
 #' @export
 fst_bar_row_run <- function(fst,run){
@@ -18,7 +18,7 @@ fst_bar_row_run <- function(fst,run){
 #'
 #' \code{rescale_fst} normalize global fst to 0 - 1.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 2
 #'
 #' @export
 rescale_fst <- function(fst){
@@ -33,7 +33,7 @@ rescale_fst <- function(fst){
 #'
 #' \code{refactor_run} reorder species pairs according to fst.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 2
 #'
 #' @export
 refactor_run <- function(self,globals){
@@ -45,7 +45,7 @@ refactor_run <- function(self,globals){
 #'
 #' \code{plot_pair_run} prepares the hamlet pair annotations.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 2
 #'
 #' @export
 plot_pair_run <- function(run,loc,left,right){
@@ -59,7 +59,7 @@ plot_pair_run <- function(run,loc,left,right){
 #'
 #' \code{plot_pair_run} creates the hamlet pair annotations.
 #'
-#' @family Suppl. Figure SX
+#' @family Suppl Figure 2
 #'
 #' @export
 anno_pair_flag <- function (loc,left, right, circle_color = NA, circle_fill_left = "white",

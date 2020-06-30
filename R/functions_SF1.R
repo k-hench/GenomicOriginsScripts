@@ -2,7 +2,7 @@
 #'
 #' \code{getPofZ} imports hybridization data
 #'
-#' @family Figure SX
+#' @family Suppl Figure 1
 #'
 #' @export
 getPofZ <- function(base_dir, folder){
@@ -47,7 +47,7 @@ getPofZ <- function(base_dir, folder){
 #'
 #' \code{getPofZ} plot hybridization data of a location
 #'
-#' @family Figure SX
+#' @family Suppl Figure 1
 #'
 #' @export
 plot_loc <- function(loc){
@@ -92,7 +92,7 @@ plot_loc <- function(loc){
 #'
 #'\code{theme_hyb} ggplot theme for hybridization plots
 #'
-#' @family Figure SX
+#' @family Suppl Figure 1
 #'
 #' @export
 theme_hyb <-  function(legend.position = "none",...){
@@ -109,8 +109,7 @@ theme_hyb <-  function(legend.position = "none",...){
 #'
 #' \code{label_spacer} adjusts plot sizes with respect to presence of labels
 #'
-#' @family Figure SX
+#' @family Suppl Figure 1
 #'
 #' @export
 label_spacer <- function(x, plus = 1.1){x + plus}
-
