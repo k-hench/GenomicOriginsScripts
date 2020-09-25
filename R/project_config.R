@@ -228,3 +228,13 @@ project_case <- function(x){
 project_inv_case <- function(x){
   str_to_upper(x)
 }
+
+
+#' Default figure width
+#'
+#' \code{f_width} defines the full width for figures (mm).
+#'
+#' 7 inch = 178m
+#'
+#' @export
+f_width <- 7

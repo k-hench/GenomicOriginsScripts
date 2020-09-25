@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>get isolated topologies — get_isolated_topos • GenomicOriginsScripts</title>
+<title>Default figure width — f_width • GenomicOriginsScripts</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="get isolated topologies — get_isolated_topos" />
-<meta property="og:description" content="is_isolated finds all topologies where a species is isolated" />
+<meta property="og:title" content="Default figure width — f_width" />
+<meta property="og:description" content="f_width defines the full width for figures (mm)." />
 <meta property="og:image" content="https://k-hench.github.io/GenomicOriginsScripts/logo.png" />
 
 
@@ -116,52 +116,24 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>get isolated topologies</h1>
-    <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/functions_f5_cross_topo.R'><code>R/functions_f5_cross_topo.R</code></a></small>
-    <div class="hidden name"><code>get_isolated_topos.Rd</code></div>
+    <h1>Default figure width</h1>
+    <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/project_config.R'><code>R/project_config.R</code></a></small>
+    <div class="hidden name"><code>f_width.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>is_isolated</code> finds all topologies where a species is isolated</p>
+    <p><code>f_width</code> defines the full width for figures (mm).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_isolated_topos</span>(<span class='no'>topo_plots</span>, <span class='no'>left_neighbour</span>, <span class='no'>pops</span>)</pre>
+    <pre class="usage"><span class='no'>f_width</span></pre>
 
 
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>numeric</code> of length 1.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>First the distance matrixesof all topologies are created and attached
-to the topologies.
-Then, the isolation status of a species is determined based on the
-distance matrixes and the topologies are filtered for the isolation cases.</p>
-<p>The index number of those topologies is exported.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other Figure 5: 
-<code><a href='ax_scl.html'>ax_scl</a>()</code>,
-<code><a href='cross_spec.html'>cross_spec</a>()</code>,
-<code><a href='custom_annoplot.html'>custom_annoplot</a>()</code>,
-<code><a href='dist_tibble.html'>dist_tibble</a>()</code>,
-<code><a href='distances_tree.html'>distances_tree</a>()</code>,
-<code><a href='get_clr.html'>get_clr</a>()</code>,
-<code><a href='get_dist.html'>get_dist</a>()</code>,
-<code><a href='get_gxp_long.html'>get_gxp_long</a>()</code>,
-<code><a href='get_neighbour_topos.html'>get_neighbour_topos</a>()</code>,
-<code><a href='is_isolated.html'>is_isolated</a>()</code>,
-<code><a href='min_dist.html'>min_dist</a>()</code>,
-<code><a href='no_title.html'>no_title</a>()</code>,
-<code><a href='plot_curtain.html'>plot_curtain</a>()</code>,
-<code><a href='plot_fish_zoom.html'>plot_fish_zoom</a>()</code>,
-<code><a href='plot_fst_poptree.html'>plot_fst_poptree</a>()</code>,
-<code><a href='plot_leg.html'>plot_leg</a>()</code>,
-<code><a href='plot_panel_anno.html'>plot_panel_anno</a>()</code>,
-<code><a href='plot_panel_delta_dxy.html'>plot_panel_delta_dxy</a>()</code>,
-<code><a href='plot_panel_dxy.html'>plot_panel_dxy</a>()</code>,
-<code><a href='plot_panel_fst.html'>plot_panel_fst</a>()</code>,
-<code><a href='plot_panel_gxp.html'>plot_panel_gxp</a>()</code>,
-<code><a href='plot_panel_twisst.html'>plot_panel_twisst</a>()</code>,
-<code><a href='prep_data.html'>prep_data</a>()</code>,
-<code><a href='theme_panels.html'>theme_panels</a>()</code></p></div>
+    <p>7 inch = 178m</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

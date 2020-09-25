@@ -18,6 +18,7 @@ reference:
       - clr2
       - clr_below
       - clr_loc
+      - f_width
       - fll_fun
       - fll_n
       - loc_names
