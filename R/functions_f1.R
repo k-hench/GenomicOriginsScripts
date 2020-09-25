@@ -164,7 +164,8 @@ plot_network <- function(loc, nodes, edges,asp = .8, sep = 0, node_lab_shift = 0
   p <- nodes %>%
     ggplot(aes(x, y))+
     coord_fixed(ratio = asp)+
-    geom_segment(data = edges, aes(xend = xend, yend = yend), color = clr_loc[loc])
+    geom_segment(data = edges, aes(xend = xend, yend = yend),
+                 color = clr_loc[loc], size = plot_lwd)
 
   for (k in nodes$idx) {
     p <- p + plot_fish(short = str_sub(nodes$label[k],1,3),
@@ -172,10 +173,14 @@ plot_network <- function(loc, nodes, edges,asp = .8, sep = 0, node_lab_shift = 0
                        y = nodes$y[k])
   }
 
-  p + geom_label(data = edges, aes(x = xmid_shift + sign(xmid_shift)*sep,
+  p + geom_label(data = edges,
+                 aes(x = xmid_shift + sign(xmid_shift)*sep,
                                    y = ymid_shift + sign(ymid_shift)*sep*asp,
-                                   label = run_ord), color = clr_loc[loc],
-                 label.padding = unit(1,'pt'),label.size = 0)+
+                                   label = run_ord),
+                 color = clr_loc[loc],
+                 label.padding = unit(1,'pt'),
+                 label.size = 0,
+                 size = (5/14) * plot_text_size)+
     scale_fill_manual(values = clr_loc, guide = FALSE) +
     scale_x_continuous(limits = c(-1.3,1.3),expand = c(0,0))+
     scale_y_continuous(expand = c(0,.1))+
