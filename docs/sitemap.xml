@@ -199,6 +199,9 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_loc.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_lwd.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_network.html</loc>
   </url>
   <url>
@@ -227,6 +230,9 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_text_size.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_text_size_small.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/pop_levels.html</loc>

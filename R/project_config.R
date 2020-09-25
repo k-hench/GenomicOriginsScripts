@@ -67,6 +67,16 @@ clr_below <- 'lightgray'#rgb(.8,.8,.8)
 #' @export
 plot_size <- .2
 
+
+#' Default plot linewidth
+#'
+#' \code{plot_lwd} sets the linewidth in plots.
+#'
+#' This sets the default linewidth thoughout the figures.
+#'
+#' @export
+plot_lwd <- .25
+
 #' Default plot font size
 #'
 #' \code{plot_text_size} sets the default font size of text in plots.
@@ -74,8 +84,16 @@ plot_size <- .2
 #' This sets the default font size of text thoughout the figures.
 #'
 #' @export
-plot_text_size <- 10
+plot_text_size <- 7
 
+#' Small plot font size
+#'
+#' \code{plot_text_size_small} sets the small font size of text in plots.
+#'
+#' This sets the small font size of text for the figures (legends).
+#'
+#' @export
+plot_text_size_small <- 6
 
 #' Outlier color
 #'
