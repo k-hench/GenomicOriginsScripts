@@ -67,6 +67,16 @@ clr_below <- 'lightgray'#rgb(.8,.8,.8)
 #' @export
 plot_size <- .2
 
+#' Default plot font size
+#'
+#' \code{plot_text_size} sets the default font size of text in plots.
+#'
+#' This sets the default font size of text thoughout the figures.
+#'
+#' @export
+plot_text_size <- 10
+
+
 #' Outlier color
 #'
 #' \code{outlr_clr} defines the color used to highlight Fst outlier windows in plots.
@@ -241,9 +251,9 @@ f_width <- 7
 
 #' Default figure width (single column)
 #'
-#' \code{f_width} defines the half width for figures (mm).
+#' \code{f_width_half} defines the half width for figures (mm).
 #'
 #' 3.43 inch = 87mm
 #'
 #' @export
-f_width <- 3.43
+f_width_half <- 3.43

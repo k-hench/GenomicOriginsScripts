@@ -25,6 +25,7 @@ reference:
       - loc_names
       - outlr_clr
       - plot_clr
+      - plot_text_size
       - plot_size
       - pop_levels
       - project_case

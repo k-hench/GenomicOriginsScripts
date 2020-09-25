@@ -64,6 +64,9 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/f_width.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/f_width_half.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/fish_plot.html</loc>
   </url>
   <url>
@@ -221,6 +224,9 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_size.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_text_size.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/pop_levels.html</loc>
