@@ -3,17 +3,25 @@
 \docType{data}
 \name{f_width}
 \alias{f_width}
-\title{Default figure width}
+\title{Default figure width (double column)}
 \format{
+An object of class \code{numeric} of length 1.
+
 An object of class \code{numeric} of length 1.
 }
 \usage{
 f_width
+
+f_width
 }
 \description{
 \code{f_width} defines the full width for figures (mm).
+
+\code{f_width} defines the half width for figures (mm).
 }
 \details{
-7 inch = 178m
+7 inch = 178mm
+
+3.43 inch = 87mm
 }
 \keyword{datasets}

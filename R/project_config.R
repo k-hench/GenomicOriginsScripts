@@ -230,11 +230,20 @@ project_inv_case <- function(x){
 }
 
 
-#' Default figure width
+#' Default figure width (double column)
 #'
 #' \code{f_width} defines the full width for figures (mm).
 #'
-#' 7 inch = 178m
+#' 7 inch = 178mm
 #'
 #' @export
 f_width <- 7
+
+#' Default figure width (single column)
+#'
+#' \code{f_width} defines the half width for figures (mm).
+#'
+#' 3.43 inch = 87mm
+#'
+#' @export
+f_width <- 3.43
