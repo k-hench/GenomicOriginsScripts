@@ -65,7 +65,8 @@ ax_scl <- function(x){ x/(10^6) }
 theme_panels <- function(...){
   theme_hypo() +
     theme_hypo_anno_extra()+
-    theme(legend.position = 'none',
+    theme(text = element_text(size = plot_text_size),
+          legend.position = 'none',
           axis.title.y = element_text(angle = 90),
           axis.title.x = element_blank(),
           axis.line.x = element_blank(),

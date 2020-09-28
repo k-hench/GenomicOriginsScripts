@@ -372,7 +372,8 @@ custom_annoplot <- function (..., searchLG, xrange, genes_of_interest = c(), gen
                           aes(x = ps, xend = pe,
                               y = yl, yend = yl, group = Parent), lwd = 0.2, color = "black") +
     # add gene label
-    ggplot2::geom_text(data = df_list[[1]] %>% filter(label %in% genes_of_interest), size = 3,
+    ggplot2::geom_text(data = df_list[[1]] %>% filter(label %in% genes_of_interest),
+                       size = GenomicOriginsScripts::plot_text_size_small / ggplot2::.pt,
                        aes(x = labelx, label = gsub("hpv1g000000", ".", label), y = yl - 0.5))
 }
 
@@ -405,13 +406,13 @@ plot_panel_anno <- function(outlier_id, label, lg, start, end, genes = c(),...){
     coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
     # special panel layout for annotation panel
     theme_hypo()+
-    theme(
-      panel.background = element_rect(fill = rgb(.9,.9,.9),color = rgb(1,1,1,0)),
-      legend.position = 'none',
-      axis.title.x = element_text(),
-      axis.line = element_blank(),
-      axis.text.y = element_blank(),
-      axis.ticks.y = element_blank())
+    theme(text = element_text(size = plot_text_size),
+          panel.background = element_rect(fill = rgb(.9,.9,.9),color = rgb(1,1,1,0)),
+          legend.position = 'none',
+          axis.title.x = element_text(),
+          axis.line = element_blank(),
+          axis.text.y = element_blank(),
+          axis.ticks.y = element_blank())
 
   # use correct greec symbols in labels if needed
   if(outlier_id == 'LG17_1'){
