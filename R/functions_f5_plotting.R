@@ -145,7 +145,7 @@ plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size ,ne
                fill = topo4,
                group = str_c(topo4,CHROM, sep = '_')))+
     # add weighting results
-    geom_area(position = 'stack',size = .2)+
+    geom_area(position = 'stack', size = .2)+
     # add outlier area
     geom_rect(inherit.aes = FALSE, data = tibble(start = start, end=end),
               aes(xmin = start, xmax = end),ymin = -Inf, ymax = Inf,
@@ -200,7 +200,8 @@ plot_panel_fst <- function(lg, start, end, xlab = TRUE, ...){
                        expand = c(0,0),
                        limits = c(-0.07, 0.92))+
     # legend styling
-    guides(color=guide_colorbar(barheight = unit(5,'pt'),barwidth = unit(200,'pt')))+
+    guides(color = guide_colorbar(barheight = unit(3,'pt'),
+                                  barwidth = unit(100,'pt')))+
     # use same plot appreance for all panels
     theme_panels()
 }
@@ -243,7 +244,7 @@ plot_panel_dxy <- function(lg, start, end, ...){
                        expand = c(0,0),
                        limits = c(0.0009, 0.0075))+
     # legend styling
-    guides(color=guide_colorbar(barheight = unit(5,'pt'),barwidth = unit(300,'pt')))+
+    guides(color=guide_colorbar(barheight = unit(3,'pt'),barwidth = unit(100,'pt')))+
     # use same plot appreance for all panels
     theme_panels()
 }
@@ -285,8 +286,8 @@ plot_panel_gxp <- function(lg, start, end, trait, ...){
     # layout y ayis
     scale_y_continuous(name = expression(bolditalic(-log[10](p))), expand = c(0,0))+
     # legend styling
-    guides(color=guide_legend(keyheight =  unit(5,'pt'),
-                              keywidth = unit(50,'pt'),
+    guides(color=guide_legend(keyheight =  unit(3,'pt'),
+                              keywidth = unit(20,'pt'),
                               override.aes = list(size = 2))) +
     # use same plot appreance for all panels
     theme_panels()
@@ -534,7 +535,7 @@ plot_fst_poptree <- function(gid, data_nj, ...){
     geom_node_point(aes(filter = leaf,
                         fill = str_sub(name, 1, 3),
                         shape = str_sub(name, 4, 6)),
-                    size = 2.5,)+
+                    size = 1.5)+
     scale_fill_manual("Species",
                       values = clr,
                       labels = sp_names %>%
@@ -545,6 +546,8 @@ plot_fst_poptree <- function(gid, data_nj, ...){
     scale_shape_manual("Location",
                        labels = loc_names,
                        values = 21:23) +
+    guides(color = guide_legend(title.position = "top"),
+           fill = guide_legend(title.position = "top"))+
     theme_void()+
     theme(legend.position = "none",
           legend.text = element_markdown()) +
