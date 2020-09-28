@@ -180,7 +180,7 @@ plot_network <- function(loc, nodes, edges,asp = .8, sep = 0, node_lab_shift = 0
                  color = clr_loc[loc],
                  label.padding = unit(1,'pt'),
                  label.size = 0,
-                 size = (5/14) * plot_text_size)+
+                 size = plot_text_size / ggplot2::.pt)+
     scale_fill_manual(values = clr_loc, guide = FALSE) +
     scale_x_continuous(limits = c(-1.3,1.3),expand = c(0,0))+
     scale_y_continuous(expand = c(0,.1))+
