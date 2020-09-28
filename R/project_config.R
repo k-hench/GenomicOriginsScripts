@@ -60,12 +60,10 @@ clr_below <- 'lightgray'#rgb(.8,.8,.8)
 
 #' Default gene color
 #'
-#' \code{clr_gene} is the default color of genes zoom plot.w
+#' \code{clr_genes} is the default color of genes zoom plot.w
 #'
 #' @export
-clr_gene <-rgb(.4,.4,.4)
-
-
+clr_genes <-rgb(.4,.4,.4)
 
 #' Default plot size
 #'

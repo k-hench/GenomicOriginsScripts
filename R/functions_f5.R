@@ -68,11 +68,13 @@ theme_panels <- function(...){
     theme(text = element_text(size = plot_text_size),
           legend.position = 'none',
           axis.title.y = element_text(angle = 90),
+          axis.line.y = element_line(size = plot_lwd),
+          axis.ticks.y = element_line(size = plot_lwd),
           axis.title.x = element_blank(),
           axis.line.x = element_blank(),
           axis.text.x = element_blank(),
           axis.ticks.x = element_blank(),
-          plot.margin = margin(t = 1, r = 1, b = 1, l = 1),
+          plot.margin = margin(t = 1, r = 1, b = 3, l = 1),
           ...)
 }
 
