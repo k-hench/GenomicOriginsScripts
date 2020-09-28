@@ -58,6 +58,15 @@ plot_clr <- rgb(.2,.2,.2)
 #' @export
 clr_below <- 'lightgray'#rgb(.8,.8,.8)
 
+#' Default gene color
+#'
+#' \code{clr_gene} is the default color of genes zoom plot.w
+#'
+#' @export
+clr_gene <-rgb(.4,.4,.4)
+
+
+
 #' Default plot size
 #'
 #' \code{plot_size} sets the default size of data points in plots.

@@ -37,7 +37,7 @@ plot_curtain <- function(loc = 'bel', outlier_id, outlier_nr, lg, start, end,
                                     p_delta_dxy,
                                     p_t1,p_t2,p_t3,
                                     ncol = 1, align = 'v',
-                                    rel_heights = c(1, rep(.85, 7)))
+                                    rel_heights = c(1, rep(.8, 7)))
   } else {
     p_curtain <- cowplot::plot_grid(p_g + no_title(),
                                     p_gxp + no_title(),
@@ -54,7 +54,7 @@ plot_curtain <- function(loc = 'bel', outlier_id, outlier_nr, lg, start, end,
                                     p_t3 + no_title(axis.text.y = element_blank(),
                                                     axis.ticks.y = element_blank()),
                                     ncol = 1, align = 'v',
-                                    rel_heights = c(1, rep(.85, 7)))
+                                    rel_heights = c(1, rep(.8, 7)))
   }
   p_curtain
 }
@@ -200,7 +200,7 @@ plot_panel_fst <- function(lg, start, end, xlab = TRUE, ...){
                        expand = c(0,0),
                        limits = c(-0.07, 0.92))+
     # legend styling
-    guides(color = guide_colorbar(barheight = unit(3,'pt'),
+    guides(color = guide_colorbar(barheight = unit(5,'pt'),
                                   barwidth = unit(100,'pt')))+
     # use same plot appreance for all panels
     theme_panels()
@@ -244,7 +244,7 @@ plot_panel_dxy <- function(lg, start, end, ...){
                        expand = c(0,0),
                        limits = c(0.0009, 0.0075))+
     # legend styling
-    guides(color=guide_colorbar(barheight = unit(3,'pt'),barwidth = unit(100,'pt')))+
+    guides(color=guide_colorbar(barheight = unit(5,'pt'),barwidth = unit(100,'pt')))+
     # use same plot appreance for all panels
     theme_panels()
 }
@@ -366,12 +366,12 @@ custom_annoplot <- function (..., searchLG, xrange, genes_of_interest = c(), gen
     ggplot2::geom_segment(data = (df_list[[1]] %>% filter(strand %in% c("+", "-"))),
                           aes(x = ps, xend = pe,
                               y = yl, yend = yl, group = Parent),
-                          lwd = 0.2, arrow = arrow(length = unit(2,"pt"), type = "closed"),
-                          color = "black") +
+                          lwd = 0.2, arrow = arrow(length = unit(1.5,"pt"), type = "closed"),
+                          color = clr_genes) +
     # add gene extent if direction is unknown
     ggplot2::geom_segment(data = (df_list[[1]] %>% filter(!strand %in% c("+", "-"))),
                           aes(x = ps, xend = pe,
-                              y = yl, yend = yl, group = Parent), lwd = 0.2, color = "black") +
+                              y = yl, yend = yl, group = Parent), lwd = 0.2, color = clr_genes) +
     # add gene label
     ggplot2::geom_text(data = df_list[[1]] %>% filter(label %in% genes_of_interest),
                        size = GenomicOriginsScripts::plot_text_size_small / ggplot2::.pt,
@@ -540,17 +540,19 @@ plot_fst_poptree <- function(gid, data_nj, ...){
                       values = clr,
                       labels = sp_names %>%
                         str_c("*H. ",.,"*") %>%
-                        set_names(nm = names(sp_names)),
-                      guide = guide_legend(override.aes = list(shape = 21),
-                                           nrow = 1))+
+                        set_names(nm = names(sp_names)))+
     scale_shape_manual("Location",
                        labels = loc_names,
                        values = 21:23) +
-    guides(color = guide_legend(title.position = "top"),
-           fill = guide_legend(title.position = "top"))+
+    guides(shape = guide_legend(#title.position = "top"
+                                ),
+           fill = guide_legend(#title.position = "top",
+                               override.aes = list(shape = 21),
+                               nrow = 1))+
     theme_void()+
     theme(legend.position = "none",
-          legend.text = element_markdown()) +
+          legend.text = element_markdown(),
+          legend.key.width = unit(6, "pt")) +
     coord_equal()+
     scale_y_reverse()
 

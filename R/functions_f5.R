@@ -72,6 +72,7 @@ theme_panels <- function(...){
           axis.line.x = element_blank(),
           axis.text.x = element_blank(),
           axis.ticks.x = element_blank(),
+          plot.margin = margin(t = 1, r = 1, b = 1, l = 1),
           ...)
 }
 
