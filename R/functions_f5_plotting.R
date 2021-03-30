@@ -324,7 +324,7 @@ plot_panel_delta_dxy <- function(lg, start, end, ...){
                        expand = c(0, 0),
                        position = 'top') +
     # layout y ayis
-    scale_y_continuous(name = expression(bolditalic(Δ~d[XY])),
+    scale_y_continuous(name = expression(bolditalic("\U0394" ~d[XY])),
                        expand = c(0, 0),
                        breaks = c(0, 0.0025, 0.005),
                       # labels = c("0", "", "0.005"),

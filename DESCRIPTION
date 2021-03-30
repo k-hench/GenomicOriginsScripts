@@ -13,7 +13,7 @@ Description: This package provides the scripts needed to reproduce
     the figures and the supplementary figures of the paper
     *Ancestral variation, hybridization and modularity fuel a marine 
     radiation* by Hench, Helmkampf, McMillan and Puebla.
-License: GPL-3 | file LICENSE
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: tidyverse,
@@ -22,7 +22,21 @@ Depends: tidyverse,
          ggraph,
          tidygraph,
          knitr
-Imports: ggforce
+Imports: ggforce,
+         ape,
+         broom,
+         cli,
+         crayon,
+         dplyr,
+         ggplot2,
+         igraph,
+         purrr,
+         RColorBrewer,
+         rtracklayer,
+         scales,
+         stringr,
+         tibble,
+         viridis
 Suggests: hypoimg,
           hypogen
 VignetteBuilder: knitr

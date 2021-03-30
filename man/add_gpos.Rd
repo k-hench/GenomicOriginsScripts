@@ -6,6 +6,11 @@
 \usage{
 add_gpos(tib, ...)
 }
+\arguments{
+\item{tib}{input tibble}
+
+\item{...}{catchall input for purrr::pmap}
+}
 \description{
 \code{add_gpos} adds the genomic position to a tibble of genomic stats.
 }

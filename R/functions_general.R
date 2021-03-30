@@ -24,8 +24,12 @@ process_input <- function(script_name, args){
 #' This function translates the postion into the genomic postion where
 #' all LGs have been concatinated (eg. LG02, POS:1 => length(LG01)+1)
 #'
+#' @param tib input tibble
+#' @param ... catchall input for purrr::pmap
+#'
 #' @export
 add_gpos <- function(tib, ...){
+
   tib %>%
     left_join(hypogen::hypo_chrom_start) %>%
     mutate(GPOS = GSTART+(BIN_START+BIN_END)/2)
