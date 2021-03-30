@@ -6,6 +6,11 @@
 \usage{
 add_spec_drawing(spec, pos)
 }
+\arguments{
+\item{spec}{hamlet species}
+
+\item{pos}{position on ggplot}
+}
 \description{
 \code{add_spec_drawing} adds a fish annotation to a plot
 }

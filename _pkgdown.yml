@@ -22,6 +22,7 @@ reference:
       - f_width_half
       - fll_fun
       - fll_n
+      - generic_hamlet_img
       - loc_names
       - outlr_clr
       - plot_clr

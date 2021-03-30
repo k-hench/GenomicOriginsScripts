@@ -3,7 +3,7 @@
 The **R** package **GenomicOriginsScripts** provides the scripts needed to reproduce
 the figures and the supplementary figures of the paper
 *Ancestral variation, hybridization and modularity fuel a marine radiation* by
-Hench, McMillan and Puebla
+Hench, Helmkampf, McMillan and Puebla
 
 ## Install
 

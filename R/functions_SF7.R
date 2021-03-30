@@ -94,9 +94,12 @@ adm_plot <- function(gid_in){
 #' \code{add_spec_drawing} adds a fish annotation to a plot
 #'
 #'
+#' @param spec hamlet species
+#' @param pos position on ggplot
+#'
 #' @family Suppl Figure 7
 #'
 #' @export
 add_spec_drawing <- function(spec, pos){
-  plot_fish(short = spec,x = pos, y = .5,height = .9,width = 10)
+  plot_fish(short = spec, x = pos, y = .5,height = .9,width = 10)
 }
