@@ -30,18 +30,18 @@ summarise_model <- function(data){
 #'
 #' @export
 plot_fishes_location <- function (left, right,loc) {
-  nr_left <- which(str_sub(hypo_img$spec,start = 1,end = 3) == left)
-  nr_right <- which(str_sub(hypo_img$spec,start = 1,end = 3) == right)
-  nr_loc <- which(str_sub(hypo_flag$geo,start = 1,end = 3) == loc)
+  nr_left <- which(str_sub(hypoimg::hypo_img$spec,start = 1,end = 3) == left)
+  nr_right <- which(str_sub(hypoimg::hypo_img$spec,start = 1,end = 3) == right)
+  nr_loc <- which(str_sub(hypoimg::hypo_flag$geo,start = 1,end = 3) == loc)
 
   p <- ggplot() +
-    annotation_custom(hypo_flag$flag[[nr_loc]], xmin = -0.28, xmax = 0.28, ymin = -Inf, ymax = Inf)+
+    annotation_custom(hypoimg::hypo_flag$flag[[nr_loc]], xmin = -0.28, xmax = 0.28, ymin = -Inf, ymax = Inf)+
     coord_fixed(xlim = c(-1, 1)) +
     theme_void() +
     scale_x_continuous(expand = c(0,0)) +
     scale_y_continuous(limits = c(-0.4, 0.38)) +
-    annotation_custom(hypo_img$r[[nr_right]], xmin = -1, xmax = -0.05, ymin = -Inf, ymax = Inf) +
-    annotation_custom(hypo_img$l[[nr_left]], xmin = 0.05, xmax = 1, ymin = -Inf, ymax = Inf)
+    annotation_custom(hypoimg::hypo_img$r[[nr_right]], xmin = -1, xmax = -0.05, ymin = -Inf, ymax = Inf) +
+    annotation_custom(hypoimg::hypo_img$l[[nr_left]], xmin = 0.05, xmax = 1, ymin = -Inf, ymax = Inf)
 
   tibble(run = str_c(left, loc, '-', right, loc),
          grob = list(p %>% ggplotGrob()))
@@ -107,7 +107,7 @@ hypo_geom_grob_custom2 <- ggproto(
 #' @export
 get_fst_fixed <- function(file, run, fst_threshold,...){
 
-  data <- hypo_import_windows(file,...) %>%
+  data <- hypogen::hypo_import_windows(file,...) %>%
     mutate(rank = rank(WEIGHTED_FST,ties.method = "random"))%>%
     mutate(thresh = fst_threshold) %>%
     mutate(outl = (WEIGHTED_FST>thresh) %>% as.numeric()) %>%

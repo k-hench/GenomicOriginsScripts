@@ -63,8 +63,8 @@ ax_scl <- function(x){ x/(10^6) }
 #'
 #' @export
 theme_panels <- function(...){
-  theme_hypo() +
-    theme_hypo_anno_extra()+
+  hypoimg::theme_hypo() +
+    hypoimg::theme_hypo_anno_extra()+
     theme(text = element_text(size = plot_text_size),
           legend.position = 'none',
           axis.title.y = element_text(angle = 90),
@@ -89,8 +89,8 @@ theme_panels <- function(...){
 #'
 #' @export
 no_title <- function(...){theme(axis.title.y = element_blank(),
-                                panel.grid.major.x = element_line(colour = hypo_clr_lg),
-                                panel.grid.minor.x = element_line(colour = hypo_clr_lg),
+                                panel.grid.major.x = element_line(colour = hypogen::hypo_clr_lg),
+                                panel.grid.minor.x = element_line(colour = hypogen::hypo_clr_lg),
                                 ...)}
 
 #' Import genotype x phenotype association in long format

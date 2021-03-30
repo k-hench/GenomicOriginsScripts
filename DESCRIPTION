@@ -1,6 +1,6 @@
 Package: GenomicOriginsScripts
 Title: Provides the R scripts for the paper "Ancestral variation, hybridization and modularity fuel a marine radiation"
-Version: 0.0.0.90060
+Version: 0.0.0.90061
 Authors@R: 
     person(given = "Kosmas",
            family = "Hench",
@@ -12,17 +12,17 @@ BugReports: https://github.com/k-hench/GenomicOriginsScripts/issues
 Description: This package provides the scripts needed to reproduce
     the figures and the supplementary figures of the paper
     *Ancestral variation, hybridization and modularity fuel a marine 
-    radiation* by Hench, McMillan and Puebla.
+    radiation* by Hench, Helmkampf, McMillan and Puebla.
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: tidyverse,
-         hypogen,
          cowplot,
          vroom,
          ggraph,
          tidygraph
-Imports: ggforce,
-         hypoimg
+Imports: ggforce
+Suggests: hypoimg,
+          hypogen
 VignetteBuilder: knitr
 RoxygenNote: 7.1.0

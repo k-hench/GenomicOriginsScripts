@@ -347,7 +347,7 @@ plot_panel_delta_dxy <- function(lg, start, end, ...){
 custom_annoplot <- function (..., searchLG, xrange, genes_of_interest = c(), genes_of_sec_interest = c(),
                              anno_rown = 3, width = 0.1, gene_color = 'darkgray', start, end) {
   # import annotation data of this LG and range
-  df_list <- hypo_annotation_get(searchLG = searchLG, xrange = xrange,
+  df_list <- hypogen::hypo_annotation_get(searchLG = searchLG, xrange = xrange,
                                  genes_of_interest = genes_of_interest,
                                  genes_of_sec_interest = genes_of_sec_interest,
                                  anno_rown = anno_rown)
@@ -406,7 +406,7 @@ plot_panel_anno <- function(outlier_id, label, lg, start, end, genes = c(),...){
     # use same boundaries for all panels
     coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
     # special panel layout for annotation panel
-    theme_hypo()+
+    hypoimg::theme_hypo()+
     theme(text = element_text(size = plot_text_size),
           panel.background = element_rect(fill = rgb(.9,.9,.9),color = rgb(1,1,1,0)),
           legend.position = 'none',

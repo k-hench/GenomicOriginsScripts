@@ -65,16 +65,16 @@ plot_pair_run <- function(run,loc,left,right){
 anno_pair_flag <- function (loc,left, right, circle_color = NA, circle_fill_left = "white",
                             circle_fill_right = "lightgray", circle_lwd = 0.5, plot_names = FALSE,
                             plot_name_size = 3, font_family = "sans", ...) {
-  nr_left <- which(hypo_img$spec %>% str_sub(.,1,3) == left)
-  nr_right <- which(hypo_img$spec %>% str_sub(.,1,3) == right)
-  nr_flag <- which((hypo_flag$geo %>% str_sub(.,1,3)) == loc)
+  nr_left <- which(hypoimg::hypo_img$spec %>% str_sub(.,1,3) == left)
+  nr_right <- which(hypoimg::hypo_img$spec %>% str_sub(.,1,3) == right)
+  nr_flag <- which((hypoimg::hypo_flag$geo %>% str_sub(.,1,3)) == loc)
   p <- ggplot() +
     theme_void() +
     scale_x_continuous(expand = c(0, 0)) +
     scale_y_continuous(limits = c(-0.4, 0.38)) +
-    annotation_custom(hypo_flag$flag[[nr_flag]], xmin = -0.3, xmax = .3, ymin = -Inf, ymax = Inf) +
-    annotation_custom(hypo_img$l[[nr_right]], xmin = 0.05, xmax = 1, ymin = -Inf, ymax = Inf) +
-    annotation_custom(hypo_img$r[[nr_left]], xmin = -1, xmax = -0.05, ymin = -Inf, ymax = Inf)+
+    annotation_custom(hypoimg::hypo_flag$flag[[nr_flag]], xmin = -0.3, xmax = .3, ymin = -Inf, ymax = Inf) +
+    annotation_custom(hypoimg::hypo_img$l[[nr_right]], xmin = 0.05, xmax = 1, ymin = -Inf, ymax = Inf) +
+    annotation_custom(hypoimg::hypo_img$r[[nr_left]], xmin = -1, xmax = -0.05, ymin = -Inf, ymax = Inf)+
     coord_cartesian(xlim = c(-1.1,1.1))
   return(p)
 }

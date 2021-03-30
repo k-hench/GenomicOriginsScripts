@@ -40,7 +40,7 @@ get_twisst_data <- function(loc,w_in,d_in,smooth = FALSE, span = 0.01){
     mutate(rn = row_number()) %>%
     bind_cols(window_data) %>%
     gather(key = 'topo', value = 'weight', -rn:-lnL) %>%
-    left_join(hypo_karyotype) %>%
+    left_join(hypogen::hypo_karyotype) %>%
     mutate(GPOS = BIN_MID + GSTART,
            topo_nr = str_remove(topo, 'topo') %>%
              as.numeric()) %>%
