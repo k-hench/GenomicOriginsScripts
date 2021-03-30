@@ -20,7 +20,8 @@ Depends: tidyverse,
          cowplot,
          vroom,
          ggraph,
-         tidygraph
+         tidygraph,
+         knitr
 Imports: ggforce
 Suggests: hypoimg,
           hypogen
