@@ -33,6 +33,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          remotes::install_bioc("rtracklayer")
+          remotes::install_github("k-hench/hypogen")
+          remotes::install_github("k-hench/hypoimg")
           remotes::install_deps(dependencies = TRUE)
           install.packages("pkgdown", type = "binary")
         shell: Rscript {0}
