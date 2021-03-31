@@ -1,5 +1,9 @@
 # GenomicOriginsScripts <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/k-hench/GenomicOriginsScripts/workflows/R-CMD-check/badge.svg)](https://github.com/k-hench/GenomicOriginsScripts/actions)
+<!-- badges: end -->
+
 The **R** package **GenomicOriginsScripts** provides the scripts needed to reproduce
 the figures and the supplementary figures of the paper
 *Ancestral variation, hybridization and modularity fuel a marine radiation* by
