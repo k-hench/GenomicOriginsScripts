@@ -6,6 +6,9 @@
 \usage{
 project_inv_case(x)
 }
+\arguments{
+\item{x}{string}
+}
 \description{
 \code{project_inv_case} manages the format of labels within figures.
 }

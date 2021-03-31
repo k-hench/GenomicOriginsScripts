@@ -6,6 +6,9 @@
 \usage{
 cross_spec(grph)
 }
+\arguments{
+\item{grph}{input graph of species}
+}
 \description{
 \code{cross_spec} creates a cross of all possible species pairs
 }

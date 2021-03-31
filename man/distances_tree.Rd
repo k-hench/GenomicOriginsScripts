@@ -6,8 +6,11 @@
 \usage{
 distances_tree(tree)
 }
+\arguments{
+\item{tree}{input topologys}
+}
 \description{
-\code{distances_tree} unroots a topology and creates a distance matrix from it
+\code{distances_tree} un-roots a topology and creates a distance matrix from it
 }
 \seealso{
 Other Figure 5: 

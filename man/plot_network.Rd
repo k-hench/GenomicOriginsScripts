@@ -6,6 +6,19 @@
 \usage{
 plot_network(loc, nodes, edges, asp = 0.8, sep = 0, node_lab_shift = 0)
 }
+\arguments{
+\item{loc}{location (Belize/ Honduras/ Panama)}
+
+\item{nodes}{tibble containing network nodes}
+
+\item{edges}{tibble containing network edges}
+
+\item{asp}{plot aspect ration}
+
+\item{sep}{buffer network segments from nodes}
+
+\item{node_lab_shift}{relative label position on edge}
+}
 \description{
 \code{plot_network} creates a ggplot with a network of species comparisons.
 }

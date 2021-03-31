@@ -6,11 +6,14 @@
 \usage{
 ax_scl(x)
 }
+\arguments{
+\item{x}{continuous numerical vector}
+}
 \description{
 \code{ax_scl} scales the x axis of ggplots
 }
 \details{
-This is a scaling funtion to transform bp postions to Mb.
+This is a scaling function to transform bp positions to Mb.
 }
 \seealso{
 Other Figure 5: 

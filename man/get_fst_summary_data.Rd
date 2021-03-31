@@ -6,6 +6,9 @@
 \usage{
 get_fst_summary_data(gid)
 }
+\arguments{
+\item{gid}{string, identifier of fst outlier ID (eg "LG04_1")}
+}
 \description{
 \code{get_fst_summary_data} imports pair wise fst summary data for outlier windows.
 }

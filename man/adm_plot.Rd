@@ -6,6 +6,9 @@
 \usage{
 adm_plot(gid_in)
 }
+\arguments{
+\item{gid_in}{string, identifier of fst outlier ID (eg "LG04_1")}
+}
 \description{
 \code{adm_plot} plots the admixture data
 }

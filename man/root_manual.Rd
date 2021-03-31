@@ -6,6 +6,17 @@
 \usage{
 root_manual(object, outgroup, node = NULL, resolve.root = TRUE, ...)
 }
+\arguments{
+\item{object}{tree object}
+
+\item{outgroup}{vector of nodes to define outgroup}
+
+\item{node}{node to root tree at}
+
+\item{resolve.root}{logical}
+
+\item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
+}
 \description{
 \code{root_manual} reroot a tree manually.
 }

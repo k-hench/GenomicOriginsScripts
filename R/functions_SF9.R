@@ -2,6 +2,11 @@
 #'
 #' \code{get_gxp_both_models} imports gxp data
 #'
+#' @param file       input file
+#' @param trait      string, focal trait
+#' @param model_type string ("lm" /"lmm")
+#' @param path       path to folder contain the GxP results
+#'
 #' @family Suppl Figure 9
 #'
 #' @export

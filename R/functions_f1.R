@@ -5,6 +5,8 @@
 #' Fst data is imported, filtered for non-overlapping windows
 #' and boxplot statistics are created.
 #'
+#' @param file input file
+#'
 #' @family Figure 1
 #'
 #' @export
@@ -29,6 +31,8 @@ summarize_fst <- function(file){
 #' dxy data is imported, filtered for non-overlapping windows
 #' and boxplot statistics are created.
 #'
+#' @param file input file
+#'
 #' @family Figure 1
 #'
 #' @export
@@ -51,6 +55,8 @@ summarize_dxy <- function(file){
 #'
 #' This is used to plot boxplots without outliers.
 #'
+#' @param x input vector
+#'
 #' @family Figure 1
 #'
 #' @export
@@ -69,6 +75,12 @@ whisker_points <- function(x){
 #'
 #' This is used to annotate plots.
 #'
+#' @param short three letter abbreviation of hamlet species
+#' @param x horizontal center of grob
+#' @param y vertical center of grob
+#' @param height grob height
+#' @param width grob width
+#'
 #' @family Figure 1
 #'
 #' @export
@@ -82,6 +94,8 @@ plot_fish <- function(short, x = 0, y = 0, height = .75, width = .75){
 #'
 #' \code{make_faint_clr} creates a faint version of a given color.
 #'
+#' @param loc three letter location abbreviation
+#'
 #' @family Figure 1
 #'
 #' @export
@@ -93,6 +107,12 @@ make_faint_clr <- function(loc){
 #' crate a network layout for pairwise species comparisons
 #'
 #' \code{network_layout} creates a network layout for pairwise species comparisons.
+#'
+#' @param n nomber of nodes
+#' @param rotate rotation angle
+#' @param label node labels
+#' @param weight link weighting
+#' @param loc location (Belize/ Honduras/ Panama)
 #'
 #' @family Figure 1
 #'
@@ -135,10 +155,17 @@ network_layout <- function(n, rotate = 0, label = NULL, weight = 2, loc = NA){
 #'
 #' This creates a network for all pairwise species comparisons within a location.
 #'
+#' @param loc location (Belize/ Honduras/ Panama)
+#' @param nodes tibble containing network nodes
+#' @param edges tibble containing network edges
+#' @param asp plot aspect ration
+#' @param sep buffer network segments from nodes
+#' @param node_lab_shift relative label position on edge
+#'
 #' @family Figure 1
 #'
 #' @export
-plot_network <- function(loc, nodes, edges,asp = .8, sep = 0, node_lab_shift = 0){
+plot_network <- function(loc, nodes, edges, asp = .8, sep = 0, node_lab_shift = 0){
 
   clr_prep <- scales::colour_ramp(c('black',clr_loc[loc]))(c(.4,1))
   clrs <- colorRampPalette(clr_prep)(max(edges$idx))

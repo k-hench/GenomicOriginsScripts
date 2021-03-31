@@ -6,6 +6,11 @@
 \usage{
 darken(color, factor = 0.4)
 }
+\arguments{
+\item{color}{string, color}
+
+\item{factor}{numeric, between [0-1]}
+}
 \description{
 \code{darken} makes a darker version of a given color.
 }

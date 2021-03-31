@@ -18,6 +18,29 @@ plot_curtain(
   ...
 )
 }
+\arguments{
+\item{loc}{string, sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])}
+
+\item{outlier_id}{string, identifier of fst outlier ID (eg "LG04_1")}
+
+\item{outlier_nr}{numeric (deprecated)}
+
+\item{lg}{string, linkage group (eg. "LG08")}
+
+\item{start}{numeric, start position of window (bp)}
+
+\item{end}{numeric, end position of window (bp)}
+
+\item{cool_genes}{vector of strings, genes that receive a label}
+
+\item{text}{logical, toggle y axis label and ticks}
+
+\item{label}{string, panel label ("A"/"B"/"C")}
+
+\item{trait}{string, trait identifier for icon on gxp plot}
+
+\item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
+}
 \description{
 \code{plot_curtain} calls all individual plotting functions needed for a single outlier zoom
 }

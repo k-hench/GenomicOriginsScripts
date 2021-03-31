@@ -6,6 +6,15 @@
 \usage{
 get_msmc(file, msmc_path, mu = 3.7e-08, gen = 1)
 }
+\arguments{
+\item{file}{msmc file}
+
+\item{msmc_path}{msmc results path}
+
+\item{mu}{mutation rate mu}
+
+\item{gen}{generation time in years}
+}
 \description{
 \code{get_msmc} imports msc data.
 }

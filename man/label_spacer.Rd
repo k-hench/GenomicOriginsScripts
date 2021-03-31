@@ -6,6 +6,11 @@
 \usage{
 label_spacer(x, plus = 1.1)
 }
+\arguments{
+\item{x}{label position}
+
+\item{plus}{label offset}
+}
 \description{
 \code{label_spacer} adjusts plot sizes with respect to presence of labels
 }

@@ -15,6 +15,23 @@ geom_hypo_grob2(
   ...
 )
 }
+\arguments{
+\item{mapping}{Aesthetic mapping; ggplot2::aes()}
+
+\item{data}{data frame}
+
+\item{stat}{ggplot2 stat}
+
+\item{position}{string, "identity"}
+
+\item{na.rm}{logical}
+
+\item{show.legend}{logical}
+
+\item{inherit.aes}{logical}
+
+\item{...}{arguments passed to ggplot2::layer()}
+}
 \description{
 This geom builds heavily on the answer by baptiste on the
 tidiverse github forum:

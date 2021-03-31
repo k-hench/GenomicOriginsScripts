@@ -2,6 +2,9 @@
 #'
 #' \code{getPofZ} imports hybridization data
 #'
+#' @param base_dir path containing the newhybrids results
+#' @param folder   sub-folder of interest within the results folder
+#'
 #' @family Suppl Figure 1
 #'
 #' @export
@@ -46,6 +49,8 @@ getPofZ <- function(base_dir, folder){
 #' Plot hybridization data
 #'
 #' \code{getPofZ} plot hybridization data of a location
+#'
+#' @param loc sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])
 #'
 #' @family Suppl Figure 1
 #'
@@ -92,6 +97,9 @@ plot_loc <- function(loc){
 #'
 #'\code{theme_hyb} ggplot theme for hybridization plots
 #'
+#' @param legend.position string, according to ggplot2::theme()
+#' @param ...             arguments funneled through to ggplot2::theme()
+#'
 #' @family Suppl Figure 1
 #'
 #' @export
@@ -108,6 +116,9 @@ theme_hyb <-  function(legend.position = "none",...){
 #' Adjust plot sizes
 #'
 #' \code{label_spacer} adjusts plot sizes with respect to presence of labels
+#'
+#' @param x    label position
+#' @param plus label offset
 #'
 #' @family Suppl Figure 1
 #'

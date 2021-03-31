@@ -6,6 +6,13 @@
 \usage{
 get_isolated_topos(topo_plots, left_neighbour, pops)
 }
+\arguments{
+\item{topo_plots}{tibble containing the topologies (in column 'phylo')}
+
+\item{left_neighbour}{string (species identifier for left neighbor)}
+
+\item{pops}{all populations within the topology}
+}
 \description{
 \code{is_isolated} finds all topologies where a species is isolated
 }

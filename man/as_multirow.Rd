@@ -6,6 +6,11 @@
 \usage{
 as_multirow(x, n)
 }
+\arguments{
+\item{x}{string, cell content}
+
+\item{n}{integer, number of rows to combine}
+}
 \description{
 \code{as_multirow} formats multirow content for latex tables.
 }

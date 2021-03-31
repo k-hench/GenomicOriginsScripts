@@ -6,8 +6,11 @@
 \usage{
 theme_panels(...)
 }
+\arguments{
+\item{...}{parameters to funnel through to ggplot2::theme()}
+}
 \description{
-\code{theme_panels} provides a template for the pannels of Figure 3
+\code{theme_panels} provides a template for the panels of Figure 3
 }
 \seealso{
 Other Figure 5: 

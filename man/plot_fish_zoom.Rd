@@ -6,11 +6,20 @@
 \usage{
 plot_fish_zoom(anno_tab, idx, height = 0.1, width = 5)
 }
+\arguments{
+\item{anno_tab}{tibble with annotation layout for the twisst legend}
+
+\item{idx}{legend element index}
+
+\item{height}{legend element height}
+
+\item{width}{legend element width}
+}
 \description{
 \code{plot_fish_zoom} creates a hamlet annotation from  a predefined table.
 }
 \details{
-This funtion is used in the creation of the topologie legend.
+This funtion is used in the creation of the topology legend.
 }
 \seealso{
 Other Figure 5: 

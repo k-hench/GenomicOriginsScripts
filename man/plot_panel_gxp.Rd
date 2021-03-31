@@ -6,6 +6,17 @@
 \usage{
 plot_panel_gxp(lg, start, end, trait, ...)
 }
+\arguments{
+\item{lg}{string, linkage group (eg. "LG08")}
+
+\item{start}{numeric, start position of window (bp)}
+
+\item{end}{numeric, end position of window (bp)}
+
+\item{trait}{string, trait identifier for icon on gxp plot}
+
+\item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
+}
 \description{
 \code{plot_panel_gxp} plots the genotype x phenotype panel of a selected outlier window
 }

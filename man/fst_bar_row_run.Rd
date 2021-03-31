@@ -6,8 +6,13 @@
 \usage{
 fst_bar_row_run(fst, run)
 }
+\arguments{
+\item{fst}{global fst value}
+
+\item{run}{string, species pair}
+}
 \description{
-\code{fst_bar_row_run} crates a rescaled global fst bar table.
+\code{fst_bar_row_run} crates a re-scaled global fst bar table.
 }
 \seealso{
 Other Suppl Figure 2: 

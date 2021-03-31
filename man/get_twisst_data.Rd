@@ -6,6 +6,17 @@
 \usage{
 get_twisst_data(loc, w_in, d_in, smooth = FALSE, span = 0.01)
 }
+\arguments{
+\item{loc}{sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])}
+
+\item{w_in}{weights file (topology weighting results)}
+
+\item{d_in}{data file (window position)}
+
+\item{smooth}{logical - apply smoothing?}
+
+\item{span}{granularity of smoothing}
+}
 \description{
 \code{get_twisst_data} a single topology weighting data set
 }

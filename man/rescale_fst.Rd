@@ -6,6 +6,9 @@
 \usage{
 rescale_fst(fst)
 }
+\arguments{
+\item{fst}{numeric, global fst value}
+}
 \description{
 \code{rescale_fst} normalize global fst to 0 - 1.
 }

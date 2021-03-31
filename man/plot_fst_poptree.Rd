@@ -6,6 +6,13 @@
 \usage{
 plot_fst_poptree(gid, data_nj, ...)
 }
+\arguments{
+\item{gid}{string, identifier of fst outlier ID (eg "LG04_1")}
+
+\item{data_nj}{fst based topology data}
+
+\item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
+}
 \description{
 \code{plot_fst_poptree} plots the fst population tree panel of a selected outlier window
 }

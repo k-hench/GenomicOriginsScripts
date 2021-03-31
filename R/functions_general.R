@@ -2,6 +2,9 @@
 #'
 #' \code{process_input} processes the script input and echos the received parameters.
 #'
+#' @param script_name string, name of the executed R-script
+#' @param args        vector of stings, arguments passed to the R-script
+#'
 #' @family General functions
 #'
 #' @export
@@ -43,6 +46,9 @@ add_gpos <- function(tib, ...){
 #' the data is imported, column names are standardized and genomic position and
 #' run name are added.
 #'
+#' @param file input file
+#' @param kb   string, window size ("10k"/"50k")
+#'
 #' @family General functions
 #'
 #' @export
@@ -65,6 +71,9 @@ get_fst <- function(file, kb = "50k"){
 #' The run name (the pair wise species comparison) is extracted from the file name,
 #' the data is imported, column names are standardized and genomic position and
 #' run name are added.
+#'
+#' @param file input file
+#' @param kb   string, window size ("10k"/"50k")
 #'
 #' @family General functions
 #'
@@ -92,6 +101,8 @@ get_dxy <- function(file, kb = "50k"){
 #' the genomic poistion and the p values of the wald test.
 #' The column containing the p values is renamed according to the trait.
 #'
+#' @param file input file
+#'
 #' @family General functions
 #'
 #' @export
@@ -116,6 +127,8 @@ get_gxp <- function(file){
 #'
 #' The data is imported and genomic position and species name are added.
 #'
+#' @param file input file
+#'
 #' @family General functions
 #'
 #' @export
@@ -130,6 +143,8 @@ get_pi <- function(file){
 #'
 #' \code{join_list} binds a list of tables according to a common column.
 #'
+#' @param lst input list
+#'
 #' @family General functions
 #'
 #' @export
@@ -140,6 +155,9 @@ join_list <- function(lst){
 #' Darken a given color
 #'
 #' \code{darken} makes a darker version of a given color.
+#'
+#' @param color  string, color
+#' @param factor numeric, between [0-1]
 #'
 #' @family General functions
 #'
@@ -155,6 +173,9 @@ darken <- function(color, factor=.4){
 #'
 #' \code{lighten} makes a lighter version of a given color.
 #'
+#' @param color  string, color
+#' @param factor numeric, between [0-1]
+#'
 #' @family General functions
 #'
 #' @export
@@ -167,7 +188,10 @@ lighten <- function(color, factor=.4){
 
 #' Reorder factor levels
 #'
-#' \code{refactor} redorders levels of a factor levels based on an external table.
+#' \code{refactor} reorders levels of a factor levels based on an external table.
+#'
+#' @param self    factor vector
+#' @param globals table containing the reference levels
 #'
 #' @family General functions
 #'
@@ -181,6 +205,8 @@ refactor <- function(self,globals){
 #'
 #' \code{get_fst_summary_data} imports pair wise fst summary data for outlier windows.
 #'
+#'
+#' @param gid string, identifier of fst outlier ID (eg "LG04_1")
 #'
 #' @family General functions
 #'

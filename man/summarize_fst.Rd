@@ -6,6 +6,9 @@
 \usage{
 summarize_fst(file)
 }
+\arguments{
+\item{file}{input file}
+}
 \description{
 \code{summarize_fst} imports and summarizes Fst data.
 }

@@ -6,6 +6,11 @@
 \usage{
 get_gxp_long(file, kb = 10)
 }
+\arguments{
+\item{file}{gpx results file}
+
+\item{kb}{gxp window size (matching file for string manipulation)}
+}
 \description{
 \code{get_gxp_long} imports genotype x phenotype association data in long format.
 }

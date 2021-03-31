@@ -6,6 +6,17 @@
 \usage{
 get_cc(file, cc_groups, cc_path, mu = 3.7e-08, gen = 1)
 }
+\arguments{
+\item{file}{cross coalescence file}
+
+\item{cc_groups}{cross coalescence group assignment reference table}
+
+\item{cc_path}{cross coalescence results path}
+
+\item{mu}{mutation rate mu}
+
+\item{gen}{generation time in years}
+}
 \description{
 \code{get_msmc} imports cross coalescence data and extracts according run information.
 }

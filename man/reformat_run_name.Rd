@@ -6,6 +6,9 @@
 \usage{
 reformat_run_name(run)
 }
+\arguments{
+\item{run}{string, species pair}
+}
 \description{
 \code{reformat_run_name} formats run to "specloc-specloc" format.
 }

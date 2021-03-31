@@ -6,6 +6,9 @@
 \usage{
 collapse_peaks(x)
 }
+\arguments{
+\item{x}{string vector with outlier peak ids}
+}
 \description{
 \code{collapse_peaks} collapses all Fst peaks of a given run
 }

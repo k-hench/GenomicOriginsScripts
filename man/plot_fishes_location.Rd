@@ -6,6 +6,13 @@
 \usage{
 plot_fishes_location(left, right, loc)
 }
+\arguments{
+\item{left}{string, three letter species identifier}
+
+\item{right}{string, three letter species identifier}
+
+\item{loc}{string, sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])}
+}
 \description{
 \code{plot_fishes_location} creates a ggplot annotation layer with two hamlets and a flag.
 }

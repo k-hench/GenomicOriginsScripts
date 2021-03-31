@@ -6,11 +6,14 @@
 \usage{
 project_case(x)
 }
+\arguments{
+\item{x}{string}
+}
 \description{
 \code{project_case} manages the format of labels for figure panels.
 }
 \details{
-Currently all figure sub panels are labelled using lower case.
+Currently all figure sub panels are labeled using lower case.
 This function potentially needs to be changed in case of
 resubmission to a different journal.
 }

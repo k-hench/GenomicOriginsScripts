@@ -6,6 +6,9 @@
 \usage{
 fish_plot2(spec)
 }
+\arguments{
+\item{spec}{string six letter population name}
+}
 \description{
 \code{fish_plot2} provides hamlet pair annotation with alternative axis specifications.
 }

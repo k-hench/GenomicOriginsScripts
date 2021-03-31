@@ -6,6 +6,9 @@
 \usage{
 get_gxp(file)
 }
+\arguments{
+\item{file}{input file}
+}
 \description{
 \code{get_gxp} imports genotype x phenotype association data and adds the genomic position.
 }

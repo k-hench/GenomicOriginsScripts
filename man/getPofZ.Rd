@@ -6,6 +6,11 @@
 \usage{
 getPofZ(base_dir, folder)
 }
+\arguments{
+\item{base_dir}{path containing the newhybrids results}
+
+\item{folder}{sub-folder of interest within the results folder}
+}
 \description{
 \code{getPofZ} imports hybridization data
 }

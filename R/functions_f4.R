@@ -12,6 +12,12 @@
 #' the position information is merged, reformated and the
 #' genomic positions are added.
 #'
+#' @param loc sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])
+#' @param w_in weights file (topology weighting results)
+#' @param d_in data file (window position)
+#' @param smooth logical - apply smoothing?
+#' @param span granularity of smoothing
+#'
 #' @family Figure 4
 #'
 #' @export
@@ -54,14 +60,18 @@ get_twisst_data <- function(loc,w_in,d_in,smooth = FALSE, span = 0.01){
 #' First the weight and position files of all topology weighting data
 #' sets (the different linkage groups) for a given location are collected.
 #'
-#' The topology weighting data import funtion is iterated over all
+#' The topology weighting data import function is iterated over all
 #' data sets and combined to create a full data set.
 #'
 #' Then, the full data set is summarized to then be able to rank
-#' the topologies based on their overall weighting.
+#' the typologies based on their overall weighting.
 #'
 #' The topology ranks are added to the full data set and a window
-#' column caontaing the location is added for faceting.
+#' column containing the location is added for faceting.
+#'
+#' @param loc sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])
+#' @param window_size window size of twisst run
+#' @param panel figure panel identifier (for labeling)
 #'
 #' @family Figure 4
 #'

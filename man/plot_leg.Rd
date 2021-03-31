@@ -12,6 +12,17 @@ plot_leg(
   mode = "pair"
 )
 }
+\arguments{
+\item{spec1}{string, three letter species identifier}
+
+\item{spec2}{string, three letter species identifier}
+
+\item{color}{string, color}
+
+\item{size}{numeric, line width}
+
+\item{mode}{string, legend element mode ("pair"/"isolation")}
+}
 \description{
 \code{plot_leg} creates the elements of the topology highlighting legend.
 }

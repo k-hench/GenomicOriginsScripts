@@ -6,6 +6,17 @@
 \usage{
 get_genes(gid, chrom, start, end, ...)
 }
+\arguments{
+\item{gid}{string, identifier of fst outlier ID (eg "LG04_1")}
+
+\item{chrom}{string, linkage group identifier (eg "LG04")}
+
+\item{start}{numeric, start position of window (bp)}
+
+\item{end}{numeric, end position of window (bp)}
+
+\item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
+}
 \description{
 \code{get_genes} collects the genes within a outlier window.
 }

@@ -17,6 +17,27 @@ custom_annoplot(
   end
 )
 }
+\arguments{
+\item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
+
+\item{searchLG}{string, linkage group (eg. "LG08")}
+
+\item{xrange}{numeric vector of length 2, range of the plotted window}
+
+\item{genes_of_interest}{vector of strings, genes that receive a label}
+
+\item{genes_of_sec_interest}{vector of strings (deprecate/legacy)}
+
+\item{anno_rown}{numeric, number of rows used for gene annotation}
+
+\item{width}{numeric, width of genes}
+
+\item{gene_color}{string (color), highlight color for genes}
+
+\item{start}{numeric, start position of window (bp)}
+
+\item{end}{numeric, end position of window (bp)}
+}
 \description{
 \code{custom_annoplot} extracts and plots hypoplectrus annotation data
 }

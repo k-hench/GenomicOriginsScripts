@@ -6,6 +6,9 @@
 \usage{
 get_clr(palette)
 }
+\arguments{
+\item{palette}{string - RColorBrewer palette identifier}
+}
 \description{
 \code{get_clr} gets the most intense color of a given colorbrewer palette
 }

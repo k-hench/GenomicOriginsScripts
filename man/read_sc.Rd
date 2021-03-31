@@ -6,6 +6,9 @@
 \usage{
 read_sc(file)
 }
+\arguments{
+\item{file}{input file}
+}
 \description{
 \code{read_sc} imports a sc data sheet.
 }

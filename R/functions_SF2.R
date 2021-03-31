@@ -1,22 +1,28 @@
 #' crate global fst bar table
 #'
-#' \code{fst_bar_row_run} crates a rescaled global fst bar table.
+#' \code{fst_bar_row_run} crates a re-scaled global fst bar table.
+#'
+#' @param fst global fst value
+#' @param run string, species pair
 #'
 #' @family Suppl Figure 2
 #'
 #' @export
-fst_bar_row_run <- function(fst,run){
-  tibble(xmin = rescale_fst(0),
+fst_bar_row_run <- function(fst, run){
+  tibble::tibble(xmin = rescale_fst(0),
          xmax = rescale_fst(fst),
          xmin_org = 0,
          xmax_org = fst,
          ymin = 0,
-         ymax= .15, run = run)
+         ymax= .15,
+         run = run)
 }
 
 #' normalize global fst
 #'
 #' \code{rescale_fst} normalize global fst to 0 - 1.
+#'
+#' @param fst numeric, global fst value
 #'
 #' @family Suppl Figure 2
 #'
@@ -26,17 +32,20 @@ rescale_fst <- function(fst){
   end <- 1
   fst_max <- max(globals$weighted)
 
-  scales::rescale(fst,from = c(0,fst_max), to = c(start,end))
+  scales::rescale(fst, from = c(0, fst_max), to = c(start, end))
 }
 
 #' reorder species pairs
 #'
 #' \code{refactor_run} reorder species pairs according to fst.
 #'
+#' @param self    string vector, species pairs
+#' @param globals reference table, order of species pairs according to reference table
+#'
 #' @family Suppl Figure 2
 #'
 #' @export
-refactor_run <- function(self,globals){
+refactor_run <- function(self, globals){
   factor(as.character(self$run),
          levels = c(levels(globals$run)))
 }
@@ -44,6 +53,11 @@ refactor_run <- function(self,globals){
 #' create hamlet pair annotations
 #'
 #' \code{plot_pair_run} prepares the hamlet pair annotations.
+#'
+#' @param run   string, species pair
+#' @param loc   string, sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])
+#' @param left  string, left species
+#' @param right string, right species
 #'
 #' @family Suppl Figure 2
 #'
@@ -58,6 +72,18 @@ plot_pair_run <- function(run,loc,left,right){
 #' create hamlet pair annotations
 #'
 #' \code{plot_pair_run} creates the hamlet pair annotations.
+#'
+#' @param loc                string, sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])
+#' @param left               string, left species
+#' @param right              string, right species
+#' @param circle_color       string, color
+#' @param circle_fill_left   string, color
+#' @param circle_fill_right  string, color
+#' @param circle_lwd         numeric
+#' @param plot_names         logical, should species labels be plotted
+#' @param plot_name_size     numeric, size of labels
+#' @param font_family        string, font family
+#' @param ...                catch all for excess parameters for purrr::pmap
 #'
 #' @family Suppl Figure 2
 #'

@@ -6,6 +6,15 @@
 \usage{
 plot_pair_run(run, loc, left, right)
 }
+\arguments{
+\item{run}{string, species pair}
+
+\item{loc}{string, sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])}
+
+\item{left}{string, left species}
+
+\item{right}{string, right species}
+}
 \description{
 \code{plot_pair_run} prepares the hamlet pair annotations.
 }

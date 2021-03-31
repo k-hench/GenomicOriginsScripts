@@ -2,6 +2,12 @@
 #'
 #' \code{get_genes} collects the genes within a outlier window.
 #'
+#' @param gid   string, identifier of fst outlier ID (eg "LG04_1")
+#' @param chrom string, linkage group identifier (eg "LG04")
+#' @param start numeric, start position of window (bp)
+#' @param end   numeric, end position of window (bp)
+#' @param ...   catch-all parameter to allow excessive parameters through purrr::pmap
+#'
 #' @family Table functions
 #'
 #' @export
@@ -28,7 +34,10 @@ get_genes <- function(gid, chrom, start, end, ...){
 
 #' Export latex tables
 #'
-#' \code{export_2_latex} exports a formated latex table.
+#' \code{export_2_latex} exports a formatted latex table.
+#'
+#' @param table tibble, input table
+#' @param name  string, name for exported file
 #'
 #' @family General functions
 #'
@@ -56,15 +65,16 @@ export_2_latex <- function(table, name){
   message(str_c('Exportet latex table to "',name,'".'))
 }
 
-
-
 #' Wrap content in multirow
 #'
 #' \code{as_multirow} formats multirow content for latex tables.
 #'
+#' @param x string, cell content
+#' @param n integer, number of rows to combine
+#'
 #' @family Table functions
 #'
 #' @export
-as_multirow <- function(x,n){
+as_multirow <- function(x, n){
   str_c('\\multirow{', n ,'}{*}{', x ,'}')
 }

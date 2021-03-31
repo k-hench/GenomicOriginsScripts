@@ -6,6 +6,13 @@
 \usage{
 min_dist(dist, pop, pops)
 }
+\arguments{
+\item{dist}{pair wise distances within topology}
+
+\item{pop}{queried population}
+
+\item{pops}{all populations within the topology}
+}
 \description{
 \code{min_dist} finds the minimum distance of a focal species to all other species in a topology
 }

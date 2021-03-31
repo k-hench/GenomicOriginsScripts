@@ -6,6 +6,11 @@
 \usage{
 process_input(script_name, args)
 }
+\arguments{
+\item{script_name}{string, name of the executed R-script}
+
+\item{args}{vector of stings, arguments passed to the R-script}
+}
 \description{
 \code{process_input} processes the script input and echos the received parameters.
 }

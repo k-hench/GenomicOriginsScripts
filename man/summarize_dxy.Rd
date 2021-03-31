@@ -6,6 +6,9 @@
 \usage{
 summarize_dxy(file)
 }
+\arguments{
+\item{file}{input file}
+}
 \description{
 \code{summarize_dxy} imports and summarizes dxy data.
 }

@@ -2,6 +2,12 @@
 #'
 #' \code{root_manual} reroot a tree manually.
 #'
+#' @param object       tree object
+#' @param outgroup     vector of nodes to define outgroup
+#' @param node         node to root tree at
+#' @param resolve.root logical
+#' @param ...          catch-all parameter to allow excessive parameters through purrr::pmap
+#'
 #' @family Suppl Figure 6
 #'
 #' @export
@@ -23,6 +29,8 @@ root_manual <- function(object, outgroup, node = NULL, resolve.root = TRUE, ...)
 #'
 #' \code{setup_tree_data} sets up phylo tree data.
 #'
+#' @param data tree object
+#'
 #' @family Suppl Figure 6
 #'
 #' @export
@@ -35,6 +43,11 @@ setup_tree_data <- function(data) {
 #' import phylogenetic tree
 #'
 #' \code{get_tree} imports a phylogenetic tree.
+#'
+#' @param loc      string, sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])
+#' @param file     input file
+#' @param tree_dir directory with phylogenetic results
+#' @param ...      catch-all parameter to allow excessive parameters through purrr::pmap
 #'
 #' @family Suppl Figure 6
 #'
@@ -66,6 +79,14 @@ StatTreeData <-  ggproto("StatTreeLabel", Stat,
 #' backbone for ggplot layer for node support
 #'
 #' \code{geom_nodepoint_support} provides the backbone for a custom ggplot layer for node support.
+#'
+#' @param mapping     Aesthetic mapping; ggplot2::aes()
+#' @param data        data frame
+#' @param position    string, "identity"
+#' @param na.rm       logical
+#' @param show.legend logical
+#' @param inherit.aes logical
+#' @param ...         arguments passed to geom_point_support()
 #'
 #' @family Suppl Figure 6
 #'

@@ -6,6 +6,21 @@
 \usage{
 plot_panel_anno(outlier_id, label, lg, start, end, genes = c(), ...)
 }
+\arguments{
+\item{outlier_id}{string, identifier of fst outlier ID (eg "LG04_1")}
+
+\item{label}{string, panel label ("A"/"B"/"C")}
+
+\item{lg}{string, linkage group (eg. "LG08")}
+
+\item{start}{numeric, start position of window (bp)}
+
+\item{end}{numeric, end position of window (bp)}
+
+\item{genes}{vector of strings, genes that receive a label}
+
+\item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
+}
 \description{
 \code{plot_panel_anno} plots the gene models of a selected outlier window
 }

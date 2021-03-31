@@ -6,6 +6,9 @@
 \usage{
 dist_tibble(phyl)
 }
+\arguments{
+\item{phyl}{input topology}
+}
 \description{
 \code{dist_tibble} creates a tibble of all pairwise species distances for a topology
 }

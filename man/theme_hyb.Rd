@@ -6,6 +6,11 @@
 \usage{
 theme_hyb(legend.position = "none", ...)
 }
+\arguments{
+\item{legend.position}{string, according to ggplot2::theme()}
+
+\item{...}{arguments funneled through to ggplot2::theme()}
+}
 \description{
 \code{theme_hyb} ggplot theme for hybridization plots
 }

@@ -9,6 +9,10 @@
 #' Then, the selected files are imported.
 #'
 #'
+#' @param loc sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])
+#' @param window_size size of twisst windows (bp)
+#' @param ... catch-all parameter for purrr::pmap to ignore excessive parameters
+#'
 #' @family Figure 5
 #'
 #' @export
@@ -34,6 +38,8 @@ prep_data <- function(loc, window_size = twisst_size, ...){
 #' \code{get_clr} gets the most intense color of a given colorbrewer palette
 #'
 #'
+#' @param palette string - RColorBrewer palette identifier
+#'
 #' @family Figure 5
 #'
 #' @export
@@ -47,7 +53,9 @@ get_clr <- function(palette){
 #'
 #' \code{ax_scl} scales the x axis of ggplots
 #'
-#' This is a scaling funtion to transform bp postions to Mb.
+#' This is a scaling function to transform bp positions to Mb.
+#'
+#' @param x continuous numerical vector
 #'
 #' @family Figure 5
 #'
@@ -57,41 +65,47 @@ ax_scl <- function(x){ x/(10^6) }
 
 #' ggplot layout template
 #'
-#' \code{theme_panels} provides a template for the pannels of Figure 3
+#' \code{theme_panels} provides a template for the panels of Figure 3
+#'
+#' @param ... parameters to funnel through to ggplot2::theme()
 #'
 #' @family Figure 5
 #'
 #' @export
 theme_panels <- function(...){
-  hypoimg::theme_hypo() +
-    hypoimg::theme_hypo_anno_extra()+
-    theme(text = element_text(size = plot_text_size),
+  hypogen::theme_hypo() +
+    hypogen::theme_hypo_anno_extra()+
+    ggplot2::theme(text = ggplot2::element_text(size = plot_text_size),
           legend.position = 'none',
-          axis.title.y = element_text(angle = 90),
-          axis.line.y = element_line(size = plot_lwd),
-          axis.ticks.y = element_line(size = plot_lwd),
-          axis.title.x = element_blank(),
-          axis.line.x = element_blank(),
-          axis.text.x = element_blank(),
-          axis.ticks.x = element_blank(),
-          plot.margin = margin(t = 1, r = 1, b = 3, l = 1),
+          axis.title.y = ggplot2::element_text(angle = 90),
+          axis.line.y = ggplot2::element_line(size = plot_lwd),
+          axis.ticks.y = ggplot2::element_line(size = plot_lwd),
+          axis.title.x = ggplot2::element_blank(),
+          axis.line.x = ggplot2::element_blank(),
+          axis.text.x = ggplot2::element_blank(),
+          axis.ticks.x = ggplot2::element_blank(),
+          plot.margin = ggplot2::margin(t = 1, r = 1, b = 3, l = 1),
           ...)
 }
 
 #' drop ggplot y axis titles
 #'
-#' \code{no_title} provides further styling for pannels of Figure 3
+#' \code{no_title} provides further styling for panels of Figure 3
 #'
 #' This function removes the  y axis title and grid elements
 #' of second and third column panels in Figure 3.
 #'
+#' @param ... parameters to funnel through to ggplot2::theme()
+#'
 #' @family Figure 5
 #'
 #' @export
-no_title <- function(...){theme(axis.title.y = element_blank(),
-                                panel.grid.major.x = element_line(colour = hypogen::hypo_clr_lg),
-                                panel.grid.minor.x = element_line(colour = hypogen::hypo_clr_lg),
-                                ...)}
+no_title <- function(...){
+  theme(axis.title.y = element_blank(),
+        panel.grid.major.x = element_line(colour = hypogen::hypo_clr_lg),
+        panel.grid.minor.x = element_line(colour = hypogen::hypo_clr_lg),
+        ...)
+}
 
 #' Import genotype x phenotype association in long format
 #'
@@ -99,6 +113,9 @@ no_title <- function(...){theme(axis.title.y = element_blank(),
 #'
 #' The phenotype trait name is extracted from the file name.
 #' Then, the data is imported, the genomic poistion and the trait name is added as columns.
+#'
+#' @param file gpx results file
+#' @param kb gxp window size (matching file for string manipulation)
 #'
 #' @family Figure 5
 #'
@@ -112,6 +129,6 @@ get_gxp_long <- function(file, kb = 10){
     vroom::vroom(delim = "\t") %>%
     left_join(.,hypogen::hypo_chrom_start) %>%
     add_gpos()%>%
-    mutate(trt = trt)
+    dplyr::mutate(trt = trt)
   data
 }

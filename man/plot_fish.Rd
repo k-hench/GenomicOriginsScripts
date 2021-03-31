@@ -6,6 +6,17 @@
 \usage{
 plot_fish(short, x = 0, y = 0, height = 0.75, width = 0.75)
 }
+\arguments{
+\item{short}{three letter abbreviation of hamlet species}
+
+\item{x}{horizontal center of grob}
+
+\item{y}{vertical center of grob}
+
+\item{height}{grob height}
+
+\item{width}{grob width}
+}
 \description{
 \code{plot_fish} creates a ggplot annotations layer with a single hamlet.
 }

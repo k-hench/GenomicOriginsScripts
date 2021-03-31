@@ -6,6 +6,15 @@
 \usage{
 get_fst_fixed(file, run, fst_threshold, ...)
 }
+\arguments{
+\item{file}{path to fst file}
+
+\item{run}{string, species pair}
+
+\item{fst_threshold}{numeric, threshold for fst outliers}
+
+\item{...}{arguments passed to hypogen::hypo_import_windows()}
+}
 \description{
 \code{get_fst_percentile} computes summary stats for Fst outlier for a given Fst threshold.
 }

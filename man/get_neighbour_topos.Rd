@@ -6,6 +6,13 @@
 \usage{
 get_neighbour_topos(topo_plots, left_neighbour, right_neighbour)
 }
+\arguments{
+\item{topo_plots}{tibble containing the topologies (in column 'phylo')}
+
+\item{left_neighbour}{string (species identifier for left neighbor)}
+
+\item{right_neighbour}{string (species identifier for right neighbor)}
+}
 \description{
 \code{get_neighbour_topos} finds all topologies where two species are sister species
 }

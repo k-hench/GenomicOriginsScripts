@@ -2,6 +2,8 @@
 #'
 #' \code{read_sc} imports a sc data sheet.
 #'
+#' @param file input file
+#'
 #' @family Suppl Figure 7
 #'
 #' @export
@@ -30,6 +32,9 @@ read_sc <-function(file){
 #'
 #' \code{data_amdx} imports the admixture data
 #'
+#' @param gid       string, identifier of fst outlier ID (eg "LG04_1")
+#' @param k         numeric, number of clusters
+#' @param admx_path path to folder with admixture results
 #'
 #' @family Suppl Figure 7
 #'
@@ -52,6 +57,7 @@ data_amdx <- function(gid, k, admx_path){
 #'
 #' \code{adm_plot} plots the admixture data
 #'
+#' @param gid_in string, identifier of fst outlier ID (eg "LG04_1")
 #'
 #' @family Suppl Figure 7
 #'

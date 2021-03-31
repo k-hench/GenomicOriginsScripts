@@ -9,6 +9,18 @@
 #' depending on the column position (first column/ other column),
 #' the y axis titles are removed.
 #'
+#' @param loc         string, sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])
+#' @param outlier_id  string, identifier of fst outlier ID (eg "LG04_1")
+#' @param outlier_nr  numeric (deprecated)
+#' @param lg          string, linkage group (eg. "LG08")
+#' @param start       numeric, start position of window (bp)
+#' @param end         numeric, end position of window (bp)
+#' @param cool_genes  vector of strings, genes that receive a label
+#' @param text        logical, toggle y axis label and ticks
+#' @param label       string, panel label ("A"/"B"/"C")
+#' @param trait       string, trait identifier for icon on gxp plot
+#' @param ...         catch-all parameter to allow excessive parameters through purrr::pmap
+#'
 #' @family Figure 5
 #'
 #' @export
@@ -74,10 +86,20 @@ plot_curtain <- function(loc = 'bel', outlier_id, outlier_nr, lg, start, end,
 #'
 #' Finally, the topologie weighting panel is plotted.
 #'
+#' @param loc            sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])
+#' @param lg             string, linkage group (eg. "LG08")
+#' @param start          numeric, start position of window (bp)
+#' @param end            numeric, end position of window (bp)
+#' @param window_size    numeric, window size for twisst panels (n SNPS)
+#' @param neighbours     topology highlight grouping
+#' @param xlab           logical, should x axis labels be plotted?
+#' @param highlight_mode string, topology highlight mode ("pair", "isolation")
+#' @param ...            catch-all parameter to allow excessive parameters through purrr::pmap
+#'
 #' @family Figure 5
 #'
 #' @export
-plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size ,neighbours,xlab = TRUE, highlight_mode, ...){
+plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size, neighbours, xlab = TRUE, highlight_mode, ...){
   # fetch and subset data set for location
   data <- data_tables[[loc]]%>%
     filter(CHROM == lg ) %>%
@@ -87,7 +109,7 @@ plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size ,ne
   ntopo <- data$topo %>% unique() %>% length()
 
   # import topologies
-  topo_plots <- read_lines(file = str_c(w_path,loc,'.LG01.w', twisst_size, '.phyml_bionj.weights.tsv.gz'),n_max = ntopo) %>%
+  topo_plots <- read_lines(file = str_c(w_path,loc,'.LG01.w', twisst_size, '.phyml_bionj.weights.tsv.gz'), n_max = ntopo) %>%
     str_remove_all('#') %>%
     tibble(pre=.) %>%
     separate(pre,
@@ -121,7 +143,7 @@ plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size ,ne
            topo4 = str_c(prefix,topo3))
 
   # small highlighting function (needs to be defined here for the '<<-' to work)
-  highlighter <- function(prefix,palette,...){
+  highlighter <- function(prefix, palette,...){
     high_n <- length(cols_topo[grepl(prefix,names(cols_topo))])
     high_base <- c(darken(palette), lighten(palette,factor = .1))
     high_clr <- colorRampPalette(high_base)(high_n)
@@ -173,6 +195,12 @@ plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size ,ne
 #'
 #' \code{plot_panel_fst} plots the fst panel of a selected outlier window
 #'
+#' @param lg    string, linkage group (eg. "LG08")
+#' @param start numeric, start position of window (bp)
+#' @param end   numeric, end position of window (bp)
+#' @param xlab  logical, should x axis labels be plotted?
+#' @param ...   catch-all parameter to allow excessive parameters through purrr::pmap
+#'
 #' @family Figure 5
 #'
 #' @export
@@ -212,6 +240,11 @@ plot_panel_fst <- function(lg, start, end, xlab = TRUE, ...){
 #'
 #' The dxy data is subsetted to mathch the outlier area,
 #' then the panel is plotted.
+#'
+#' @param lg    string, linkage group (eg. "LG08")
+#' @param start numeric, start position of window (bp)
+#' @param end   numeric, end position of window (bp)
+#' @param ...   catch-all parameter to allow excessive parameters through purrr::pmap
 #'
 #' @family Figure 5
 #'
@@ -253,6 +286,12 @@ plot_panel_dxy <- function(lg, start, end, ...){
 #'
 #' \code{plot_panel_gxp} plots the genotype x phenotype panel of a selected outlier window
 #'
+#'
+#' @param lg    string, linkage group (eg. "LG08")
+#' @param start numeric, start position of window (bp)
+#' @param end   numeric, end position of window (bp)
+#' @param trait string, trait identifier for icon on gxp plot
+#' @param ...   catch-all parameter to allow excessive parameters through purrr::pmap
 #'
 #' @family Figure 5
 #'
@@ -300,6 +339,11 @@ plot_panel_gxp <- function(lg, start, end, trait, ...){
 #' The delta dxy data is subsetted to mathch the outlier area,
 #' then the panel is plotted.
 #'
+#' @param lg    string, linkage group (eg. "LG08")
+#' @param start numeric, start position of window (bp)
+#' @param end   numeric, end position of window (bp)
+#' @param ...   catch-all parameter to allow excessive parameters through purrr::pmap
+#'
 #' @family Figure 5
 #'
 #' @export
@@ -340,6 +384,17 @@ plot_panel_delta_dxy <- function(lg, start, end, ...){
 #' This is a modification of hypogen::hypo_annotation_baseplot().
 #' The highlighting of the outlier area is added and the coloration
 #' of genes is simplified to ony a single color.
+#'
+#' @param ...                   catch-all parameter to allow excessive parameters through purrr::pmap
+#' @param searchLG              string, linkage group (eg. "LG08")
+#' @param xrange                numeric vector of length 2, range of the plotted window
+#' @param genes_of_interest     vector of strings, genes that receive a label
+#' @param genes_of_sec_interest vector of strings (deprecate/legacy)
+#' @param anno_rown             numeric, number of rows used for gene annotation
+#' @param width                 numeric, width of genes
+#' @param gene_color            string (color), highlight color for genes
+#' @param start                 numeric, start position of window (bp)
+#' @param end                   numeric, end position of window (bp)
 #'
 #' @family Figure 5
 #'
@@ -384,6 +439,14 @@ custom_annoplot <- function (..., searchLG, xrange, genes_of_interest = c(), gen
 #'
 #' The overal column title is created and the annotation data is plotted.
 #'
+#' @param outlier_id string, identifier of fst outlier ID (eg "LG04_1")
+#' @param label      string, panel label ("A"/"B"/"C")
+#' @param lg         string, linkage group (eg. "LG08")
+#' @param start      numeric, start position of window (bp)
+#' @param end        numeric, end position of window (bp)
+#' @param genes      vector of strings, genes that receive a label
+#' @param ...        catch-all parameter to allow excessive parameters through purrr::pmap
+#'
 #' @family Figure 5
 #'
 #' @export
@@ -406,7 +469,7 @@ plot_panel_anno <- function(outlier_id, label, lg, start, end, genes = c(),...){
     # use same boundaries for all panels
     coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
     # special panel layout for annotation panel
-    hypoimg::theme_hypo()+
+    hypogen::theme_hypo()+
     theme(text = element_text(size = plot_text_size),
           panel.background = element_rect(fill = rgb(.9,.9,.9),color = rgb(1,1,1,0)),
           legend.position = 'none',
@@ -428,12 +491,17 @@ plot_panel_anno <- function(outlier_id, label, lg, start, end, genes = c(),...){
 #'
 #' \code{plot_fish_zoom} creates a hamlet annotation from  a predefined table.
 #'
-#' This funtion is used in the creation of the topologie legend.
+#' This funtion is used in the creation of the topology legend.
+#'
+#' @param anno_tab tibble with annotation layout for the twisst legend
+#' @param idx      legend element index
+#' @param height   legend element height
+#' @param width    legend element width
 #'
 #' @family Figure 5
 #'
 #' @export
-plot_fish_zoom <- function(anno_tab,idx, height = .1, width = 5){
+plot_fish_zoom <- function(anno_tab, idx, height = .1, width = 5){
   annotation_custom(grob = anno_tab$grob[[idx]] %>% ggdraw() %>% cowplot::as_grob(),
                     xmin = anno_tab$x[[idx]] - width/2,
                     xmax = anno_tab$x[[idx]] + width/2,
@@ -451,6 +519,12 @@ plot_fish_zoom <- function(anno_tab,idx, height = .1, width = 5){
 #' is created and the hamlet annotations are collected.
 #'
 #' Then the geometry is plotted an the hamlets are added.
+#'
+#' @param spec1 string, three letter species identifier
+#' @param spec2 string, three letter species identifier
+#' @param color string, color
+#' @param size  numeric, line width
+#' @param mode  string, legend element mode ("pair"/"isolation")
 #'
 #' @family Figure 5
 #'
@@ -474,7 +548,7 @@ plot_leg <- function(spec1 = 'puella', spec2 = 'maya', color = "#084082ff", size
                   x = c(-1,-1,2.45),
                   y = c(.75,-.75,0))
 
-    # plot legened element
+    # plot legend element
     ggplot(tri, aes(x,y))+
       geom_polygon(data = tri,color = color,fill = alpha(color,.4), size = size )+
       geom_line(data = lns,aes(group = grp),color = color, size = size ) +
@@ -515,6 +589,10 @@ plot_leg <- function(spec1 = 'puella', spec2 = 'maya', color = "#084082ff", size
 #' Create the fst population tree panel
 #'
 #' \code{plot_fst_poptree} plots the fst population tree panel of a selected outlier window
+#'
+#' @param gid     string, identifier of fst outlier ID (eg "LG04_1")
+#' @param data_nj fst based topology data
+#' @param ...     catch-all parameter to allow excessive parameters through purrr::pmap
 #'
 #' @family Figure 5
 #'

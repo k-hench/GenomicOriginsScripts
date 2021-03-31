@@ -6,6 +6,13 @@
 \usage{
 is_isolated(x, pop, pops)
 }
+\arguments{
+\item{x}{input distances from topology}
+
+\item{pop}{queried population}
+
+\item{pops}{all populations within the topology}
+}
 \description{
 \code{is_isolated} determines if a species has a sister species within a topology
 }

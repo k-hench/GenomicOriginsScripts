@@ -6,6 +6,13 @@
 \usage{
 match_twisst_files(loc, window_size = 200, panel = "a")
 }
+\arguments{
+\item{loc}{sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])}
+
+\item{window_size}{window size of twisst run}
+
+\item{panel}{figure panel identifier (for labeling)}
+}
 \description{
 \code{match_twisst_files} imports all topology weighting data sets for a location.
 }
@@ -13,14 +20,14 @@ match_twisst_files(loc, window_size = 200, panel = "a")
 First the weight and position files of all topology weighting data
 sets (the different linkage groups) for a given location are collected.
 
-The topology weighting data import funtion is iterated over all
+The topology weighting data import function is iterated over all
 data sets and combined to create a full data set.
 
 Then, the full data set is summarized to then be able to rank
-the topologies based on their overall weighting.
+the typologies based on their overall weighting.
 
 The topology ranks are added to the full data set and a window
-column caontaing the location is added for faceting.
+column containing the location is added for faceting.
 }
 \seealso{
 Other Figure 4: 

@@ -6,8 +6,11 @@
 \usage{
 no_title(...)
 }
+\arguments{
+\item{...}{parameters to funnel through to ggplot2::theme()}
+}
 \description{
-\code{no_title} provides further styling for pannels of Figure 3
+\code{no_title} provides further styling for panels of Figure 3
 }
 \details{
 This function removes the  y axis title and grid elements

@@ -6,6 +6,13 @@
 \usage{
 data_amdx(gid, k, admx_path)
 }
+\arguments{
+\item{gid}{string, identifier of fst outlier ID (eg "LG04_1")}
+
+\item{k}{numeric, number of clusters}
+
+\item{admx_path}{path to folder with admixture results}
+}
 \description{
 \code{data_amdx} imports the admixture data
 }

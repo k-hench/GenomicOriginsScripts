@@ -6,6 +6,17 @@
 \usage{
 plot_panel_fst(lg, start, end, xlab = TRUE, ...)
 }
+\arguments{
+\item{lg}{string, linkage group (eg. "LG08")}
+
+\item{start}{numeric, start position of window (bp)}
+
+\item{end}{numeric, end position of window (bp)}
+
+\item{xlab}{logical, should x axis labels be plotted?}
+
+\item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
+}
 \description{
 \code{plot_panel_fst} plots the fst panel of a selected outlier window
 }

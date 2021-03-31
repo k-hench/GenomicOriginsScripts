@@ -6,6 +6,17 @@
 \usage{
 network_layout(n, rotate = 0, label = NULL, weight = 2, loc = NA)
 }
+\arguments{
+\item{n}{nomber of nodes}
+
+\item{rotate}{rotation angle}
+
+\item{label}{node labels}
+
+\item{weight}{link weighting}
+
+\item{loc}{location (Belize/ Honduras/ Panama)}
+}
 \description{
 \code{network_layout} creates a network layout for pairwise species comparisons.
 }

@@ -18,6 +18,29 @@ anno_pair_flag(
   ...
 )
 }
+\arguments{
+\item{loc}{string, sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])}
+
+\item{left}{string, left species}
+
+\item{right}{string, right species}
+
+\item{circle_color}{string, color}
+
+\item{circle_fill_left}{string, color}
+
+\item{circle_fill_right}{string, color}
+
+\item{circle_lwd}{numeric}
+
+\item{plot_names}{logical, should species labels be plotted}
+
+\item{plot_name_size}{numeric, size of labels}
+
+\item{font_family}{string, font family}
+
+\item{...}{catch all for excess parameters for purrr::pmap}
+}
 \description{
 \code{plot_pair_run} creates the hamlet pair annotations.
 }

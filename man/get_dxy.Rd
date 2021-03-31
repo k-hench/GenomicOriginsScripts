@@ -6,6 +6,11 @@
 \usage{
 get_dxy(file, kb = "50k")
 }
+\arguments{
+\item{file}{input file}
+
+\item{kb}{string, window size ("10k"/"50k")}
+}
 \description{
 \code{get_dxy} imports dxy data, adds the genomic position and the run.
 }

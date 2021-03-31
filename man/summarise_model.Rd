@@ -2,12 +2,15 @@
 % Please edit documentation in R/functions_SF3.R
 \name{summarise_model}
 \alias{summarise_model}
-\title{summarise model statistics}
+\title{summarize model statistics}
 \usage{
 summarise_model(data)
 }
+\arguments{
+\item{data}{tibble with column 'mod', containing models to be summarized}
+}
 \description{
-\code{summarise_model} sumamrizes model statistics in a tibble row.
+\code{summarise_model} summarizes model statistics in a tibble row.
 }
 \seealso{
 Other Suppl Figure 3: 

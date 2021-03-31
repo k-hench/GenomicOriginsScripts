@@ -6,6 +6,9 @@
 \usage{
 get_pi(file)
 }
+\arguments{
+\item{file}{input file}
+}
 \description{
 \code{get_pi} imports diversity data and adds the genomic position.
 }

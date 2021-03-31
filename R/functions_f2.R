@@ -5,6 +5,11 @@
 #' The run name (the pair wise species comparison) is extracted from the file name,
 #' the data is imported and the run name is added.
 #'
+#' @param file msmc file
+#' @param msmc_path msmc results path
+#' @param mu mutation rate mu
+#' @param gen generation time in years
+#'
 #' @family Figure 2
 #'
 #' @export
@@ -26,6 +31,12 @@ get_msmc <- function(file, msmc_path, mu = 3.7e-8, gen = 1){
 #'
 #' The data is imported and run components are extracted from the a reference table,
 #' and added to the data.
+#'
+#' @param file cross coalescence file
+#' @param cc_groups cross coalescence group assignment reference table
+#' @param cc_path cross coalescence results path
+#' @param mu mutation rate mu
+#' @param gen generation time in years
 #'
 #' @family Figure 2
 #'

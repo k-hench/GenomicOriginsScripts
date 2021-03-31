@@ -6,8 +6,15 @@
 \usage{
 get_dist(grph, x, y)
 }
+\arguments{
+\item{grph}{input graph of species}
+
+\item{x}{x value}
+
+\item{y}{y value}
+}
 \description{
-\code{get_dist} creates a tibble containg distance of a single species pair within a topology
+\code{get_dist} creates a tibble containing distance of a single species pair within a topology
 }
 \seealso{
 Other Figure 5: 

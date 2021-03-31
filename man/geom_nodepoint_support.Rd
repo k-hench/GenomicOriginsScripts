@@ -14,6 +14,21 @@ geom_nodepoint_support(
   ...
 )
 }
+\arguments{
+\item{mapping}{Aesthetic mapping; ggplot2::aes()}
+
+\item{data}{data frame}
+
+\item{position}{string, "identity"}
+
+\item{na.rm}{logical}
+
+\item{show.legend}{logical}
+
+\item{inherit.aes}{logical}
+
+\item{...}{arguments passed to geom_point_support()}
+}
 \description{
 \code{geom_nodepoint_support} provides the backbone for a custom ggplot layer for node support.
 }

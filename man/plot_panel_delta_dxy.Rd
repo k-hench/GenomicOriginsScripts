@@ -6,6 +6,15 @@
 \usage{
 plot_panel_delta_dxy(lg, start, end, ...)
 }
+\arguments{
+\item{lg}{string, linkage group (eg. "LG08")}
+
+\item{start}{numeric, start position of window (bp)}
+
+\item{end}{numeric, end position of window (bp)}
+
+\item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
+}
 \description{
 \code{plot_panel_delta_dxy} plots the dxy panel of a selected outlier window
 }

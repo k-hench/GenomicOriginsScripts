@@ -6,6 +6,15 @@
 \usage{
 get_tree(loc, file, tree_dir, ...)
 }
+\arguments{
+\item{loc}{string, sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])}
+
+\item{file}{input file}
+
+\item{tree_dir}{directory with phylogenetic results}
+
+\item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
+}
 \description{
 \code{get_tree} imports a phylogenetic tree.
 }

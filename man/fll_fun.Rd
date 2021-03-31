@@ -6,6 +6,9 @@
 \usage{
 fll_fun(n)
 }
+\arguments{
+\item{n}{integer, number of clusters}
+}
 \description{
 \code{fll_fun} creates a fill scale for admixture classes.
 }

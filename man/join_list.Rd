@@ -6,6 +6,9 @@
 \usage{
 join_list(lst)
 }
+\arguments{
+\item{lst}{input list}
+}
 \description{
 \code{join_list} binds a list of tables according to a common column.
 }

@@ -16,6 +16,25 @@ plot_panel_twisst(
   ...
 )
 }
+\arguments{
+\item{loc}{sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])}
+
+\item{lg}{string, linkage group (eg. "LG08")}
+
+\item{start}{numeric, start position of window (bp)}
+
+\item{end}{numeric, end position of window (bp)}
+
+\item{window_size}{numeric, window size for twisst panels (n SNPS)}
+
+\item{neighbours}{topology highlight grouping}
+
+\item{xlab}{logical, should x axis labels be plotted?}
+
+\item{highlight_mode}{string, topology highlight mode ("pair", "isolation")}
+
+\item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
+}
 \description{
 \code{plot_panel_twisst} plots the topolgy weighting panel of a selected outlier window
 }

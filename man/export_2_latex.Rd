@@ -6,8 +6,13 @@
 \usage{
 export_2_latex(table, name)
 }
+\arguments{
+\item{table}{tibble, input table}
+
+\item{name}{string, name for exported file}
+}
 \description{
-\code{export_2_latex} exports a formated latex table.
+\code{export_2_latex} exports a formatted latex table.
 }
 \seealso{
 Other General functions: 

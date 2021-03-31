@@ -6,6 +6,9 @@
 \usage{
 make_faint_clr(loc)
 }
+\arguments{
+\item{loc}{three letter location abbreviation}
+}
 \description{
 \code{make_faint_clr} creates a faint version of a given color.
 }

@@ -6,6 +6,11 @@
 \usage{
 refactor_run(self, globals)
 }
+\arguments{
+\item{self}{string vector, species pairs}
+
+\item{globals}{reference table, order of species pairs according to reference table}
+}
 \description{
 \code{refactor_run} reorder species pairs according to fst.
 }

@@ -167,6 +167,8 @@ shps <- c(bel = 21,
 #' This is used to keep a consistent color scheme thoughout
 #' various admixture plots of different k.
 #'
+#' @param n integer, number of clusters
+#'
 #' @export
 fll_fun <- function(n){viridis::inferno(n)}
 
@@ -178,8 +180,10 @@ fll_fun <- function(n){viridis::inferno(n)}
 #' various admixture plots of different k.
 #' The named variant is used to assign the colors consistently.
 #'
+#' @param n integer, number of clusters
+#'
 #' @export
-fll_n <- function(n){fll_fun(n) %>% setNames(., nm = str_c("pop_",1:n)) }
+fll_n <- function(n){ fll_fun(n) %>% setNames(., nm = stringr::str_c("pop_", 1:n)) }
 
 #' Species labels
 #'
@@ -241,9 +245,11 @@ pop_levels <- c("indbel", "maybel", "nigbel", "puebel", "unibel",
 #'
 #' \code{project_case} manages the format of labels for figure panels.
 #'
-#' Currently all figure sub panels are labelled using lower case.
+#' Currently all figure sub panels are labeled using lower case.
 #' This function potentially needs to be changed in case of
 #' resubmission to a different journal.
+#'
+#' @param x string
 #'
 #' @export
 project_case <- function(x){
@@ -258,6 +264,8 @@ project_case <- function(x){
 #' compared to figure panel label to avoid confusion.
 #' This function potentially needs to be changed in case of
 #' resubmission to a different journal.
+#'
+#' @param x string
 #'
 #' @export
 project_inv_case <- function(x){

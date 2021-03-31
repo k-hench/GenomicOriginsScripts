@@ -6,6 +6,9 @@
 \usage{
 setup_tree_data(data)
 }
+\arguments{
+\item{data}{tree object}
+}
 \description{
 \code{setup_tree_data} sets up phylo tree data.
 }

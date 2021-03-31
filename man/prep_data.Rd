@@ -6,6 +6,13 @@
 \usage{
 prep_data(loc, window_size = twisst_size, ...)
 }
+\arguments{
+\item{loc}{sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])}
+
+\item{window_size}{size of twisst windows (bp)}
+
+\item{...}{catch-all parameter for purrr::pmap to ignore excessive parameters}
+}
 \description{
 \code{prep_data} imports the twisst data of a selected LG
 }

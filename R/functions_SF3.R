@@ -1,6 +1,8 @@
-#' summarise model statistics
+#' summarize model statistics
 #'
-#' \code{summarise_model} sumamrizes model statistics in a tibble row.
+#' \code{summarise_model} summarizes model statistics in a tibble row.
+#'
+#' @param data tibble with column 'mod', containing models to be summarized
 #'
 #' @family Suppl Figure 3
 #'
@@ -26,13 +28,17 @@ summarise_model <- function(data){
 #'
 #' This is used to annotate plots.
 #'
+#' @param left  string, three letter species identifier
+#' @param right string, three letter species identifier
+#' @param loc   string, sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])
+#'
 #' @family Suppl Figure 3
 #'
 #' @export
-plot_fishes_location <- function (left, right,loc) {
-  nr_left <- which(str_sub(hypoimg::hypo_img$spec,start = 1,end = 3) == left)
-  nr_right <- which(str_sub(hypoimg::hypo_img$spec,start = 1,end = 3) == right)
-  nr_loc <- which(str_sub(hypoimg::hypo_flag$geo,start = 1,end = 3) == loc)
+plot_fishes_location <- function (left, right, loc) {
+  nr_left <- which(str_sub(hypoimg::hypo_img$spec, start = 1, end = 3) == left)
+  nr_right <- which(str_sub(hypoimg::hypo_img$spec, start = 1, end = 3) == right)
+  nr_loc <- which(str_sub(hypoimg::hypo_flag$geo, start = 1, end = 3) == loc)
 
   p <- ggplot() +
     annotation_custom(hypoimg::hypo_flag$flag[[nr_loc]], xmin = -0.28, xmax = 0.28, ymin = -Inf, ymax = Inf)+
@@ -53,6 +59,15 @@ plot_fishes_location <- function (left, right,loc) {
 #' tidiverse github forum:
 #' https://github.com/tidyverse/ggplot2/issues/1399
 #'
+#' @param mapping      Aesthetic mapping; ggplot2::aes()
+#' @param data         data frame
+#' @param stat         ggplot2 stat
+#' @param position     string, "identity"
+#' @param na.rm        logical
+#' @param show.legend  logical
+#' @param inherit.aes  logical
+#' @param ...          arguments passed to ggplot2::layer()
+#'
 #' @family Suppl Figure 3
 #'
 #' @export
@@ -64,7 +79,7 @@ geom_hypo_grob2 <- function(mapping = NULL,
                             show.legend = NA,
                             inherit.aes = FALSE,
                             ...) {
-  layer(
+  ggplot2::layer(
     geom = hypo_geom_grob_custom2,
     mapping = mapping,
     data = data,
@@ -102,15 +117,20 @@ hypo_geom_grob_custom2 <- ggproto(
 #'
 #' \code{get_fst_percentile} computes summary stats for Fst outlier for a given Fst threshold.
 #'
+#' @param file          path to fst file
+#' @param run           string, species pair
+#' @param fst_threshold numeric, threshold for fst outliers
+#' @param ...           arguments passed to hypogen::hypo_import_windows()
+#'
 #' @family  Suppl Figure 3
 #'
 #' @export
 get_fst_fixed <- function(file, run, fst_threshold,...){
 
-  data <- hypogen::hypo_import_windows(file,...) %>%
-    mutate(rank = rank(WEIGHTED_FST,ties.method = "random"))%>%
+  data <- hypogen::hypo_import_windows(file, ...) %>%
+    mutate(rank = rank(WEIGHTED_FST, ties.method = "random"))%>%
     mutate(thresh = fst_threshold) %>%
-    mutate(outl = (WEIGHTED_FST>thresh) %>% as.numeric()) %>%
+    mutate(outl = (WEIGHTED_FST > thresh) %>% as.numeric()) %>%
     filter(outl == 1 )
 
   if(nrow(data) == 0){
@@ -150,17 +170,21 @@ get_fst_fixed <- function(file, run, fst_threshold,...){
 #'
 #' \code{collapse_peaks} collapses all Fst peaks of a given run
 #'
+#' @param x string vector with outlier peak ids
+#'
 #' @family  Suppl Figure 3
 #'
 #' @export
 collapse_peaks <- function(x){
   table(x) %>%
-    str_c(names(.),.,sep = ':',collapse = ', ')
+    stringr::str_c(names(.),.,sep = ':', collapse = ', ')
   }
 
 #' Reformat run name
 #'
 #' \code{reformat_run_name} formats run to "specloc-specloc" format.
+#'
+#' @param run string, species pair
 #'
 #' @family  Suppl Figure 3
 #'

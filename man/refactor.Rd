@@ -6,8 +6,13 @@
 \usage{
 refactor(self, globals)
 }
+\arguments{
+\item{self}{factor vector}
+
+\item{globals}{table containing the reference levels}
+}
 \description{
-\code{refactor} redorders levels of a factor levels based on an external table.
+\code{refactor} reorders levels of a factor levels based on an external table.
 }
 \seealso{
 Other General functions: 

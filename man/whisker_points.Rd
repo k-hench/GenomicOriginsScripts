@@ -6,6 +6,9 @@
 \usage{
 whisker_points(x)
 }
+\arguments{
+\item{x}{input vector}
+}
 \description{
 \code{whisker_points} calculates the extent of boxplot whiskers.
 }

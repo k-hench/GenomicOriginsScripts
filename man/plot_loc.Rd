@@ -6,6 +6,9 @@
 \usage{
 plot_loc(loc)
 }
+\arguments{
+\item{loc}{sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])}
+}
 \description{
 \code{getPofZ} plot hybridization data of a location
 }

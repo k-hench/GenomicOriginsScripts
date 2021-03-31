@@ -6,6 +6,15 @@
 \usage{
 get_gxp_both_models(file, trait, model_type, path)
 }
+\arguments{
+\item{file}{input file}
+
+\item{trait}{string, focal trait}
+
+\item{model_type}{string ("lm" /"lmm")}
+
+\item{path}{path to folder contain the GxP results}
+}
 \description{
 \code{get_gxp_both_models} imports gxp data
 }
