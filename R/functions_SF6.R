@@ -69,7 +69,7 @@ get_tree <- function(loc, file, tree_dir, ...){
 #' @family Suppl Figure 6
 #'
 #' @export
-StatTreeData <-  ggproto("StatTreeLabel", Stat,
+StatTreeData <-  ggplot2::ggproto("StatTreeLabel", Stat,
                          required_aes = "node",
                          compute_group = function(data, scales) {
                            setup_tree_data(data)
@@ -94,7 +94,6 @@ StatTreeData <-  ggproto("StatTreeLabel", Stat,
 geom_nodepoint_support <- function (mapping = NULL, data = NULL, position = "identity",
                                     na.rm = FALSE, show.legend = NA, inherit.aes = TRUE, ...)
 {
-  library(magrittr)
   self_mapping <- aes_(node = ~node, subset = ~(!isTip))
   if (is.null(mapping)) {
     mapping <- self_mapping

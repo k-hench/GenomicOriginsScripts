@@ -75,7 +75,7 @@ plot_loc <- function(loc){
 
   clr <- paletteer_c("ggthemes::Red-Green-Gold Diverging",3) %>%
     c(.,clr_lighten(.)) %>% color() %>% .[c(1,4,2,5,6,3)] %>%
-    set_names(nm = lvls)
+    purrr::set_names(nm = lvls)
 
   data  %>%
     ggplot(aes(x = ind_order, y = post_prob, fill = bin_generic))+
@@ -86,9 +86,9 @@ plot_loc <- function(loc){
     facet_grid(run2~.)+
     theme_minimal()+
     theme(legend.position = "bottom",
-          strip.text.x  = element_markdown(),
-          strip.text.y  = element_markdown(),
-          axis.text.x = element_markdown(angle = 90),
+          strip.text.x  = ggtext::element_markdown(),
+          strip.text.y  = ggtext::element_markdown(),
+          axis.text.x = ggtext::element_markdown(angle = 90),
           axis.title.x = element_blank(),
           axis.title.y = element_text(vjust = 4))
 }
@@ -109,7 +109,7 @@ theme_hyb <-  function(legend.position = "none",...){
              legend.background = element_rect(fill = "white",colour = rgb(1,1,1,0)),
              legend.direction = "horizontal",
              legend.justification = c(1,1),
-             strip.text.y = element_markdown(angle = 0,hjust = 0),
+             strip.text.y = ggtext::element_markdown(angle = 0,hjust = 0),
              ...))
 }
 

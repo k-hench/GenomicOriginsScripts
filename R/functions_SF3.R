@@ -19,7 +19,7 @@ summarise_model <- function(data){
                 select(grp,term,estimate) %>%
                 spread(key = 'term',value = 'estimate') %>%
                 select(-grp) %>%
-                set_names(., nm = c('intercept', 'slope')))
+                purrr::set_names(., nm = c('intercept', 'slope')))
 }
 
 #' Plot two fishes with location
@@ -91,11 +91,11 @@ geom_hypo_grob2 <- function(mapping = NULL,
   )
 }
 
-hypo_geom_grob_custom2 <- ggproto(
+hypo_geom_grob_custom2 <- ggplot2::ggproto(
   "hypo_geom_grob_custom2",
   Geom,
   setup_data = function(self, data, params) {
-    data <- ggproto_parent(Geom, self)$setup_data(data, params)
+    data <- ggplot2::ggproto_parent(Geom, self)$setup_data(data, params)
     data
   },
 

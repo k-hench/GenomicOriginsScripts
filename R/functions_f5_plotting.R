@@ -124,14 +124,14 @@ plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size, ne
     topo_highlight <- neighbours %>%
       dplyr::select(-palette) %>%
       purrr::pmap(get_neighbour_topos,topo_plots = topo_plots) %>%
-      set_names(.,nm = LETTERS[(length(neighbours$left_neighbour)+1):2]) %>%
+      purrr::set_names(nm = LETTERS[(length(neighbours$left_neighbour)+1):2]) %>%
       bind_cols() %>%
       gather(key = 'prefix',value = 'topo_nr')
   }  else if (highlight_mode == 'isolation') {
     topo_highlight <- neighbours %>%
       dplyr::select(-palette) %>%
       purrr::pmap(get_isolated_topos,topo_plots = topo_plots) %>%
-      set_names(.,nm = LETTERS[(length(neighbours$left_neighbour)+1):2]) %>%
+      purrr::set_names(nm = LETTERS[(length(neighbours$left_neighbour)+1):2]) %>%
       bind_cols() %>%
       gather(key = 'prefix',value = 'topo_nr')
   }
@@ -618,7 +618,7 @@ plot_fst_poptree <- function(gid, data_nj, ...){
                       values = clr,
                       labels = sp_names %>%
                         str_c("*H. ",.,"*") %>%
-                        set_names(nm = names(sp_names)))+
+                        purrr::set_names(nm = names(sp_names)))+
     scale_shape_manual("Location",
                        labels = loc_names,
                        values = 21:23) +
@@ -629,7 +629,7 @@ plot_fst_poptree <- function(gid, data_nj, ...){
                                nrow = 1))+
     theme_void()+
     theme(legend.position = "none",
-          legend.text = element_markdown(),
+          legend.text = ggtext::element_markdown(),
           legend.key.width = unit(6, "pt")) +
     coord_equal()+
     scale_y_reverse()

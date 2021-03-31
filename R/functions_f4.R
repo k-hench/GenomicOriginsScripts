@@ -35,7 +35,7 @@ get_twisst_data <- function(loc,w_in,d_in,smooth = FALSE, span = 0.01){
   window_data <- vroom::vroom(str_c(d_path, loc, '/', d_in), delim = "\t")#read.table(str_c(d_path, loc, '/', d_in), header = T)
 
   window_data <- window_data[good_rows,] %>%
-    set_names(., nm = c('CHROM','BIN_START','BIN_END','BIN_MID','N_SITES','lnL'))
+    purrr::set_names(., nm = c('CHROM','BIN_START','BIN_END','BIN_MID','N_SITES','lnL'))
 
   if(smooth == TRUE){
     weights <- smooth.weights(window_positions = window_data$BIN_MID, weights_dataframe = weights,

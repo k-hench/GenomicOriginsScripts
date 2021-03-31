@@ -83,7 +83,7 @@ adm_plot <- function(gid_in){
     scale_x_discrete(breaks = sample_order$ord_nr,
                      labels = sample_order$id) +
     scale_fill_manual(values = c(RColorBrewer::brewer.pal(4, "Greys")[2:3] %>%
-                                   set_names(nm = c("bin01", "bin02")),
+                                   purrr::set_names(nm = c("bin01", "bin02")),
                                  `0` = "white", `1` = "black"), na.value = "gray") +
     theme_minimal() +
     theme(plot.title = element_text(size = 9),
@@ -92,7 +92,7 @@ adm_plot <- function(gid_in){
           axis.title.x = element_blank(),
           axis.ticks = element_blank(),
           axis.text.x = element_blank(),
-          axis.text.y = element_markdown())
+          axis.text.y = ggtext::element_markdown())
 }
 
 #' Add fish annotation

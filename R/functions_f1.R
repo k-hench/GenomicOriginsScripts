@@ -126,8 +126,8 @@ network_layout <- function(n, rotate = 0, label = NULL, weight = 2, loc = NA){
   edges <- cross_df(tibble(pop1 = nodes$idx,
                            pop2 = nodes$idx), .filter = `>=`) %>%
     arrange(pop1) %>%
-    left_join(., nodes %>% select(idx, x,y) %>% set_names(., nm = c('pop1','x','y'))) %>%
-    left_join(., nodes %>% select(idx, x,y) %>% set_names(., nm = c('pop2','xend','yend'))) %>%
+    left_join(., nodes %>% select(idx, x,y) %>% purrr::set_names(., nm = c('pop1','x','y'))) %>%
+    left_join(., nodes %>% select(idx, x,y) %>% purrr::set_names(., nm = c('pop2','xend','yend'))) %>%
     mutate(idx= row_number(),
            xmid_shift = (x*weight + xend)/(1*weight+1),
            ymid_shift = (y*weight + yend)/(1*weight+1),

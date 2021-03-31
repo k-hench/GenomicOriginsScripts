@@ -17,12 +17,13 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: tidyverse,
-         cowplot,
+         magrittr
+Imports: cowplot,
          vroom,
          ggraph,
          tidygraph,
-         knitr
-Imports: ggforce,
+         knitr,
+         ggforce,
          ape,
          broom,
          cli,
@@ -30,9 +31,9 @@ Imports: ggforce,
          dplyr,
          ggplot2,
          igraph,
-         magrittr,
          purrr,
          RColorBrewer,
+         ggtext,
          rtracklayer,
          scales,
          stringr,
