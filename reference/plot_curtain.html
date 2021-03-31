@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GenomicOriginsScripts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.90061</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.90063</span>
       </span>
     </div>
 
@@ -139,6 +139,54 @@
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>loc</th>
+      <td><p>string, sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])</p></td>
+    </tr>
+    <tr>
+      <th>outlier_id</th>
+      <td><p>string, identifier of fst outlier ID (eg "LG04_1")</p></td>
+    </tr>
+    <tr>
+      <th>outlier_nr</th>
+      <td><p>numeric (deprecated)</p></td>
+    </tr>
+    <tr>
+      <th>lg</th>
+      <td><p>string, linkage group (eg. "LG08")</p></td>
+    </tr>
+    <tr>
+      <th>start</th>
+      <td><p>numeric, start position of window (bp)</p></td>
+    </tr>
+    <tr>
+      <th>end</th>
+      <td><p>numeric, end position of window (bp)</p></td>
+    </tr>
+    <tr>
+      <th>cool_genes</th>
+      <td><p>vector of strings, genes that receive a label</p></td>
+    </tr>
+    <tr>
+      <th>text</th>
+      <td><p>logical, toggle y axis label and ticks</p></td>
+    </tr>
+    <tr>
+      <th>label</th>
+      <td><p>string, panel label ("A"/"B"/"C")</p></td>
+    </tr>
+    <tr>
+      <th>trait</th>
+      <td><p>string, trait identifier for icon on gxp plot</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>catch-all parameter to allow excessive parameters through purrr::pmap</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 

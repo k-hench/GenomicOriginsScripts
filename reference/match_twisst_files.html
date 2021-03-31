@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GenomicOriginsScripts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.90061</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.90063</span>
       </span>
     </div>
 
@@ -127,17 +127,33 @@
 
     <pre class="usage"><span class='fu'>match_twisst_files</span><span class='op'>(</span><span class='va'>loc</span>, window_size <span class='op'>=</span> <span class='fl'>200</span>, panel <span class='op'>=</span> <span class='st'>"a"</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>loc</th>
+      <td><p>sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])</p></td>
+    </tr>
+    <tr>
+      <th>window_size</th>
+      <td><p>window size of twisst run</p></td>
+    </tr>
+    <tr>
+      <th>panel</th>
+      <td><p>figure panel identifier (for labeling)</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>First the weight and position files of all topology weighting data
 sets (the different linkage groups) for a given location are collected.</p>
-<p>The topology weighting data import funtion is iterated over all
+<p>The topology weighting data import function is iterated over all
 data sets and combined to create a full data set.</p>
 <p>Then, the full data set is summarized to then be able to rank
-the topologies based on their overall weighting.</p>
+the typologies based on their overall weighting.</p>
 <p>The topology ranks are added to the full data set and a window
-column caontaing the location is added for faceting.</p>
+column containing the location is added for faceting.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other Figure 4: 
