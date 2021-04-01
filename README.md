@@ -18,7 +18,6 @@ remotes::install_github("k-hench/hypogen")
 remotes::install_github("k-hench/hypoimg")
 ```
 
-
 ## Install
 
 To install **GenomicOriginsScripts** please run:
