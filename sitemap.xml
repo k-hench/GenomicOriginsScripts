@@ -25,6 +25,9 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/ax_scl.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/bammplot_k.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/clr.html</loc>
   </url>
   <url>
@@ -41,6 +44,12 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/collapse_peaks.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/conditional_highlight.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/conditional_rotate.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/cross_spec.html</loc>
@@ -127,6 +136,9 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_gxp.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_gxp_and_geva.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_gxp_both_models.html</loc>
   </url>
   <url>
@@ -149,6 +161,24 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_twisst_data.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/grid_piece_x.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/gxp_importer.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/hypo_anno_l_lwd.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/import_geva_data.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/import_gxp_data.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/import_tree.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/is_isolated.html</loc>
@@ -184,6 +214,9 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/outlr_clr.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/pca_plot.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_clr.html</loc>
   </url>
   <url>
@@ -191,6 +224,12 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_fish.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_fish2.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_fish_lwd.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_fish_zoom.html</loc>
@@ -244,6 +283,9 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_text_size_small.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_tree.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/pop_levels.html</loc>
   </url>
   <url>
@@ -274,6 +316,12 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/rescale_fst.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/reverselog_trans.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/root_hamlets.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/root_manual.html</loc>
   </url>
   <url>
@@ -296,6 +344,9 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/summarize_fst.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/theme_gradient_bg_x.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/theme_hyb.html</loc>
