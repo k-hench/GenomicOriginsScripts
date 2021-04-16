@@ -26,6 +26,6 @@ To install **GenomicOriginsScripts** please run:
 remotes::install_github("k-hench/GenomicOriginsScripts")
 ```
 
-This package is intended as a supplement to the [code acompanying the publication](https://k-hench.github.io/chapter2/) and is used extensively in **R** scripts that produce the figures of that publication.
+This package is intended as a supplement to the [code acompanying the publication](https://k-hench.github.io/2_analysis/) and is used extensively in **R** scripts that produce the figures of that publication.
 
 ---

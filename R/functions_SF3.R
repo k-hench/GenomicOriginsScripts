@@ -9,16 +9,14 @@
 #' @export
 summarise_model <- function(data){
   data$mod %>%
-    purrr::map(broom::glance) %>%
-    bind_rows() %>%
-    bind_cols(.,
+    purrr::map_dfr(broom::glance) %>%
+    dplyr::bind_cols(.,
               data$mod %>%
-                purrr::map(broom::tidy) %>%
-                bind_rows() %>%
-                mutate(grp = (row_number()+1)%/%2) %>%
-                select(grp,term,estimate) %>%
-                spread(key = 'term',value = 'estimate') %>%
-                select(-grp) %>%
+                purrr::map_dfr(broom::tidy) %>%
+                dplyr::mutate(grp = (dplyr::row_number()+1)%/%2) %>%
+                dplyr::select(grp, term, estimate) %>%
+                tidyr::spread(key = 'term', value = 'estimate') %>%
+                dplyr::select(-grp) %>%
                 purrr::set_names(., nm = c('intercept', 'slope')))
 }
 
@@ -40,17 +38,17 @@ plot_fishes_location <- function (left, right, loc) {
   nr_right <- which(str_sub(hypoimg::hypo_img$spec, start = 1, end = 3) == right)
   nr_loc <- which(str_sub(hypoimg::hypo_flag$geo, start = 1, end = 3) == loc)
 
-  p <- ggplot() +
-    annotation_custom(hypoimg::hypo_flag$flag[[nr_loc]], xmin = -0.28, xmax = 0.28, ymin = -Inf, ymax = Inf)+
-    coord_fixed(xlim = c(-1, 1)) +
-    theme_void() +
-    scale_x_continuous(expand = c(0,0)) +
-    scale_y_continuous(limits = c(-0.4, 0.38)) +
-    annotation_custom(hypoimg::hypo_img$r[[nr_right]], xmin = -1, xmax = -0.05, ymin = -Inf, ymax = Inf) +
-    annotation_custom(hypoimg::hypo_img$l[[nr_left]], xmin = 0.05, xmax = 1, ymin = -Inf, ymax = Inf)
+  p <- ggplot2::ggplot() +
+    ggplot2::annotation_custom(hypoimg::hypo_flag$flag[[nr_loc]], xmin = -0.28, xmax = 0.28, ymin = -Inf, ymax = Inf)+
+    ggplot2::coord_fixed(xlim = c(-1, 1)) +
+    ggplot2::theme_void() +
+    ggplot2::scale_x_continuous(expand = c(0,0)) +
+    ggplot2::scale_y_continuous(limits = c(-0.4, 0.38)) +
+    ggplot2::annotation_custom(hypoimg::hypo_img$r[[nr_right]], xmin = -1, xmax = -0.05, ymin = -Inf, ymax = Inf) +
+    ggplot2::annotation_custom(hypoimg::hypo_img$l[[nr_left]], xmin = 0.05, xmax = 1, ymin = -Inf, ymax = Inf)
 
-  tibble(run = str_c(left, loc, '-', right, loc),
-         grob = list(p %>% ggplotGrob()))
+  tibble::tibble(run = str_c(left, loc, '-', right, loc),
+         grob = list(p %>% ggplot2::ggplotGrob()))
 }
 
 #' The custom grob geom
@@ -128,41 +126,41 @@ hypo_geom_grob_custom2 <- ggplot2::ggproto(
 get_fst_fixed <- function(file, run, fst_threshold,...){
 
   data <- hypogen::hypo_import_windows(file, ...) %>%
-    mutate(rank = rank(WEIGHTED_FST, ties.method = "random"))%>%
-    mutate(thresh = fst_threshold) %>%
-    mutate(outl = (WEIGHTED_FST > thresh) %>% as.numeric()) %>%
-    filter(outl == 1 )
+    dplyr::mutate(rank = rank(WEIGHTED_FST, ties.method = "random"))%>%
+    dplyr::mutate(thresh = fst_threshold) %>%
+    dplyr::mutate(outl = (WEIGHTED_FST > thresh) %>% as.numeric()) %>%
+    dplyr::filter(outl == 1 )
 
   if(nrow(data) == 0){
     return(tibble(run = run, n = 0, avg_length = NA, med_length = NA, min_length = NA, max_length = NA,
                   sd_length = NA, overal_length = NA, threshold_value = fst_threshold))
     } else {
-  data %>%
-    # next, we want to collapse overlapping windows
-    group_by(CHROM) %>%
-    # we check for overlap and create 'region' IDs
-    mutate(check = 1-(lag(BIN_END,default = 0)>BIN_START),
-           ID = str_c(CHROM,'_',cumsum(check))) %>%
-    ungroup() %>%
-    # then we collapse the regions by ID
-    group_by(ID) %>%
-    summarise(run = run[1],
-              run = run[1],
-              treshold_value = thresh[1],
-              CHROM = CHROM[1],
-              BIN_START = min(BIN_START),
-              BIN_END = max(BIN_END)) %>%
-    mutate(PEAK_SIZE = BIN_END-BIN_START) %>%
-    summarize(run = run[1],
-              run = run[1],
-              n = length(ID),
-              avg_length = mean(PEAK_SIZE),
-              med_length = median(PEAK_SIZE),
-              min_length = min(PEAK_SIZE),
-              max_length = max(PEAK_SIZE),
-              sd_length = sd(PEAK_SIZE),
-              overal_length = sum(PEAK_SIZE),
-              threshold_value = treshold_value[1])
+      data %>%
+        # next, we want to collapse overlapping windows
+        dplyr::group_by(CHROM) %>%
+        # we check for overlap and create 'region' IDs
+        dplyr::mutate(check = 1-(lag(BIN_END,default = 0)>BIN_START),
+                      ID = str_c(CHROM,'_',cumsum(check))) %>%
+        dplyr::ungroup() %>%
+        # then we collapse the regions by ID
+        dplyr::group_by(ID) %>%
+        dplyr::summarise(run = run[1],
+                         run = run[1],
+                         treshold_value = thresh[1],
+                         CHROM = CHROM[1],
+                         BIN_START = min(BIN_START),
+                         BIN_END = max(BIN_END)) %>%
+        dplyr::mutate(PEAK_SIZE = BIN_END-BIN_START) %>%
+        dplyr::summarize(run = run[1],
+                         run = run[1],
+                         n = length(ID),
+                         avg_length = mean(PEAK_SIZE),
+                         med_length = median(PEAK_SIZE),
+                         min_length = min(PEAK_SIZE),
+                         max_length = max(PEAK_SIZE),
+                         sd_length = sd(PEAK_SIZE),
+                         overal_length = sum(PEAK_SIZE),
+                         threshold_value = treshold_value[1])
     }
 }
 
@@ -191,6 +189,6 @@ collapse_peaks <- function(x){
 #' @export
 reformat_run_name <- function(run){
   run %>%
-    str_remove(pattern = '^.*/') %>%
-    str_replace(pattern = '([a-y]{3})-([a-y]{3})-([a-y]{3})','\\2\\1-\\3\\1')
+    stringr::str_remove(pattern = '^.*/') %>%
+    stringr::str_replace(pattern = '([a-y]{3})-([a-y]{3})-([a-y]{3})','\\2\\1-\\3\\1')
   }

@@ -17,20 +17,19 @@
 #'
 #' @export
 prep_data <- function(loc, window_size = twisst_size, ...){
-  LG_select <- outlier_pick %>% str_sub(.,1,4) %>% unique()
+  LG_select <- outlier_pick %>% stringr::str_sub(.,1,4) %>% unique()
 
-  weight_files_prep <- dir(w_path, pattern = loc) %>% .[grepl(str_c('w',window_size),.)]
-  weight_files_select <- weight_files_prep %>% str_sub(.,5,8)
+  weight_files_prep <- dir(w_path, pattern = loc) %>% .[grepl(stringr::str_c('w', window_size),.)]
+  weight_files_select <- weight_files_prep %>% stringr::str_sub(.,5,8)
   weight_files <- weight_files_prep[weight_files_select %in% LG_select]
 
-  data_files_prep <- dir(str_c(d_path, loc, '/'), pattern = 'LG.*data.tsv') %>% .[grepl(str_c('w',window_size),.)]
-  data_files_select <- data_files_prep %>% str_sub(.,5,8)
+  data_files_prep <- dir(stringr::str_c(d_path, loc, '/'), pattern = 'LG.*data.tsv') %>% .[grepl(stringr::str_c('w', window_size),.)]
+  data_files_select <- data_files_prep %>% stringr::str_sub(.,5,8)
   data_files <- data_files_prep[data_files_select %in% LG_select]
 
-  data <- tibble(w_in = weight_files,
-                 d_in = data_files) %>%
-    purrr::pmap(get_twisst_data, smooth = FALSE, loc = loc) %>%
-    bind_rows()
+  data <- tibble::tibble(w_in = weight_files,
+                         d_in = data_files) %>%
+    purrr::pmap_dfr(get_twisst_data, smooth = FALSE, loc = loc)
 }
 
 #' Defin topology weighing base color
@@ -101,9 +100,9 @@ theme_panels <- function(...){
 #'
 #' @export
 no_title <- function(...){
-  theme(axis.title.y = element_blank(),
-        panel.grid.major.x = element_line(colour = hypogen::hypo_clr_lg),
-        panel.grid.minor.x = element_line(colour = hypogen::hypo_clr_lg),
+  ggplot2::theme(axis.title.y = element_blank(),
+        panel.grid.major.x = ggplot2::element_line(colour = hypogen::hypo_clr_lg),
+        panel.grid.minor.x = ggplot2::element_line(colour = hypogen::hypo_clr_lg),
         ...)
 }
 
@@ -122,12 +121,12 @@ no_title <- function(...){
 #' @export
 get_gxp_long <- function(file, kb = 10){
   trt <- file %>%
-    str_remove('^.*/') %>%
-    str_remove(str_c('.lm.',kb, 'k.',kb/10, 'k.txt.gz'))
+    stringr::str_remove('^.*/') %>%
+    stringr::str_remove(str_c('.lm.',kb, 'k.',kb/10, 'k.txt.gz'))
 
   data <- file %>%
     vroom::vroom(delim = "\t") %>%
-    left_join(.,hypogen::hypo_chrom_start) %>%
+    dplyr::left_join(.,hypogen::hypo_chrom_start) %>%
     add_gpos()%>%
     dplyr::mutate(trt = trt)
   data

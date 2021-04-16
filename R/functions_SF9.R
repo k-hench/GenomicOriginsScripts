@@ -11,9 +11,9 @@
 #'
 #' @export
 get_gxp_both_models <- function(file, trait, model_type, path){
-  vroom::vroom(str_c(path,file), delim = "\t") %>%
-    left_join(hypo_chrom_start)  %>%
-    mutate(trait = trait,
-           model_type = model_type,
-           gpos = GSTART + MID_POS)
+  vroom::vroom(stringr::str_c(path, file), delim = "\t") %>%
+    dplyr::left_join(hypo_chrom_start) %>%
+    dplyr::mutate(trait = trait,
+                  model_type = model_type,
+                  gpos = GSTART + MID_POS)
 }

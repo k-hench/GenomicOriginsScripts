@@ -10,8 +10,8 @@
 fish_plot <- function(spec){
 
   p <- ggplot()+
-    hypoimg::hypo_anno_flag(geo = loc_names[str_sub(spec, 4, 6)] %>% str_to_lower(), ymax = 0)+
-    hypoimg::hypo_anno_l(species = sp_names[str_sub(spec, 1, 3)],ymin = 0)+
+    hypoimg::hypo_anno_flag(geo = loc_names[stringr::str_sub(spec, 4, 6)] %>% stringr::str_to_lower(), ymax = 0)+
+    hypoimg::hypo_anno_l(species = sp_names[stringr::str_sub(spec, 1, 3)], ymin = 0)+
     ggplot2::scale_y_continuous(limits = c(-.8,1))+
     ggplot2::theme_void()
 
@@ -30,8 +30,8 @@ fish_plot <- function(spec){
 fish_plot2 <- function(spec){
 
   p <- ggplot()+
-    hypoimg::hypo_anno_flag(geo = loc_names[str_sub(spec,4,6)] %>% str_to_lower(),xmax = 0)+
-    hypoimg::hypo_anno_r(species = sp_names[str_sub(spec,1,3)],xmin = 0)+
+    hypoimg::hypo_anno_flag(geo = loc_names[stringr::str_sub(spec,4,6)] %>% stringr::str_to_lower(), xmax = 0)+
+    hypoimg::hypo_anno_r(species = sp_names[stringr::str_sub(spec,1,3)], xmin = 0)+
     ggplot2::scale_y_continuous(limits = c(-1, 1))+
     ggplot2::scale_x_continuous(limits = c(-.4, 1))+
     ggplot2::theme_void()

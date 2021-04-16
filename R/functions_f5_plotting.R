@@ -19,13 +19,14 @@
 #' @param text        logical, toggle y axis label and ticks
 #' @param label       string, panel label ("A"/"B"/"C")
 #' @param trait       string, trait identifier for icon on gxp plot
+#' @param data_tables    list with twisst results
 #' @param ...         catch-all parameter to allow excessive parameters through purrr::pmap
 #'
 #' @family Figure 5
 #'
 #' @export
 plot_curtain <- function(loc = 'bel', outlier_id, outlier_nr, lg, start, end,
-                         cool_genes,text = TRUE, label, trait, ...){
+                         cool_genes,text = TRUE, label, trait, data_tables, ...){
   p_g <- plot_panel_anno(lg = lg, outlier_id = outlier_id, label = label,
                          start = start,end = end, genes = cool_genes)
   p_fst <- plot_panel_fst(lg = lg, start = start,end = end)
@@ -34,13 +35,13 @@ plot_curtain <- function(loc = 'bel', outlier_id, outlier_nr, lg, start, end,
   p_gxp <- plot_panel_gxp(lg = lg, start = start,end = end, trait = trait)
   p_t1 <- plot_panel_twisst(loc = loc, lg = lg, start = start,end = end, window_size = 200,
                             neighbours = tibble(left_neighbour = 'ind', right_neighbour = 'may', palette = twisst_clr['Blue']),
-                            xlab = FALSE, highlight_mode = 'pair')
+                            xlab = FALSE, highlight_mode = 'pair', data_tables = data_tables)
   p_t2 <- plot_panel_twisst(loc = loc, lg = lg, start = start,end = end, window_size = 200,
                             neighbours = tibble(left_neighbour = 'ind', right_neighbour = 'pue', palette = twisst_clr['Bars']),
-                            xlab = FALSE, highlight_mode = 'pair')
+                            xlab = FALSE, highlight_mode = 'pair', data_tables = data_tables)
   p_t3 <- plot_panel_twisst(loc = loc, lg = lg, start = start,end = end, window_size = 200,
                             neighbours = tibble(left_neighbour = 'uni', pops = list(pops_bel), palette = twisst_clr['Butter']),
-                            xlab = FALSE, highlight_mode = 'isolation' )
+                            xlab = FALSE, highlight_mode = 'isolation', data_tables = data_tables)
 
   if(text){
     p_curtain <- cowplot::plot_grid(p_g,
@@ -94,60 +95,61 @@ plot_curtain <- function(loc = 'bel', outlier_id, outlier_nr, lg, start, end,
 #' @param neighbours     topology highlight grouping
 #' @param xlab           logical, should x axis labels be plotted?
 #' @param highlight_mode string, topology highlight mode ("pair", "isolation")
+#' @param data_tables    list with twisst results
 #' @param ...            catch-all parameter to allow excessive parameters through purrr::pmap
 #'
 #' @family Figure 5
 #'
 #' @export
-plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size, neighbours, xlab = TRUE, highlight_mode, ...){
+plot_panel_twisst <- function(loc = "bel", lg, start, end, window_size = twisst_size, neighbours, xlab = TRUE, highlight_mode, data_tables, ...){
   # fetch and subset data set for location
-  data <- data_tables[[loc]]%>%
-    filter(CHROM == lg ) %>%
-    mutate(topo3 = str_pad(topo_nr, width = 3, pad = '0'))
+  data <- data_tables[[loc]] %>%
+    dplyr::filter( CHROM == lg ) %>%
+    dplyr::mutate(topo3 = stringr::str_pad(topo_nr, width = 3, pad = '0'))
 
   # determine number of topologies
   ntopo <- data$topo %>% unique() %>% length()
 
   # import topologies
-  topo_plots <- read_lines(file = str_c(w_path,loc,'.LG01.w', twisst_size, '.phyml_bionj.weights.tsv.gz'), n_max = ntopo) %>%
-    str_remove_all('#') %>%
-    tibble(pre=.) %>%
-    separate(pre,
-             into = c('topo','tree'),sep = ' ') %>%
-    rowwise() %>%
-    mutate(phylo = list(read.tree(text = tree) %>% unroot()),
-           topo_nr  = str_remove(topo,'topo') %>% as.numeric()) %>%
+  topo_plots <- readr::read_lines(file = stringr::str_c(w_path,loc,'.LG01.w', twisst_size, '.phyml_bionj.weights.tsv.gz'), n_max = ntopo) %>%
+    stringr::str_remove_all('#') %>%
+    tibble::tibble(pre = .) %>%
+    tidyr::separate(pre,
+                    into = c('topo','tree'), sep = ' ') %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(phylo = list(read.tree(text = tree) %>% unroot()),
+                  topo_nr  = stringr::str_remove(topo,'topo') %>% as.numeric()) %>%
     ungroup()
 
   # highlight topologies of interest based on highlighting mode (pair / isolation)
   if(highlight_mode == 'pair'){
     topo_highlight <- neighbours %>%
       dplyr::select(-palette) %>%
-      purrr::pmap(get_neighbour_topos,topo_plots = topo_plots) %>%
+      purrr::pmap(get_neighbour_topos, topo_plots = topo_plots) %>%
       purrr::set_names(nm = LETTERS[(length(neighbours$left_neighbour)+1):2]) %>%
       bind_cols() %>%
       gather(key = 'prefix',value = 'topo_nr')
   }  else if (highlight_mode == 'isolation') {
     topo_highlight <- neighbours %>%
       dplyr::select(-palette) %>%
-      purrr::pmap(get_isolated_topos,topo_plots = topo_plots) %>%
+      purrr::pmap(get_isolated_topos, topo_plots = topo_plots) %>%
       purrr::set_names(nm = LETTERS[(length(neighbours$left_neighbour)+1):2]) %>%
-      bind_cols() %>%
-      gather(key = 'prefix',value = 'topo_nr')
+      dplyr::bind_cols() %>%
+      tidyr::gather(key = 'prefix', value = 'topo_nr')
   }
 
   # label highlighted topologies
   data <- data %>%
-    left_join(.,topo_highlight) %>%
-    mutate(prefix = ifelse(is.na(prefix),"A",prefix),
-           topo4 = str_c(prefix,topo3))
+    dplyr::left_join(.,topo_highlight) %>%
+    dplyr::mutate(prefix = ifelse(is.na(prefix), "A", prefix),
+                  topo4 = stringr::str_c(prefix,topo3))
 
   # small highlighting function (needs to be defined here for the '<<-' to work)
   highlighter <- function(prefix, palette,...){
     high_n <- length(cols_topo[grepl(prefix,names(cols_topo))])
     high_base <- c(darken(palette), lighten(palette,factor = .1))
     high_clr <- colorRampPalette(high_base)(high_n)
-    cols_topo[grepl(prefix,names(cols_topo))] <<- high_clr
+    cols_topo[grepl(prefix, names(cols_topo))] <<- high_clr
   }
 
   # neutral topology color scheme
@@ -156,37 +158,38 @@ plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size, ne
 
   # override colors of highlighted topologies
   neighbours %>%
-    mutate(prefix = LETTERS[2:(length(neighbours$left_neighbour)+1)]) %>%
+    dplyr::mutate(prefix = LETTERS[2:(length(neighbours$left_neighbour)+1)]) %>%
     purrr::pmap(highlighter)
 
   # plot topology weighting panel ----------------------------------
   p1 <- data %>%
-    ggplot(aes(x = BIN_MID,
-               y = weight,
-               color = topo4,
-               fill = topo4,
-               group = str_c(topo4,CHROM, sep = '_')))+
+    ggplot2::ggplot(aes(x = BIN_MID,
+                        y = weight,
+                        color = topo4,
+                        fill = topo4,
+                        group = stringr::str_c(topo4, CHROM, sep = '_')))+
     # add weighting results
-    geom_area(position = 'stack', size = .2)+
+    ggplot2::geom_area(position = 'stack', size = .2)+
     # add outlier area
-    geom_rect(inherit.aes = FALSE, data = tibble(start = start, end=end),
-              aes(xmin = start, xmax = end),ymin = -Inf, ymax = Inf,
-              fill=rgb(1,1,1,.3), color = rgb(1,1,1,.9))+
+    ggplot2::geom_rect(inherit.aes = FALSE, data = tibble::tibble(start = start, end = end),
+                       aes(xmin = start, xmax = end), ymin = -Inf, ymax = Inf,
+                       fill = rgb(1,1,1,.3), color = rgb(1,1,1,.9))+
     # use same boundaries for all panels
-    coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
+    ggplot2::coord_cartesian(xlim = c(start-window_buffer, end+window_buffer))+
     # use highlighter color scheme
-    scale_color_manual(values = cols_topo, guide = FALSE)+
-    scale_fill_manual(values = alpha(cols_topo,.5), guide = FALSE)+
+    ggplot2::scale_color_manual(values = cols_topo, guide = FALSE)+
+    ggplot2::scale_fill_manual(values = alpha(cols_topo,.5), guide = FALSE)+
     # layout x ayis
-    scale_x_continuous(limits = c(start-window_buffer*1.25,end+window_buffer*1.25),expand = c(0,0),
-                       labels = ax_scl) +
+    ggplot2::scale_x_continuous(limits = c(start-window_buffer*1.25,end+window_buffer*1.25),
+                                expand = c(0,0),
+                                labels = ax_scl) +
     # layout y ayis
-    scale_y_continuous(expression(bolditalic(w)), expand = c(0.01, 0.01))+
-    # use same plot appreance for all panels
+    ggplot2::scale_y_continuous(expression(bolditalic(w)), expand = c(0.01, 0.01))+
+    # use same plot appearance for all panels
     theme_panels()
 
   # if asked for it, drop x axis labels and title
-  if(!xlab){p1 <- p1+theme(axis.text.x = element_blank())}
+  if(!xlab){p1 <- p1+ggplot2::theme(axis.text.x = ggplot2::element_blank())}
 
   p1
 }
@@ -207,29 +210,32 @@ plot_panel_twisst <- function(loc, lg, start, end, window_size = twisst_size, ne
 plot_panel_fst <- function(lg, start, end, xlab = TRUE, ...){
   ggplot2::ggplot() +
     # add outlier area
-    geom_rect(inherit.aes = FALSE, data = tibble(start = start, end=end),
-              aes(xmin = start, xmax = end),ymin = -Inf, ymax = Inf,
-              fill=rgb(.9,.9,.9,.3), color = rgb(.9,.9,.9,.9)) +
+    ggplot2::geom_rect(inherit.aes = FALSE,
+                       data = tibble::tibble(start = start, end = end),
+                       aes(xmin = start, xmax = end), ymin = -Inf, ymax = Inf,
+                       fill = rgb(.9,.9,.9,.3), color = rgb(.9,.9,.9,.9)) +
     # add subsetted fst data
-    geom_line(data = fst_data %>%
-                filter(CHROM == lg, BIN_MID>start-window_buffer*1.25,BIN_MID<end+window_buffer*1.25) ,
-              aes(x = BIN_MID, y = WEIGHTED_FST,
-                  color = weighted_fst,#as.numeric(run),
-                  group = run),size = .2) +
+    ggplot2::geom_line(data = fst_data %>%
+                         dplyr::filter(CHROM == lg,
+                                BIN_MID>start-window_buffer*1.25,
+                                BIN_MID<end+window_buffer*1.25) ,
+                       aes(x = BIN_MID, y = WEIGHTED_FST,
+                           color = weighted_fst,
+                           group = run), size = .2) +
     # use same boundaries for all panels
-    coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
+    ggplot2::coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
     # define color scheme
-    scale_color_gradientn(name = expression(global~weighted~italic(F[ST])),
-                          colours = hypogen::hypo_clr_LGs[1:24])+
+    ggplot2::scale_color_gradientn(name = expression(global~weighted~italic(F[ST])),
+                                   colours = hypogen::hypo_clr_LGs[1:24])+
     # layout x ayis
-    scale_x_continuous(name = lg, expand = c(0,0), position = 'top') +
+    ggplot2:: scale_x_continuous(name = lg, expand = c(0,0), position = 'top') +
     # layout y ayis
-    scale_y_continuous(name = expression(bolditalic(F[ST])),
-                       expand = c(0,0),
-                       limits = c(-0.07, 0.92))+
+    ggplot2::scale_y_continuous(name = expression(bolditalic(F[ST])),
+                                expand = c(0,0),
+                                limits = c(-0.07, 0.92))+
     # legend styling
-    guides(color = guide_colorbar(barheight = unit(5,'pt'),
-                                  barwidth = unit(100,'pt')))+
+    ggplot2::guides(color = ggplot2::guide_colorbar(barheight = unit(5, 'pt'),
+                                                    barwidth = unit(100, 'pt')))+
     # use same plot appreance for all panels
     theme_panels()
 }
@@ -251,33 +257,34 @@ plot_panel_fst <- function(lg, start, end, xlab = TRUE, ...){
 #' @export
 plot_panel_dxy <- function(lg, start, end, ...){
   plot_data  <- dxy_data %>%
-    select(CHROM, BIN_MID, dxy, weighted_fst, run) %>%
-    filter(CHROM == lg,
+    dplyr::select(CHROM, BIN_MID, dxy, weighted_fst, run) %>%
+    dplyr::filter(CHROM == lg,
            BIN_MID > (start-window_buffer),
            BIN_MID < (end+window_buffer))
 
   ggplot2::ggplot() +
     # add outlier area
-    geom_rect(inherit.aes = FALSE, data = tibble(start = start, end=end),
-              aes(xmin = start, xmax = end),ymin = -Inf, ymax = Inf,
-              fill=rgb(.9,.9,.9,.3),color = rgb(.9,.9,.9,.9)) +
+    ggplot2::geom_rect(inherit.aes = FALSE, data = tibble::tibble(start = start, end = end),
+                       aes(xmin = start, xmax = end),ymin = -Inf, ymax = Inf,
+                       fill = rgb(.9,.9,.9,.3), color = rgb(.9,.9,.9,.9)) +
     # add dxy data
-    geom_line(data = plot_data ,
-              aes(x = BIN_MID, y = dxy, color = weighted_fst,
-                  group = run),size = .2) +
+    ggplot2::geom_line(data = plot_data ,
+                       aes(x = BIN_MID, y = dxy, color = weighted_fst,
+                           group = run), size = .2) +
     # use same boundaries for all panels
-    coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
+    ggplot2::coord_cartesian(xlim = c(start-window_buffer, end+window_buffer))+
     # define color scheme
-    scale_color_gradientn(name = expression(global~weighted~italic(F[ST])),
-                          colours = hypogen::hypo_clr_LGs[1:24])+
+    ggplot2::scale_color_gradientn(name = expression(global~weighted~italic(F[ST])),
+                                   colours = hypogen::hypo_clr_LGs[1:24])+
     # layout x ayis
-    scale_x_continuous(name = lg, expand = c(0,0),position = 'top') +
+    ggplot2::scale_x_continuous(name = lg, expand = c(0,0), position = 'top') +
     # layout y ayis
-    scale_y_continuous(name = expression(bolditalic(d[XY])),
-                       expand = c(0,0),
-                       limits = c(0.0009, 0.0075))+
+    ggplot2::scale_y_continuous(name = expression(bolditalic(d[XY])),
+                                expand = c(0,0),
+                                limits = c(0.0009, 0.0075))+
     # legend styling
-    guides(color=guide_colorbar(barheight = unit(5,'pt'),barwidth = unit(100,'pt')))+
+    ggplot2::guides(color = guide_colorbar(barheight = unit(5,'pt'),
+                                           barwidth = unit(100,'pt')))+
     # use same plot appreance for all panels
     theme_panels()
 }
@@ -299,35 +306,36 @@ plot_panel_dxy <- function(lg, start, end, ...){
 plot_panel_gxp <- function(lg, start, end, trait, ...){
   ggplot2::ggplot() +
     # add outlier area
-    geom_rect(inherit.aes = FALSE,
-              data = tibble(start = start, end=end),
-              aes(xmin = start, xmax = end),
-              ymin = -Inf, ymax = Inf,
-              fill=rgb(.9,.9,.9,.3),color = rgb(.9,.9,.9,.9)) +
+    ggplot2::geom_rect(inherit.aes = FALSE,
+                       data = tibble::tibble(start = start, end = end),
+                       aes(xmin = start, xmax = end),
+                       ymin = -Inf, ymax = Inf,
+                       fill = rgb(.9,.9,.9,.3),
+                       color = rgb(.9,.9,.9,.9)) +
     # add subsetted gxp data
-    geom_line(data = gxp_data %>%
-                filter(CHROM == lg,
-                       MID_POS>start-window_buffer*1.25,
-                       MID_POS<end+window_buffer*1.25) ,
-              aes(x = MID_POS, y = AVG_p_wald,
-                  color = trt),size = .6) +
-    hypoimg::geom_hypo_grob(data = tibble(grob = list(trait_grob[[trait]])),
-                              #tibble(grob = hypoimg::hypo_trait_img$grob_circle[hypoimg::hypo_trait_img$trait == trait]),
+    ggplot2::geom_line(data = gxp_data %>%
+                         dplyr::filter(CHROM == lg,
+                                       MID_POS>start-window_buffer*1.25,
+                                       MID_POS<end+window_buffer*1.25) ,
+                       aes(x = MID_POS, y = AVG_p_wald,
+                           color = trt), size = .6) +
+    hypoimg::geom_hypo_grob(data = tibble::tibble(grob = list(trait_grob[[trait]])),
+                            #tibble(grob = hypoimg::hypo_trait_img$grob_circle[hypoimg::hypo_trait_img$trait == trait]),
                             aes(grob = grob, angle = 0, height = .65),
                             inherit.aes = FALSE, x = .9, y = 0.65)+
     # use same boundaries for all panels
-    coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
+    ggplot2::coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
     # define color scheme
-    scale_color_manual(name = 'GxP Trait',
-                       values = gxp_clr)+
+    ggplot2::scale_color_manual(name = 'GxP Trait',
+                                values = gxp_clr)+
     # layout x ayis
-    scale_x_continuous(name = lg, expand = c(0,0),position = 'top') +
+    ggplot2::scale_x_continuous(name = lg, expand = c(0,0), position = 'top') +
     # layout y ayis
-    scale_y_continuous(name = expression(bolditalic(-log[10](p))), expand = c(0,0))+
+    ggplot2::scale_y_continuous(name = expression(bolditalic(-log[10](p))), expand = c(0,0))+
     # legend styling
-    guides(color=guide_legend(keyheight =  unit(3,'pt'),
-                              keywidth = unit(20,'pt'),
-                              override.aes = list(size = 2))) +
+    ggplot2::guides(color = ggplot2::guide_legend(keyheight =  unit(3,'pt'),
+                                                  keywidth = unit(20,'pt'),
+                                                  override.aes = list(size = 2))) +
     # use same plot appreance for all panels
     theme_panels()
 }
@@ -349,30 +357,33 @@ plot_panel_gxp <- function(lg, start, end, trait, ...){
 #' @export
 plot_panel_delta_dxy <- function(lg, start, end, ...){
   dxy_summary <- data_dxy_summary %>%
-    filter(scaffold == lg, mid>start-window_buffer*1.25,mid<end+window_buffer*1.25)
+    dplyr::filter(scaffold == lg,
+                  mid>start-window_buffer*1.25,
+                  mid<end+window_buffer*1.25)
 
   ggplot2::ggplot() +
     # add delta dxy data
-    geom_area(data = dxy_summary, aes(x = mid, y = delta_dxy),
-              fill = 'lightgrey', color = 'darkgray')+
+    ggplot2::geom_area(data = dxy_summary, aes(x = mid, y = delta_dxy),
+                       fill = 'lightgrey', color = 'darkgray')+
     # add outlier area
-    geom_rect(inherit.aes = FALSE, data = tibble(start = start, end=end),
-              aes(xmin = start, xmax = end),ymin = -Inf, ymax = Inf,
-              fill=rgb(1, 1, 1, .3), color = rgb(1, 1, 1, .9)) +
+    ggplot2::geom_rect(inherit.aes = FALSE,
+                       data = tibble::tibble(start = start, end = end),
+                       aes(xmin = start, xmax = end), ymin = -Inf, ymax = Inf,
+                       fill = rgb(1, 1, 1, .3), color = rgb(1, 1, 1, .9)) +
     # use same boundaries for all panels
-    coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
+    ggplot2::coord_cartesian(xlim = c(start-window_buffer, end+window_buffer))+
     # layout x ayis
-    scale_x_continuous(name = lg,
-                       limits = c(start-window_buffer*1.25,
-                                  end+window_buffer*1.25),
-                       expand = c(0, 0),
-                       position = 'top') +
+    ggplot2::scale_x_continuous(name = lg,
+                                limits = c(start-window_buffer*1.25,
+                                           end+window_buffer*1.25),
+                                expand = c(0, 0),
+                                position = 'top') +
     # layout y ayis
-    scale_y_continuous(name = expression(bolditalic("\U0394" ~d[XY])),
-                       expand = c(0, 0),
-                       breaks = c(0, 0.0025, 0.005),
-                      # labels = c("0", "", "0.005"),
-                       limits = c(0, 0.0051))+
+    ggplot2::scale_y_continuous(name = expression(bolditalic("\U0394" ~d[XY])),
+                                expand = c(0, 0),
+                                breaks = c(0, 0.0025, 0.005),
+                                # labels = c("0", "", "0.005"),
+                                limits = c(0, 0.0051))+
     # use same plot appreance for all panels
     theme_panels()
 }
@@ -410,25 +421,31 @@ custom_annoplot <- function (..., searchLG, xrange, genes_of_interest = c(), gen
   ggplot2::ggplot() +
     # add exons
     ggplot2::geom_rect(data = df_list[[2]],
-                       aes(xmin = ps, xmax = pe, ymin = yl - (width/2), ymax = yl + (width/2), group = Parent),
+                       aes(xmin = ps, xmax = pe, ymin = yl - (width/2),
+                           ymax = yl + (width/2), group = Parent),
                        fill = alpha(gene_color,.6), col = gene_color, lwd = 0.1) +
     # add outlier area
-    geom_rect(inherit.aes = FALSE, data = tibble(start = start, end = end),
+    ggplot2::geom_rect(inherit.aes = FALSE,
+                       data = tibble::tibble(start = start, end = end),
               aes(xmin = start, xmax = end),
               ymin = -Inf, ymax = Inf,
               fill=rgb(1,1,1,.3),color = rgb(1,1,1,.9)) +
     # add gene direction if known
-    ggplot2::geom_segment(data = (df_list[[1]] %>% filter(strand %in% c("+", "-"))),
+    ggplot2::geom_segment(data = (df_list[[1]] %>%
+                                    dplyr::filter(strand %in% c("+", "-"))),
                           aes(x = ps, xend = pe,
                               y = yl, yend = yl, group = Parent),
                           lwd = 0.2, arrow = arrow(length = unit(1.5,"pt"), type = "closed"),
                           color = clr_genes) +
     # add gene extent if direction is unknown
-    ggplot2::geom_segment(data = (df_list[[1]] %>% filter(!strand %in% c("+", "-"))),
+    ggplot2::geom_segment(data = (df_list[[1]] %>%
+                                    dplyr::filter(!strand %in% c("+", "-"))),
                           aes(x = ps, xend = pe,
-                              y = yl, yend = yl, group = Parent), lwd = 0.2, color = clr_genes) +
+                              y = yl, yend = yl, group = Parent),
+                          lwd = 0.2, color = clr_genes) +
     # add gene label
-    ggplot2::geom_text(data = df_list[[1]] %>% filter(label %in% genes_of_interest),
+    ggplot2::geom_text(data = df_list[[1]] %>%
+                         dplyr::filter(label %in% genes_of_interest),
                        size = GenomicOriginsScripts::plot_text_size_small / ggplot2::.pt,
                        aes(x = labelx, label = gsub("hpv1g000000", ".", label), y = yl - 0.5))
 }
@@ -451,38 +468,39 @@ custom_annoplot <- function (..., searchLG, xrange, genes_of_interest = c(), gen
 #'
 #' @export
 plot_panel_anno <- function(outlier_id, label, lg, start, end, genes = c(),...){
-  ttle <- str_sub(outlier_id,1,4) %>%
-    str_c(.,' (',project_inv_case(label),')')
+  ttle <- stringr::str_sub(outlier_id,1,4) %>%
+    stringr::str_c(.,' (',project_inv_case(label),')')
 
   p <- custom_annoplot(searchLG = lg,
                        xrange = c(start-window_buffer*1.25,end+window_buffer*1.25),
                        genes_of_interest = genes,
-                       anno_rown = 6, start = start, end = end)+
+                       anno_rown = 6, start = start, end = end) +
     # layout x ayis
-    scale_x_continuous(name = ttle,
-                       position = 'top',
-                       expand = c(0,0),
-                       limits = c(start-window_buffer*1.25,end+window_buffer*1.25),
-                       labels = ax_scl)+
+    ggplot2::scale_x_continuous(name = ttle,
+                                position = 'top',
+                                expand = c(0,0),
+                                limits = c(start-window_buffer*1.25, end+window_buffer*1.25),
+                                labels = ax_scl)+
     # layout y ayis
-    scale_y_continuous(name = expression(bolditalic(Genes)), expand = c(0,.4))+
+    ggplot2::scale_y_continuous(name = expression(bolditalic(Genes)), expand = c(0,.4))+
     # use same boundaries for all panels
-    coord_cartesian(xlim = c(start-window_buffer,end+window_buffer))+
+    ggplot2::coord_cartesian(xlim = c(start-window_buffer, end+window_buffer))+
     # special panel layout for annotation panel
     hypogen::theme_hypo()+
-    theme(text = element_text(size = plot_text_size),
-          panel.background = element_rect(fill = rgb(.9,.9,.9),color = rgb(1,1,1,0)),
-          legend.position = 'none',
-          axis.title.x = element_text(),
-          axis.line = element_blank(),
-          axis.text.y = element_blank(),
-          axis.ticks.y = element_blank())
+    ggplot2::theme(text = ggplot2::element_text(size = plot_text_size),
+                   panel.background = ggplot2::element_rect(fill = rgb(.9,.9,.9),
+                                                            color = rgb(1,1,1,0)),
+                   legend.position = 'none',
+                   axis.title.x = ggplot2::element_text(),
+                   axis.line = ggplot2::element_blank(),
+                   axis.text.y = ggplot2::element_blank(),
+                   axis.ticks.y = ggplot2::element_blank())
 
   # use correct greec symbols in labels if needed
   if(outlier_id == 'LG17_1'){
     p$layers[[5]]$data$label <- p$layers[[5]]$data$label %>%
-      str_replace(.,'alpha',"\u03B1")%>%
-      str_replace(.,'beta',"\u03B2")
+      stringr::str_replace(., 'alpha', "\u03B1")%>%
+      stringr::str_replace(.,  'beta', "\u03B2")
   }
   p
 }
@@ -502,11 +520,13 @@ plot_panel_anno <- function(outlier_id, label, lg, start, end, genes = c(),...){
 #'
 #' @export
 plot_fish_zoom <- function(anno_tab, idx, height = .1, width = 5){
-  annotation_custom(grob = anno_tab$grob[[idx]] %>% ggdraw() %>% cowplot::as_grob(),
-                    xmin = anno_tab$x[[idx]] - width/2,
-                    xmax = anno_tab$x[[idx]] + width/2,
-                    ymin = anno_tab$y[[idx]] - height/2,
-                    ymax = anno_tab$y[[idx]] + height/2 )
+  ggplot2::annotation_custom(grob = anno_tab$grob[[idx]] %>%
+                               cowplot::ggdraw() %>%
+                               cowplot::as_grob(),
+                             xmin = anno_tab$x[[idx]] - width/2,
+                             xmax = anno_tab$x[[idx]] + width/2,
+                             ymin = anno_tab$y[[idx]] - height/2,
+                             ymax = anno_tab$y[[idx]] + height/2 )
 }
 
 #' Create topology legend
@@ -532,57 +552,57 @@ plot_fish_zoom <- function(anno_tab, idx, height = .1, width = 5){
 plot_leg <- function(spec1 = 'puella', spec2 = 'maya', color = "#084082ff", size = .5, mode = 'pair'){
   if(mode == 'pair'){
     # geometry of collapsed part of topology
-    tri <- tibble(x = c(0,3,3,0),
-                  y = c(0,-.5,.5,0))
+    tri <- tibble::tibble(x = c(0,3,3,0),
+                          y = c(0,-.5,.5,0))
 
     # branches of the pairs
-    lns <- tibble(x = rep(c(-1,0),2),
-                  y = c(.75,0,-.75,0),
-                  grp = rep(c('a','b'),
-                            each = 2))
+    lns <- tibble::tibble(x = rep(c(-1,0),2),
+                          y = c(.75,0,-.75,0),
+                          grp = rep(c('a','b'),
+                                    each = 2))
 
     # collect hamlet pair annotations and generic hamlet
-    ann <- tibble(grob = list(hypoimg::hypo_img$r[[which(hypoimg::hypo_img$spec == spec1)]],
-                              hypoimg::hypo_img$r[[which(hypoimg::hypo_img$spec == spec2)]],
-                              generic_hamlet_img),
-                  x = c(-1,-1,2.45),
-                  y = c(.75,-.75,0))
+    ann <- tibble::tibble(grob = list(hypoimg::hypo_img$r[[which(hypoimg::hypo_img$spec == spec1)]],
+                                      hypoimg::hypo_img$r[[which(hypoimg::hypo_img$spec == spec2)]],
+                                      generic_hamlet_img),
+                          x = c(-1,-1,2.45),
+                          y = c(.75,-.75,0))
 
     # plot legend element
-    ggplot(tri, aes(x,y))+
-      geom_polygon(data = tri,color = color,fill = alpha(color,.4), size = size )+
-      geom_line(data = lns,aes(group = grp),color = color, size = size ) +
+    ggplot2::ggplot(tri, aes(x,y))+
+      ggplot2::geom_polygon(data = tri,color = color,fill = alpha(color,.4), size = size )+
+      ggplot2::geom_line(data = lns,aes(group = grp),color = color, size = size ) +
       plot_fish_zoom(anno_tab = ann,idx = 1,width = 1,height = .5)+
       plot_fish_zoom(anno_tab = ann,idx = 2,width = 1,height = .5)+
       plot_fish_zoom(anno_tab = ann,idx = 3,width = 1,height = .75)+
-      coord_equal(xlim = c(-1.4,3),
-                  ylim = c(-1,1))+
-      theme_void()
+      ggplot2::coord_equal(xlim = c(-1.4,3),
+                           ylim = c(-1,1))+
+      ggplot2::theme_void()
   } else  if(mode == 'isolation'){
     # geometry of collapsed part of topology
-    tri <- tibble(x = c(0,3,3,0),
-                  y = c(0,-.5,.5,0))
+    tri <- tibble::tibble(x = c(0,3,3,0),
+                          y = c(0,-.5,.5,0))
 
     # branches of the species
-    lns <- tibble(x = c(-1,0),
-                  y = c(0,0),
-                  grp = rep('a',each = 2))
+    lns <- tibble::tibble(x = c(-1,0),
+                          y = c(0,0),
+                          grp = rep('a', each = 2))
 
     # collect hamlet species annotation and generic hamlet
-    ann <- tibble(grob = list(hypoimg::hypo_img$r[[which(hypoimg::hypo_img$spec == spec1)]],
+    ann <- tibble::tibble(grob = list(hypoimg::hypo_img$r[[which(hypoimg::hypo_img$spec == spec1)]],
                               generic_hamlet_img),
                   x = c(-1,2.45),
                   y = c(0,0))
 
     # plot legened element
-    ggplot(tri, aes(x,y))+
-      geom_polygon(data = tri,color = color,fill = alpha(color,.4), size = size )+
-      geom_line(data = lns,aes(group = grp),color = color, size = size ) +
+    ggplot2::ggplot(tri, aes(x,y))+
+      ggplot2::geom_polygon(data = tri, color = color, fill = alpha(color,.4), size = size )+
+      ggplot2::geom_line(data = lns,aes(group = grp),color = color, size = size ) +
       plot_fish_zoom(anno_tab = ann,idx = 1,width = 1,height = .5)+
       plot_fish_zoom(anno_tab = ann,idx = 2,width = 1,height = .75)+
-      coord_equal(xlim = c(-1.4,3),
-                  ylim = c(-1,1))+
-      theme_void()
+      ggplot2::coord_equal(xlim = c(-1.4,3),
+                           ylim = c(-1,1))+
+      ggplot2::theme_void()
   }
 }
 
@@ -605,34 +625,34 @@ plot_fst_poptree <- function(gid, data_nj, ...){
     tidygraph::as_tbl_graph(layout = "dendrogram",
                             length = length,
                             directed = TRUE) %>%
-    mutate(leaf = node_is_leaf()) %>%
-    ggraph(layout = "dendrogram",
-           length = length,
-           circular = TRUE) +
-    geom_edge_link()+
-    geom_node_point(aes(filter = leaf,
-                        fill = str_sub(name, 1, 3),
-                        shape = str_sub(name, 4, 6)),
-                    size = 1.5)+
-    scale_fill_manual("Species",
-                      values = clr,
-                      labels = sp_names %>%
-                        str_c("*H. ",.,"*") %>%
-                        purrr::set_names(nm = names(sp_names)))+
-    scale_shape_manual("Location",
-                       labels = loc_names,
-                       values = 21:23) +
-    guides(shape = guide_legend(#title.position = "top"
-                                ),
-           fill = guide_legend(#title.position = "top",
-                               override.aes = list(shape = 21),
-                               nrow = 1))+
-    theme_void()+
-    theme(legend.position = "none",
-          legend.text = ggtext::element_markdown(),
-          legend.key.width = unit(6, "pt")) +
-    coord_equal()+
-    scale_y_reverse()
+    dplyr::mutate(leaf = tidygraph::node_is_leaf()) %>%
+    ggraph::ggraph(layout = "dendrogram",
+                   length = length,
+                   circular = TRUE) +
+    ggraph::geom_edge_link()+
+    ggraph::geom_node_point(aes(filter = leaf,
+                                fill = stringr::str_sub(name, 1, 3),
+                                shape = stringr::str_sub(name, 4, 6)),
+                            size = 1.5)+
+    ggplot2::scale_fill_manual("Species",
+                               values = clr,
+                               labels = sp_names %>%
+                                 str_c("*H. ",.,"*") %>%
+                                 purrr::set_names(nm = names(sp_names)))+
+    ggplot2::scale_shape_manual("Location",
+                                labels = loc_names,
+                                values = 21:23) +
+    ggplot2::guides(shape = ggplot2::guide_legend(#title.position = "top"
+    ),
+    fill = ggplot2::guide_legend(#title.position = "top",
+      override.aes = list(shape = 21),
+      nrow = 1))+
+    ggplot2::theme_void()+
+    ggplot2::theme(legend.position = "none",
+                   legend.text = ggtext::element_markdown(),
+                   legend.key.width = unit(6, "pt")) +
+    ggplot2::coord_equal()+
+    ggplot2::scale_y_reverse()
 
   p
 }

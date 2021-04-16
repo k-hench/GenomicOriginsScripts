@@ -60,12 +60,17 @@ reference:
     desc: >
       Functions specific to Figure 1.
     contents:
-      - summarize_dxy
-      - summarize_fst
+      - bammplot_k
+      - hypo_anno_l_lwd
       - make_faint_clr
       - network_layout
+      - pca_plot
       - plot_fish
+      - plot_fish2
+      - plot_fish_lwd
       - plot_network
+      - summarize_dxy
+      - summarize_fst
       - whisker_points
   - title: "Figure 2"
     desc: >
@@ -108,6 +113,17 @@ reference:
       - plot_panel_twisst
       - prep_data
       - theme_panels
+  - title: "Figure 6"
+    desc: >
+      Functions specific to Figure 6.
+    contents:
+      - import_geva_data
+      - gxp_importer
+      - import_gxp_data
+      - get_gxp_and_geva
+      - reverselog_trans
+      - grid_piece_x
+      - theme_gradient_bg_x
   - title: "Suppl. Figure 1"
     desc: >
       Functions specific to Suppl. Figure 1.

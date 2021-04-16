@@ -24,7 +24,7 @@
 get_twisst_data <- function(loc,w_in,d_in,smooth = FALSE, span = 0.01){
   skipt_topo <- c(bel = 15, hon = 105)
   ########## read data ##################
-  weights <- vroom::vroom(str_c(w_path, w_in), delim = "\t",skip = skipt_topo[loc])#read.table(str_c(w_path, w_in), header = T)
+  weights <- vroom::vroom(str_c(w_path, w_in), delim = "\t", skip = skipt_topo[loc])
   #normalise rows so weights sum to 1
   weights <- weights / apply(weights, 1, sum)
   #exclude any rows where data is missing
@@ -80,30 +80,29 @@ match_twisst_files <- function(loc, window_size = 200,panel = 'a'){
   weight_files <- dir(w_path, pattern = loc) %>% .[grepl(str_c('w',window_size),.)]
   data_files <- dir(str_c(d_path, loc, '/'), pattern = 'LG.*data.tsv') %>% .[grepl(str_c('w',window_size),.)]
 
-  data <- tibble(w_in = weight_files,
+  data <- tibble::tibble(w_in = weight_files,
                  d_in = data_files) %>%
-    purrr::pmap(get_twisst_data, smooth = FALSE,loc=loc) %>%
-    bind_rows()
+    purrr::pmap_dfr(get_twisst_data, smooth = FALSE, loc = loc)
 
   topo_summary <- data %>%
-    group_by(topo_nr) %>%
-    summarise(mean = mean(weight),
-              median = median(weight),
-              sum = sum(weight),
-              sd = sd(weight)) %>%
-    mutate(rank = 106-rank(mean, ties.method = 'random')) %>%
-    gather(key = 'stat', value = 'val', mean:sd)
+    dplyr::group_by(topo_nr) %>%
+    dplyr::summarise(mean = mean(weight),
+                     median = median(weight),
+                     sum = sum(weight),
+                     sd = sd(weight)) %>%
+    dplyr::mutate(rank = 106-rank(mean, ties.method = 'random')) %>%
+    tidyr::gather(key = 'stat', value = 'val', mean:sd)
 
   topo_rank <- topo_summary %>%
-    filter(stat == 'mean') %>%
-    select(topo_nr, rank)
+    dplyr::filter(stat == 'mean') %>%
+    dplyr::select(topo_nr, rank)
 
   data <- data %>%
-    left_join(topo_rank) %>%
-    mutate(topo3 = str_pad(topo_nr, width = 3, pad = '0'),
-           topo_rel = topo_nr/max(topo_nr))
+    dplyr::left_join(topo_rank) %>%
+    dplyr::mutate(topo3 = stringr::str_pad(topo_nr, width = 3, pad = '0'),
+                  topo_rel = topo_nr/max(topo_nr))
 
   data <- data %>%
-    mutate(window = str_c(project_case(panel),':~italic(w)[',loc,']'))
+    dplyr::mutate(window = stringr::str_c(project_case(panel),':~italic(w)[',loc,']'))
   return(data)
 }

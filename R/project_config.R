@@ -253,7 +253,7 @@ pop_levels <- c("indbel", "maybel", "nigbel", "puebel", "unibel",
 #'
 #' @export
 project_case <- function(x){
-	str_to_lower(x)
+  stringr::str_to_lower(x)
 }
 
 #' Inverted project case
@@ -269,7 +269,7 @@ project_case <- function(x){
 #'
 #' @export
 project_inv_case <- function(x){
-  str_to_upper(x)
+  stringr::str_to_upper(x)
 }
 
 

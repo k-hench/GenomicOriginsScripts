@@ -26,7 +26,7 @@ cross_spec <- function(grph){
 #' @export
 get_dist <- function(grph, x, y){
   tibble::tibble( out = distances(grph, v = x, to = y)[1] ) %>%
-    purrr::set_names(., Snm = str_c(x, '-', y))
+    purrr::set_names(., nm = str_c(x, '-', y))
 }
 
 
@@ -65,7 +65,7 @@ get_neighbour_topos <- function(topo_plots, left_neighbour, right_neighbour){
     purrr::map(dist_tibble) %>%
     dplyr::bind_rows() %>%
     dplyr::bind_cols(topo_plots,.) %>%
-    dplyr::filter( .data[[stringr::str_c(left_neighbour,'-',right_neighbour)]] == 2) %>%
+    dplyr::filter( .data[[stringr::str_c(left_neighbour, '-', right_neighbour)]] == 2) %>%
     dplyr::select(topo_nr) %>%
     unlist() %>%
     unname()
@@ -116,11 +116,10 @@ min_dist <- function(dist, pop, pops){
 #'
 #' @export
 is_isolated <- function(x, pop, pops){
-  purrr::map(.x = x,
+  purrr::map_dfr(.x = x,
              .f = min_dist,
              pop = pop,
              pops = pops) %>%
-    bind_rows() %>%
     .$min_dist == 3
 }
 
@@ -128,7 +127,7 @@ is_isolated <- function(x, pop, pops){
 #'
 #' \code{is_isolated} finds all topologies where a species is isolated
 #'
-#' First the distance matrixesof all topologies are created and attached
+#' First the distance matrixes of all topologies are created and attached
 #' to the topologies.
 #' Then, the isolation status of a species is determined based on the
 #' distance matrixes and the topologies are filtered for the isolation cases.

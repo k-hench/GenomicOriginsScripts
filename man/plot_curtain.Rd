@@ -15,6 +15,7 @@ plot_curtain(
   text = TRUE,
   label,
   trait,
+  data_tables,
   ...
 )
 }
@@ -38,6 +39,8 @@ plot_curtain(
 \item{label}{string, panel label ("A"/"B"/"C")}
 
 \item{trait}{string, trait identifier for icon on gxp plot}
+
+\item{data_tables}{list with twisst results}
 
 \item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
 }

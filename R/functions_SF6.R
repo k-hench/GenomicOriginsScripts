@@ -53,13 +53,13 @@ setup_tree_data <- function(data) {
 #'
 #' @export
 get_tree <- function(loc, file, tree_dir, ...){
-  tree <- read.tree(stringr::str_c(tree_dir, file))
+  tree <- ape::read.tree(stringr::str_c(tree_dir, file))
 
   if(loc == 'all'){
     pttrn <- '.*floflo'
-    tree <- root_manual(tree,outgroup = which(tree$tip.label %in% c(tree$tip.label[stringr::str_detect(pattern = pttrn,string = tree$tip.label)])))
+    tree <- root_manual(tree, outgroup = which(tree$tip.label %in% c(tree$tip.label[stringr::str_detect(pattern = pttrn, string = tree$tip.label)])))
   }
-  tibble::tibble(loc = loc,tree = list(tree))
+  tibble::tibble(loc = loc, tree = list(tree))
 }
 
 #' ggplot layer for node support
@@ -100,8 +100,10 @@ geom_nodepoint_support <- function (mapping = NULL, data = NULL, position = "ide
   }
   else {
     if (!is.null(mapping$subset)) {
-      self_mapping <- aes_string(node = "node", subset = paste0(as.expression(get_aes_var(mapping,
-                                                                                          "subset")), "&!isTip"))
+      self_mapping <- ggplot2::aes_string(node = "node",
+                                          subset = paste0(as.expression(get_aes_var(mapping,
+                                                                                    "subset")),
+                                                          "&!isTip"))
     }
     mapping %<>% modifyList(self_mapping)
   }

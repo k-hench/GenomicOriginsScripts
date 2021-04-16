@@ -8,24 +8,24 @@
 #'
 #' @export
 read_sc <-function(file){
-  length_comment <- read_lines(file) %>% str_which(.,'^#') %>% max()
-  length_format <- read_lines(file) %>% str_which(.,'^format*') %>% max()
-  pos_frame <- read_lines(file) %>% str_which(.,'^frame*') %>% max()
+  length_comment <- readr::read_lines(file) %>% stringr::str_which(.,'^#') %>% max()
+  length_format <- readr::read_lines(file) %>% stringr::str_which(.,'^format*') %>% max()
+  pos_frame <- readr::read_lines(file) %>% stringr::str_which(.,'^frame*') %>% max()
 
   head_length <- max(length_comment, length_format, pos_frame)
 
-  read_delim(file,delim = ' ',skip = head_length,
-             col_names = c('type','cell','delim','value')) %>%
-    filter(!(type == "goto"), !(is.na(value))) %>%
-    select(-type,-delim) %>%
-    mutate(cell = str_replace(cell,"^([A-Z])([0-9])","\\1_\\2")) %>%
-    separate(cell, into = c('column','row'),sep = '_') %>%
-    mutate(row = as.numeric(row)) %>%
-    spread(key = column, value = value) %>%
+  readr::read_delim(file, delim = ' ', skip = head_length,
+                    col_names = c('type', 'cell', 'delim', 'value')) %>%
+    dplyr::filter(!(type == "goto"), !(is.na(value))) %>%
+    dplyr::select(-type,-delim) %>%
+    dplyr::mutate(cell = str_replace(cell,"^([A-Z])([0-9])","\\1_\\2")) %>%
+    tidyr::separate(cell, into = c('column','row'),sep = '_') %>%
+    dplyr::mutate(row = as.numeric(row)) %>%
+    tidyr::spread(key = column, value = value) %>%
     setNames(.,nm = .[1,] %>% as.character()) %>%
-    filter(`0` != 0) %>%
-    select(-`0`) %>%
-    mutate_all(parse_guess)
+    dplyr::filter(`0` != 0) %>%
+    dplyr::select(-`0`) %>%
+    dplyr::mutate_all(readr::parse_guess)
 }
 
 #' Get adimxture data
@@ -40,17 +40,17 @@ read_sc <-function(file){
 #'
 #' @export
 data_amdx <- function(gid, k, admx_path){
-  q_file <- str_c(admx_path, "hapmap.",gid,".",k,".Q")
-  ind_file <- str_c(admx_path, "pop.",gid,".",k,".txt")
+  q_file <- stringr::str_c(admx_path, "hapmap.",gid,".",k,".Q")
+  ind_file <- stringr::str_c(admx_path, "pop.",gid,".",k,".txt")
 
   vroom::vroom(q_file, delim = " ",
-               col_names = str_c("bin", str_pad(1:k,width = 2,pad = 0))) %>%
-    bind_cols(vroom::vroom(ind_file,
-                           col_names = c("id","spec","loc"))) %>%
-    mutate(id_nr = str_sub(id,1,-7),
-           id_order = str_c(loc,spec,  id_nr),
-           gid = gid) %>%
-    pivot_longer(names_to = "bin", values_to = "prop", cols = contains("bin"))
+               col_names = stringr::str_c("bin", stringr::str_pad(1:k, width = 2,pad = 0))) %>%
+    dplyr::bind_cols(vroom::vroom(ind_file,
+                                  col_names = c("id","spec","loc"))) %>%
+    dplyr::mutate(id_nr = stringr::str_sub(id, 1, -7),
+                  id_order = stringr::str_c(loc,spec,  id_nr),
+                  gid = gid) %>%
+    tidyr::pivot_longer(names_to = "bin", values_to = "prop", cols = contains("bin"))
 }
 
 #' Plot adimxture data
@@ -58,41 +58,42 @@ data_amdx <- function(gid, k, admx_path){
 #' \code{adm_plot} plots the admixture data
 #'
 #' @param gid_in string, identifier of fst outlier ID (eg "LG04_1")
+#' @param data   tibble, input data
 #'
 #' @family Suppl Figure 7
 #'
 #' @export
-adm_plot <- function(gid_in){
+adm_plot <- function(data, gid_in){
   data %>%
-    left_join(sample_order) %>%
-    left_join(pheno_facet) %>%
-    filter(gid == gid_in) %>%
-    ggplot(aes(x = factor(ord_nr))) +
-    geom_bar(stat = "identity",
-             position = "stack",
-             aes(y = prop, fill = bin)) +
-    geom_point(data = pheno_plot_data %>%
-                 filter(trait == gid_traits[[gid_in]]),
-               aes(y = -0.1,  fill = factor(phenotype)),
-               shape = 21) +
-    scale_y_continuous(gid_labels[[gid_in]],
-                       expand = c(0, 0),
-                       breaks = c(-0.1, 0, 0.5, 1),
-                       labels = c(trait_icons[[gid_in]], 0, 0.5, 1),
-                       limits = c(-0.125, 1)) +
-    scale_x_discrete(breaks = sample_order$ord_nr,
-                     labels = sample_order$id) +
-    scale_fill_manual(values = c(RColorBrewer::brewer.pal(4, "Greys")[2:3] %>%
-                                   purrr::set_names(nm = c("bin01", "bin02")),
-                                 `0` = "white", `1` = "black"), na.value = "gray") +
-    theme_minimal() +
-    theme(plot.title = element_text(size = 9),
-          legend.position = "none",
-          axis.title.y = element_text(vjust = -6),
-          axis.title.x = element_blank(),
-          axis.ticks = element_blank(),
-          axis.text.x = element_blank(),
-          axis.text.y = ggtext::element_markdown())
+    dplyr::left_join(sample_order) %>%
+    dplyr::left_join(pheno_facet) %>%
+    dplyr::filter(gid == gid_in) %>%
+    ggplot2::ggplot(aes(x = factor(ord_nr))) +
+    ggplot2::geom_bar(stat = "identity",
+                      position = "stack",
+                      aes(y = prop, fill = bin)) +
+    ggplot2::geom_point(data = pheno_plot_data %>%
+                          dplyr::filter(trait == gid_traits[[gid_in]]),
+                        aes(y = -0.1,  fill = factor(phenotype)),
+                        shape = 21) +
+    ggplot2::scale_y_continuous(gid_labels[[gid_in]],
+                                expand = c(0, 0),
+                                breaks = c(-0.1, 0, 0.5, 1),
+                                labels = c(trait_icons[[gid_in]], 0, 0.5, 1),
+                                limits = c(-0.125, 1)) +
+    ggplot2::scale_x_discrete(breaks = sample_order$ord_nr,
+                              labels = sample_order$id) +
+    ggplot2::scale_fill_manual(values = c(RColorBrewer::brewer.pal(4, "Greys")[2:3] %>%
+                                            purrr::set_names(nm = c("bin01", "bin02")),
+                                          `0` = "white", `1` = "black"), na.value = "gray") +
+    ggplot2::theme_minimal() +
+    ggplot2::theme(plot.title = ggplot2::element_text(size = 9),
+                   legend.position = "none",
+                   axis.title.y = ggplot2::element_text(vjust = -6),
+                   axis.title.x = ggplot2::element_blank(),
+                   axis.ticks = ggplot2::element_blank(),
+                   axis.text.x = ggplot2::element_blank(),
+                   axis.text.y = ggtext::element_markdown())
 }
 
 #' Add fish annotation

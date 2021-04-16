@@ -12,6 +12,14 @@
 #' @import grDevices
 #' @import utils
 #' @import stringr
+#' @import prismatic
+#' @import BAMMtools
+#' @import readr
+#' @import paletteer
+#' @importFrom tidyr gather
+#' @importFrom tidyr spread
+#' @importFrom tidyr pivot_longer
+#' @importFrom tidyr pivot_wider
 #'
 #' @export
 .onAttach <- function(libname, pkgname) {

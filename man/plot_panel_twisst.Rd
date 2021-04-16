@@ -5,7 +5,7 @@
 \title{Create the topology weighting panel}
 \usage{
 plot_panel_twisst(
-  loc,
+  loc = "bel",
   lg,
   start,
   end,
@@ -13,6 +13,7 @@ plot_panel_twisst(
   neighbours,
   xlab = TRUE,
   highlight_mode,
+  data_tables,
   ...
 )
 }
@@ -32,6 +33,8 @@ plot_panel_twisst(
 \item{xlab}{logical, should x axis labels be plotted?}
 
 \item{highlight_mode}{string, topology highlight mode ("pair", "isolation")}
+
+\item{data_tables}{list with twisst results}
 
 \item{...}{catch-all parameter to allow excessive parameters through purrr::pmap}
 }

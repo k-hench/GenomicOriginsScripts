@@ -63,9 +63,9 @@ refactor_run <- function(self, globals){
 #'
 #' @export
 plot_pair_run <- function(run,loc,left,right){
-  tibble( run = run,loc = loc,
-           grob = list(anno_pair_flag(loc,left,right) %>%
-                         ggplotGrob()))
+  tibble::tibble( run = run, loc = loc,
+                  grob = list(anno_pair_flag(loc, left, right) %>%
+                                ggplot2::ggplotGrob()))
 
 }
 
@@ -94,13 +94,13 @@ anno_pair_flag <- function (loc,left, right, circle_color = NA, circle_fill_left
   nr_left <- which(hypoimg::hypo_img$spec %>% str_sub(.,1,3) == left)
   nr_right <- which(hypoimg::hypo_img$spec %>% str_sub(.,1,3) == right)
   nr_flag <- which((hypoimg::hypo_flag$geo %>% str_sub(.,1,3)) == loc)
-  p <- ggplot() +
-    theme_void() +
-    scale_x_continuous(expand = c(0, 0)) +
-    scale_y_continuous(limits = c(-0.4, 0.38)) +
-    annotation_custom(hypoimg::hypo_flag$flag[[nr_flag]], xmin = -0.3, xmax = .3, ymin = -Inf, ymax = Inf) +
-    annotation_custom(hypoimg::hypo_img$l[[nr_right]], xmin = 0.05, xmax = 1, ymin = -Inf, ymax = Inf) +
-    annotation_custom(hypoimg::hypo_img$r[[nr_left]], xmin = -1, xmax = -0.05, ymin = -Inf, ymax = Inf)+
-    coord_cartesian(xlim = c(-1.1,1.1))
+  p <- ggplot2::ggplot() +
+    ggplot2::theme_void() +
+    ggplot2::scale_x_continuous(expand = c(0, 0)) +
+    ggplot2::scale_y_continuous(limits = c(-0.4, 0.38)) +
+    ggplot2::annotation_custom(hypoimg::hypo_flag$flag[[nr_flag]], xmin = -0.3, xmax = .3, ymin = -Inf, ymax = Inf) +
+    ggplot2::annotation_custom(hypoimg::hypo_img$l[[nr_right]], xmin = 0.05, xmax = 1, ymin = -Inf, ymax = Inf) +
+    ggplot2::annotation_custom(hypoimg::hypo_img$r[[nr_left]], xmin = -1, xmax = -0.05, ymin = -Inf, ymax = Inf)+
+    ggplot2::coord_cartesian(xlim = c(-1.1,1.1))
   return(p)
 }

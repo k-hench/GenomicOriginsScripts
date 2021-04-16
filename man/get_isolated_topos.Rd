@@ -17,7 +17,7 @@ get_isolated_topos(topo_plots, left_neighbour, pops)
 \code{is_isolated} finds all topologies where a species is isolated
 }
 \details{
-First the distance matrixesof all topologies are created and attached
+First the distance matrixes of all topologies are created and attached
 to the topologies.
 Then, the isolation status of a species is determined based on the
 distance matrixes and the topologies are filtered for the isolation cases.

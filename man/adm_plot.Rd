@@ -4,9 +4,11 @@
 \alias{adm_plot}
 \title{Plot adimxture data}
 \usage{
-adm_plot(gid_in)
+adm_plot(data, gid_in)
 }
 \arguments{
+\item{data}{tibble, input data}
+
 \item{gid_in}{string, identifier of fst outlier ID (eg "LG04_1")}
 }
 \description{
