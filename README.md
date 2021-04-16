@@ -14,6 +14,7 @@ To be able to install the package successfully, the following packages will also
 ```r
 install.packages("remotes")
 remotes::install_bioc("rtracklayer")
+remotes::install_github("YuLab-SMU/ggtree")
 remotes::install_github("k-hench/hypogen")
 remotes::install_github("k-hench/hypoimg")
 ```
