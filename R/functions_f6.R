@@ -65,7 +65,7 @@ get_gxp_and_geva <- function(gid, chrom, start, end, ...){
 
 #' Custom reverse log transformation
 #'
-#' @param base
+#' @param base numeric, delog base
 #'
 #' @export
 reverselog_trans <- function(base = exp(1)) {

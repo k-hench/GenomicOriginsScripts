@@ -7,7 +7,7 @@
 reverselog_trans(base = exp(1))
 }
 \arguments{
-\item{base}{}
+\item{base}{numeric, delog base}
 }
 \description{
 Custom reverse log transformation
