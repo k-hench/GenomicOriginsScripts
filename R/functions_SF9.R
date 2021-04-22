@@ -1,19 +1,9 @@
-#' Get gxp data
+#' Convert tree labels
 #'
-#' \code{get_gxp_both_models} imports gxp data
-#'
-#' @param file       input file
-#' @param trait      string, focal trait
-#' @param model_type string ("lm" /"lmm")
-#' @param path       path to folder contain the GxP results
-#'
-#' @family Suppl Figure 9
+#' @param label string, sample id
 #'
 #' @export
-get_gxp_both_models <- function(file, trait, model_type, path){
-  vroom::vroom(stringr::str_c(path, file), delim = "\t") %>%
-    dplyr::left_join(hypo_chrom_start) %>%
-    dplyr::mutate(trait = trait,
-                  model_type = model_type,
-                  gpos = GSTART + MID_POS)
+lab2spec <- function(label){
+  x <- stringr::str_sub(label, start = -6, end = -4) %>% stringr::str_remove(.,"[0-9.]{1,3}$") %>% stringr::str_remove(.," ")
+  ifelse(x == "",'ungrouped', x)
 }

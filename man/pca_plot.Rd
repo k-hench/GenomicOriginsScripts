@@ -7,7 +7,7 @@
 pca_plot(loc)
 }
 \arguments{
-\item{loc}{string, three lateeter location abrreviation}
+\item{loc}{string, three letter location abbreviation}
 }
 \description{
 Automated PCA plotting

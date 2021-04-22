@@ -168,33 +168,36 @@ network_layout <- function(n, rotate = 0, label = NULL, weight = 2, loc = NA){
 #' @export
 plot_network <- function(loc, nodes, edges, asp = .8, sep = 0, node_lab_shift = 0){
 
-  clr_prep <- scales::colour_ramp(c('black', clr_loc[loc]))(c(.4, 1))
+  loc_edge <- c(bel = .68, hon = .66, pan = .82) -.03
+  clr_prep <- (scales::colour_ramp(c("black",
+                                     clr_loc[loc])))(c(0.4, 1))
   clrs <- colorRampPalette(clr_prep)(max(edges$idx))
-
-  p <- nodes %>%
-    ggplot2::ggplot(aes(x, y))+
-    ggplot2::coord_fixed(ratio = asp)+
-    ggplot2::geom_segment(data = edges, aes(xend = xend, yend = yend),
-                          color = clr_loc[loc], size = plot_lwd)
-
+  p <- nodes %>% ggplot(aes(x, y)) +
+    coord_fixed(ratio = asp) +
+    geom_segment(data = edges,
+                 aes(xend = xend, yend = yend),#, size = median),
+                 size = .1,
+                 color = clr_loc[loc]) +#, size = plot_lwd)
+    # scale_size(limits = c(0, 1), range = c(.1, 4))+
+    scale_size(limits = c(0, 1), range = c(.1, 2))+
+    scale_color_manual(values = clr)
   for (k in nodes$idx) {
-    p <- p + plot_fish(short = stringr::str_sub(nodes$label[k],1,3),
-                       x = nodes$x[k],
-                       y = nodes$y[k])
+    p <- p + plot_fish_lwd(short = str_sub(nodes$label[k], 1,  3),
+                           x = nodes$x[k], y = nodes$y[k], height = .7, width = .7)
   }
-
-  p + ggplot2::geom_label(data = edges,
-                          aes(x = xmid_shift + sign(xmid_shift)*sep,
-                              y = ymid_shift + sign(ymid_shift)*sep*asp,
-                              label = run_ord),
-                          color = clr_loc[loc],
-                          label.padding = unit(1,'pt'),
-                          label.size = 0,
-                          size = plot_text_size / ggplot2::.pt)+
-    ggplot2::scale_fill_manual(values = clr_loc, guide = FALSE) +
-    ggplot2::scale_x_continuous(limits = c(-1.3,1.3), expand = c(0,0))+
-    ggplot2::scale_y_continuous(expand = c(0,.1))+
-    ggplot2::theme_void()
+  p + geom_label(data = edges, aes(x = xmid_shift + sign(xmid_shift) * sep,
+                                   y = ymid_shift + sign(ymid_shift) * sep * asp,
+                                   label = run_ord),
+                 color = clr_loc[loc],
+                 label.padding = unit(1, "pt"),
+                 label.size = 0,
+                 size = plot_text_size * .5 /ggplot2::.pt) +
+    scale_fill_manual(values = clr_loc,
+                      guide = FALSE) +
+    scale_x_continuous(limits = c(-1.3, 1.3),
+                       expand = c(0, 0)) +
+    scale_y_continuous(expand = c(0, 0.1)) +
+    theme_void()
 }
 
 
@@ -267,7 +270,7 @@ plot_fish_lwd <- function (short, x = 0, y = 3, height = 5, width = 5, lwd = .15
 
 #' Automated PCA plotting
 #'
-#' @param loc string, three lateeter location abrreviation
+#' @param loc string, three letter location abbreviation
 #'
 #' @export
 pca_plot <- function(loc){
@@ -305,7 +308,7 @@ pca_plot <- function(loc){
 }
 
 
-#' A modded version of BAMMtools:::plot.bammdata
+#' A modded version of BAMMtools::plot.bammdata
 #'
 #' @param x              An object of class bammdata.
 #' @param tau            A numeric indicating the grain size for the calculations. See documentation for dtRates.

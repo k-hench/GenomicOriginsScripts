@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_f1.R
 \name{bammplot_k}
 \alias{bammplot_k}
-\title{A modded version of BAMMtools:::plot.bammdata}
+\title{A modded version of BAMMtools::plot.bammdata}
 \usage{
 bammplot_k(
   x,
@@ -84,5 +84,5 @@ bammplot_k(
 \item{...}{Further arguments passed to par.}
 }
 \description{
-A modded version of BAMMtools:::plot.bammdata
+A modded version of BAMMtools::plot.bammdata
 }

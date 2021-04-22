@@ -78,6 +78,16 @@ reference:
     contents:
       - get_cc
       - get_msmc
+  - title: "Figure 3"
+    desc: >
+      Functions specific to Figure 3.
+    contents:
+      - collapse_peaks
+      - geom_hypo_grob2
+      - get_fst_fixed
+      - plot_fishes_location
+      - reformat_run_name
+      - summarise_model
   - title: "Figure 4"
     desc: >
       Functions specific to Figure 4.
@@ -124,58 +134,57 @@ reference:
       - reverselog_trans
       - grid_piece_x
       - theme_gradient_bg_x
-  - title: "Suppl. Figure 1"
+  - title: "Figure S1"
     desc: >
-      Functions specific to Suppl. Figure 1.
+      Functions specific to Figure S1.
+    contents:
+      - pca_plot_no_fish
+  - title: "Figure S4"
+    desc: >
+      Functions specific to Figure S4.
     contents:
       - getPofZ
       - label_spacer
       - plot_loc
       - theme_hyb
-  - title: "Suppl. Figure 2"
+  - title: "Figure S5"
     desc: >
-      Functions specific to Suppl. Figure 2.
+      Functions specific to Figure S5.
     contents:
       - anno_pair_flag
       - fst_bar_row_run
       - plot_pair_run
       - refactor_run
       - rescale_fst
-  - title: "Suppl. Figure 3"
+  - title: "Figure S9"
     desc: >
-      Functions specific to Suppl. Figure 3.
+      Functions specific to Figure S9.
     contents:
-      - collapse_peaks
-      - geom_hypo_grob2
-      - get_fst_fixed
-      - plot_fishes_location
-      - reformat_run_name
-      - summarise_model
-  - title: "Suppl. Figure 5"
+      - lab2spec
+  - title: "Figure S10"
     desc: >
-      Functions specific to Suppl. Figure 5.
+      Functions specific to Figure S10.
     contents:
       - fish_plot
       - fish_plot2
-  - title: "Suppl. Figure 6"
+  - title: "Figure S13"
     desc: >
-      Functions specific to Suppl. Figure 6.
-    contents:
-      - get_tree
-      - geom_nodepoint_support
-      - root_manual
-      - setup_tree_data
-      - StatTreeData
-  - title: "Suppl. Figure 7"
-    desc: >
-      Functions specific to Suppl. Figure 7.
+      Functions specific to Figure S13.
     contents:
       - add_spec_drawing
       - adm_plot
       - data_amdx
       - read_sc
-  - title: "Suppl. Figure 9"
+  - title: "Figure S14"
     desc: >
-      Functions specific to Suppl. Figure 9.
+      Functions specific to Figure S14.
     contents:
       - get_gxp_both_models
+  - title: "Figure S15"
+    desc: >
+      Functions specific to Figure S15.
+    contents:
+      - get_n_above
+      - get_n_total
+      - get_percentile
+      - get_random_fst

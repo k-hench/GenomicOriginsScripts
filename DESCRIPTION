@@ -1,6 +1,6 @@
 Package: GenomicOriginsScripts
 Title: Provides the R scripts for the paper "Ancestral variation, hybridization and modularity fuel a marine radiation"
-Version: 0.0.0.90065
+Version: 0.0.1.0
 Authors@R: 
     person(given = "Kosmas",
            family = "Hench",

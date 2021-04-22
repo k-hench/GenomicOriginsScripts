@@ -1,126 +1,47 @@
-#' Get hybridization data
+#' PCA plot without fish annotations
 #'
-#' \code{getPofZ} imports hybridization data
-#'
-#' @param base_dir path containing the newhybrids results
-#' @param folder   sub-folder of interest within the results folder
-#'
-#' @family Suppl Figure 1
+#' @param loc string, three letter location abbreviation
+#' @param mode string, type of pca data
+#' @param pc1 integer, number of PC for x axis
+#' @param pc2 integer, number of PC for y axis
 #'
 #' @export
-getPofZ <- function(base_dir, folder){
-  runname <- folder %>% stringr::str_remove("newHyb.") %>% stringr::str_remove(".80SNPs.txt_Results")
+pca_plot_no_fish <- function(loc, mode, pc1 = 1, pc2 = 2){
+  if(loc == ""){ loc2 <- "all" } else { loc2 <- loc }
+  titles <- c(loc_names,"all") %>% purrr::set_names(nm = c("bel.", "hon.", "pan.", "flo", "all"))
+  clr_pca <- c(clr_loc, "black") %>% purrr::set_names(nm = c("bel.", "hon.", "pan.", "flo", "all"))
 
-  pops <- c(stringr::str_sub(runname,1,6), stringr::str_sub(runname,-6,-1))
-  result_dir <- stringr::str_c(base_dir, folder,"/")
-
-  pofz <- dir(result_dir, pattern = "PofZ.txt")
-  inds <- dir(result_dir, pattern = "_individuals.txt")
-
-  colN <- c("P1", "P1_bc", "P2", "P2_bc")
-
-  NHres <- vroom::vroom(stringr::str_c(result_dir, pofz),
-                        delim = '\t',
-                        skip = 1,
-                        col_names  = c('indNR', 'IndivName', colN[1], colN[3],
-                                       'F1', 'F2', colN[2], colN[4])) %>%
-    dplyr::mutate(IndivName = vroom::vroom(stringr::str_c(result_dir, inds),
-                                    delim = ',',
-                                    col_names =  c('IndivName'))[,1] %>%
-             unname() %>%
-             unlist() )
-
-  bin_tib <- tibble::tibble(bin_generic = c(colN, "F1", "F2"),
-                    bin = c(paste0(c(pops[1],pops[1],pops[2],pops[2]),
-                                   c('_pure','_BC','_pure','_BC')), "F1", "F2"))
-
-  data <- NHres %>%
-    tidyr::pivot_longer(names_to = 'bin_generic',
-                 values_to = "post_prob",
-                 cols = c(-indNR, -IndivName)) %>%
-    dplyr::left_join(bin_tib) %>%
-    dplyr::mutate(run = runname,
-           loc = stringr::str_sub(run,-3,-1),
-           ind_order = stringr::str_c(stringr::str_sub(IndivName,-6,-1),"_", stringr::str_sub(IndivName,1,-7)))
-
-  return(data)
+  set.seed(42)
+  evs <- stringr::str_c(pca_dir, loc , mode, ".exp_var.txt.gz") %>%
+    readr::read_tsv()
+  stringr::str_c(pca_dir, loc , mode,".scores.txt.gz") %>%
+    readr::read_tsv() %>%
+    dplyr::mutate(spec = str_sub(id, -6,-4)) %>%
+    ggplot2::ggplot(ggplot2::aes_string(x = stringr::str_c("EV0", pc1),
+                                        y = stringr::str_c("EV0", pc2),
+                                        fill = "spec"))+
+    ggforce::geom_mark_ellipse(aes(color = spec),
+                               fill = "transparent",
+                               linetype = 3,
+                               size = .3,
+                               expand = unit(5, "pt"))+
+    ggplot2::geom_point(shape = 21,
+                        aes(color = ggplot2::after_scale(prismatic::clr_darken(fill))), size = .7) +
+    ggplot2::labs(x = str_c("PC",pc1," (", sprintf("%.1f",evs$exp_var[[ pc1 ]]), " %)"),
+         y = str_c("PC",pc2," (", sprintf("%.1f",evs$exp_var[[ pc2 ]]), " %)"))+
+    ggplot2::scale_fill_manual(values = clr)+
+    ggplot2::scale_color_manual(values = clr_alt %>%
+                         prismatic::clr_alpha(alpha = .7) %>%
+                         purrr::set_names(nm = names(clr_alt)))+
+    ggplot2::labs(title = stringr::str_c(titles[[ loc2 ]])) +
+    ggplot2::theme_minimal()+
+    ggplot2::theme(legend.position = "none",
+          panel.grid = ggplot2::element_blank(),
+          plot.background = ggplot2::element_blank(),
+          panel.background = ggplot2::element_rect(color = clr_pca[[ loc2 ]],
+                                          fill = "transparent"),
+          axis.text = ggplot2::element_blank(),
+          axis.ticks = ggplot2::element_blank(),
+          text = ggplot2::element_text(size = plot_text_size),
+          plot.title = ggplot2::element_text(color = clr_pca[[ loc2 ]]))
 }
-
-#' Plot hybridization data
-#'
-#' \code{getPofZ} plot hybridization data of a location
-#'
-#' @param loc sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])
-#'
-#' @family Suppl Figure 1
-#'
-#' @export
-plot_loc <- function(loc){
-  data <- purrr::map_df(.x = folders[str_detect(folders, loc)],
-                  .f = getPofZ,
-                  base_dir = base_dir)
-
-  is_hybr <- data %>%
-    dplyr::filter(!(grepl(pattern = "_pure", bin))) %>%
-    dplyr::filter(post_prob > .99) %>%
-    .$ind_order %>% unique()
-
-  data <- data %>%
-    dplyr::mutate(ind_label = ifelse(ind_order %in% is_hybr, stringr::str_c("**", ind_order, "**"), ind_order),
-           run2 = stringr::str_c("*H. ", sp_names[stringr::str_sub(string = run,1,3)],"* - *H. ", sp_names[stringr::str_sub(string = run,8,10)],"*"))
-
-  data_labs <- data %>% dplyr::filter(!duplicated(ind_order)) %>% dplyr::select(ind_order, ind_label)
-
-  lvls <- c("P1", "P1_bc","F1", "F2", "P2_bc", "P2")
-
-  clr <- paletteer::paletteer_c("ggthemes::Red-Green-Gold Diverging", 3) %>%
-    c(., clr_lighten(.)) %>% color() %>% .[c(1,4,2,5,6,3)] %>%
-    purrr::set_names(nm = lvls)
-
-  data  %>%
-    ggplot2::ggplot(aes(x = ind_order, y = post_prob, fill = bin_generic))+
-    ggplot2::geom_bar(position = 'stack', stat = "identity")+
-    ggplot2::scale_fill_manual(values = clr) +
-    ggplot2::scale_x_discrete(breaks = data_labs$ind_order, labels = data_labs$ind_label)+
-    ggplot2::labs(y = "Posterior probability", title = loc_names[loc])+
-    ggplot2::facet_grid(run2~.)+
-    theme_minimal()+
-    ggplot2:: theme(legend.position = "bottom",
-                    strip.text.x  = ggtext::element_markdown(),
-                    strip.text.y  = ggtext::element_markdown(),
-                    axis.text.x = ggtext::element_markdown(angle = 90),
-                    axis.title.x = ggplot2::element_blank(),
-                    axis.title.y = ggplot2::element_text(vjust = 4))
-}
-
-#' Custom ggplot theme
-#'
-#'\code{theme_hyb} ggplot theme for hybridization plots
-#'
-#' @param legend.position string, according to ggplot2::theme()
-#' @param ...             arguments funneled through to ggplot2::theme()
-#'
-#' @family Suppl Figure 1
-#'
-#' @export
-theme_hyb <-  function(legend.position = "none", ...){
-  list(ggplot2::scale_y_continuous(breaks = c(0,.5,1)),
-       ggplot2::theme(legend.position = legend.position,
-                      legend.background = ggplot2::element_rect(fill = "white", colour = rgb(1,1,1,0)),
-                      legend.direction = "horizontal",
-                      legend.justification = c(1, 1),
-                      strip.text.y = ggtext::element_markdown(angle = 0,hjust = 0),
-                      ...))
-}
-
-#' Adjust plot sizes
-#'
-#' \code{label_spacer} adjusts plot sizes with respect to presence of labels
-#'
-#' @param x    label position
-#' @param plus label offset
-#'
-#' @family Suppl Figure 1
-#'
-#' @export
-label_spacer <- function(x, plus = 1.1){x + plus}

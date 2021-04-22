@@ -4,7 +4,6 @@
 #'
 #' @param data tibble with column 'mod', containing models to be summarized
 #'
-#' @family Suppl Figure 3
 #'
 #' @export
 summarise_model <- function(data){
@@ -30,7 +29,6 @@ summarise_model <- function(data){
 #' @param right string, three letter species identifier
 #' @param loc   string, sample location (bel [Belize]/ hon [Honduras]/ pan [Panama])
 #'
-#' @family Suppl Figure 3
 #'
 #' @export
 plot_fishes_location <- function (left, right, loc) {
@@ -66,7 +64,6 @@ plot_fishes_location <- function (left, right, loc) {
 #' @param inherit.aes  logical
 #' @param ...          arguments passed to ggplot2::layer()
 #'
-#' @family Suppl Figure 3
 #'
 #' @export
 geom_hypo_grob2 <- function(mapping = NULL,
@@ -120,8 +117,6 @@ hypo_geom_grob_custom2 <- ggplot2::ggproto(
 #' @param fst_threshold numeric, threshold for fst outliers
 #' @param ...           arguments passed to hypogen::hypo_import_windows()
 #'
-#' @family  Suppl Figure 3
-#'
 #' @export
 get_fst_fixed <- function(file, run, fst_threshold,...){
 
@@ -170,8 +165,6 @@ get_fst_fixed <- function(file, run, fst_threshold,...){
 #'
 #' @param x string vector with outlier peak ids
 #'
-#' @family  Suppl Figure 3
-#'
 #' @export
 collapse_peaks <- function(x){
   table(x) %>%
@@ -183,8 +176,6 @@ collapse_peaks <- function(x){
 #' \code{reformat_run_name} formats run to "specloc-specloc" format.
 #'
 #' @param run string, species pair
-#'
-#' @family  Suppl Figure 3
 #'
 #' @export
 reformat_run_name <- function(run){

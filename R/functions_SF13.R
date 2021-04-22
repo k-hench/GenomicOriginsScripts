@@ -4,7 +4,6 @@
 #'
 #' @param file input file
 #'
-#' @family Suppl Figure 7
 #'
 #' @export
 read_sc <-function(file){
@@ -36,8 +35,6 @@ read_sc <-function(file){
 #' @param k         numeric, number of clusters
 #' @param admx_path path to folder with admixture results
 #'
-#' @family Suppl Figure 7
-#'
 #' @export
 data_amdx <- function(gid, k, admx_path){
   q_file <- stringr::str_c(admx_path, "hapmap.",gid,".",k,".Q")
@@ -59,8 +56,6 @@ data_amdx <- function(gid, k, admx_path){
 #'
 #' @param gid_in string, identifier of fst outlier ID (eg "LG04_1")
 #' @param data   tibble, input data
-#'
-#' @family Suppl Figure 7
 #'
 #' @export
 adm_plot <- function(data, gid_in){
@@ -103,8 +98,6 @@ adm_plot <- function(data, gid_in){
 #'
 #' @param spec hamlet species
 #' @param pos position on ggplot
-#'
-#' @family Suppl Figure 7
 #'
 #' @export
 add_spec_drawing <- function(spec, pos){
