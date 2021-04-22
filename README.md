@@ -2,6 +2,7 @@
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/k-hench/GenomicOriginsScripts/workflows/R-CMD-check/badge.svg)](https://github.com/k-hench/GenomicOriginsScripts/actions)
+[![DOI](https://zenodo.org/badge/208829675.svg)](https://zenodo.org/badge/latestdoi/208829675)
 <!-- badges: end -->
 
 The **R** package **GenomicOriginsScripts** provides the scripts needed to reproduce the figures and the supplementary figures of the paper *Ancestral variation, hybridization and modularity fuel a marine radiation* by Hench, Helmkampf, McMillan and Puebla.

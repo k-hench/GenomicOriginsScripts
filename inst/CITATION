@@ -1,0 +1,18 @@
+citHeader("The official zenodo citation for {GenomicOriginsScripts} is:")
+
+citEntry(entry = "misc",
+         key = "GenomicOriginsScripts",
+         title        = "k-hench/GenomicOriginsScripts: PNAS revisions",
+         author       = personList(as.person("Kosmas Hench")),
+         year         = "2021",
+         url          = "https://zenodo.org/record/4709766",
+         doi          = "10.5281/ZENODO.4709766",
+         publisher    = "Zenodo",
+         copyright    = "Open Access",
+
+         textVersion  =
+           paste("Hench, Kosmas (2021).",
+                 "k-hench/GenomicOriginsScripts: PNAS revisions.",
+                 "Zenodo.",
+                 "https://doi.org/10.5281/ZENODO.4709766")
+)
