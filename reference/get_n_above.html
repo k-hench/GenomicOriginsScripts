@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Process script input — process_input • GenomicOriginsScripts</title>
+<title>Count number of permutation Fst greather than the original Fst — get_n_above • GenomicOriginsScripts</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Process script input — process_input" />
-<meta property="og:description" content="process_input processes the script input and echos the received parameters." />
+<meta property="og:title" content="Count number of permutation Fst greather than the original Fst — get_n_above" />
+<meta property="og:description" content="Count number of permutation Fst greather than the original Fst" />
 <meta property="og:image" content="https://k-hench.github.io/GenomicOriginsScripts/logo.png" />
 
 
@@ -116,43 +116,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Process script input</h1>
-    <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/functions_general.R'><code>R/functions_general.R</code></a></small>
-    <div class="hidden name"><code>process_input.Rd</code></div>
+    <h1>Count number of permutation Fst greather than the original Fst</h1>
+    <small class="dont-index">Source: <a href='https://github.com/k-hench/GenomicOriginsScripts/blob/master/R/functions_SF15.R'><code>R/functions_SF15.R</code></a></small>
+    <div class="hidden name"><code>get_n_above.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>process_input</code> processes the script input and echos the received parameters.</p>
+    <p>Count number of permutation Fst greather than the original Fst</p>
     </div>
 
-    <pre class="usage"><span class='fu'>process_input</span><span class='op'>(</span><span class='va'>script_name</span>, <span class='va'>args</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_n_above</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>script_name</th>
-      <td><p>string, name of the executed R-script</p></td>
-    </tr>
-    <tr>
-      <th>args</th>
-      <td><p>vector of stings, arguments passed to the R-script</p></td>
+      <th>data</th>
+      <td><p>tibble</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other General functions: 
-<code><a href='darken.html'>darken</a>()</code>,
-<code><a href='export_2_latex.html'>export_2_latex</a>()</code>,
-<code><a href='get_dxy.html'>get_dxy</a>()</code>,
-<code><a href='get_fst_summary_data.html'>get_fst_summary_data</a>()</code>,
-<code><a href='get_fst.html'>get_fst</a>()</code>,
-<code><a href='get_gxp.html'>get_gxp</a>()</code>,
-<code><a href='get_pi.html'>get_pi</a>()</code>,
-<code><a href='join_list.html'>join_list</a>()</code>,
-<code><a href='lighten.html'>lighten</a>()</code>,
-<code><a href='refactor.html'>refactor</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

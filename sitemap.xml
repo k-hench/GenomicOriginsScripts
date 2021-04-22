@@ -4,9 +4,6 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//index.html</loc>
   </url>
   <url>
-    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/StatTreeData.html</loc>
-  </url>
-  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/add_gpos.html</loc>
   </url>
   <url>
@@ -103,9 +100,6 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/geom_hypo_grob2.html</loc>
   </url>
   <url>
-    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/geom_nodepoint_support.html</loc>
-  </url>
-  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/getPofZ.html</loc>
   </url>
   <url>
@@ -151,13 +145,22 @@
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_msmc.html</loc>
   </url>
   <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_n_above.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_n_total.html</loc>
+  </url>
+  <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_neighbour_topos.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_percentile.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_pi.html</loc>
   </url>
   <url>
-    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_tree.html</loc>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_random_fst.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/get_twisst_data.html</loc>
@@ -185,6 +188,9 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/join_list.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/lab2spec.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/label_spacer.html</loc>
@@ -215,6 +221,9 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/pca_plot.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/pca_plot_no_fish.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_clr.html</loc>
@@ -251,6 +260,12 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_network.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_outl_tree.html</loc>
+  </url>
+  <url>
+    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_outl_tree_s.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/plot_pair_run.html</loc>
@@ -320,12 +335,6 @@
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/root_hamlets.html</loc>
-  </url>
-  <url>
-    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/root_manual.html</loc>
-  </url>
-  <url>
-    <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/setup_tree_data.html</loc>
   </url>
   <url>
     <loc>https://k-hench.github.io/GenomicOriginsScripts//reference/shps.html</loc>
