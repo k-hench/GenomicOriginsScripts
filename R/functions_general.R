@@ -136,7 +136,7 @@ get_pi <- function(file){
   vroom::vroom(file, delim = "\t") %>%
     dplyr::left_join(., hypogen::hypo_chrom_start) %>%
     dplyr::mutate(gpos = (BIN_START + BIN_END)/2 + GSTART,
-                  spec = file %>% str_remove('^.*/') %>% str_sub(.,1,6))
+                  spec = file %>% str_remove('^.*/pi.') %>% str_sub(.,1,6))
 }
 
 #' Iterate left_join over list
