@@ -16,8 +16,4 @@ generic_hamlet_img
 \description{
 A generic hamlet image
 }
-\examples{
-ggplot2::ggplot() +
- ggplot2::annotation_custom(grob = GenomicOriginsScripts::generic_hamlet_img)
-}
 \keyword{datasets}
